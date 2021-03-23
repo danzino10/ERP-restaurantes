@@ -1,7 +1,7 @@
 ﻿
 namespace Local_Money
 {
-    partial class Pedidos
+    partial class Cardapio
     {
         /// <summary>
         /// Required designer variable.
@@ -29,34 +29,33 @@ namespace Local_Money
         /// </summary>
         private void InitializeComponent()
         {
-            this.flp_view = new System.Windows.Forms.FlowLayoutPanel();
+            this.flp_cardapio = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // flp_view
+            // flp_cardapio
             // 
-            this.flp_view.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flp_view.Location = new System.Drawing.Point(0, 0);
-            this.flp_view.Name = "flp_view";
-            this.flp_view.Size = new System.Drawing.Size(635, 450);
-            this.flp_view.TabIndex = 1;
-            this.flp_view.Paint += new System.Windows.Forms.PaintEventHandler(this.flp_view_Paint);
+            this.flp_cardapio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flp_cardapio.Location = new System.Drawing.Point(0, 0);
+            this.flp_cardapio.Name = "flp_cardapio";
+            this.flp_cardapio.Size = new System.Drawing.Size(635, 450);
+            this.flp_cardapio.TabIndex = 0;
             // 
-            // Pedidos
+            // Cardapio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 450);
-            this.Controls.Add(this.flp_view);
+            this.Controls.Add(this.flp_cardapio);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Pedidos";
-            this.Text = "Pedidos";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Pedidos_Load);
+            this.Name = "Cardapio";
+            this.Text = "Cardapio";
+            this.Load += new System.EventHandler(this.Cardapio_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.FlowLayoutPanel flp_view;
+
+        public System.Windows.Forms.FlowLayoutPanel flp_cardapio;
     }
 }

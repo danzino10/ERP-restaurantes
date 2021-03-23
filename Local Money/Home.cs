@@ -36,8 +36,13 @@ namespace Local_Money
 
         private void btn_bebidas_Click(object sender, EventArgs e)
         {
-            //flp_sub.Controls.Clear();
+            Cardapio carp = new Cardapio { Dock = DockStyle.Fill, TopMost = true, TopLevel = false };
+            this.p_view.Controls.Clear();
+            this.p_view.Controls.Add(carp);
+            carp.catNum = 1;
+            carp.Show();
 
+            /*
             con.abrir();
             try
             {
@@ -58,7 +63,7 @@ namespace Local_Money
                 MessageBox.Show("Erro! " + er);
             }
             con.fechar();
-
+            */
 
             btn_bebidas.Enabled = false;
             btn_promo.Enabled = true;
@@ -70,8 +75,13 @@ namespace Local_Money
         private void btn_pastelaria_Click(object sender, EventArgs e)
         {
 
-            //flp_sub.Controls.Clear();
+            Cardapio carp = new Cardapio { Dock = DockStyle.Fill, TopMost = true, TopLevel = false };
+            this.p_view.Controls.Clear();
+            this.p_view.Controls.Add(carp);
+            carp.catNum = 3;
+            carp.Show();
 
+            /*
             con.abrir();
             try
             {
@@ -92,6 +102,7 @@ namespace Local_Money
                 MessageBox.Show("Erro! " + er);
             }
             con.fechar();
+            */
 
             btn_bebidas.Enabled = true;
             btn_promo.Enabled = true;
@@ -102,7 +113,11 @@ namespace Local_Money
 
         private void btn_entradas_Click(object sender, EventArgs e)
         {
-            //flp_sub.Controls.Clear();
+            Cardapio carp = new Cardapio { Dock = DockStyle.Fill, TopMost = true, TopLevel = false };
+            this.p_view.Controls.Clear();
+            this.p_view.Controls.Add(carp);
+            carp.catNum = 5;
+            carp.Show();
 
             lbl_cat.Text = btn_entradas.Text;
 
@@ -115,7 +130,11 @@ namespace Local_Money
 
         private void btn_promo_Click(object sender, EventArgs e)
         {
-            //flp_sub.Controls.Clear();
+            Cardapio carp = new Cardapio { Dock = DockStyle.Fill, TopMost = true, TopLevel = false };
+            this.p_view.Controls.Clear();
+            this.p_view.Controls.Add(carp);
+            carp.catNum = 2;
+            carp.Show();
 
             lbl_cat.Text = btn_promo.Text;
 
@@ -128,10 +147,16 @@ namespace Local_Money
 
         private void btn_pratos_Click(object sender, EventArgs e)
         {
-            //flp_sub.Controls.Clear();
+            
+            Cardapio carp = new Cardapio { Dock = DockStyle.Fill, TopMost = true, TopLevel = false };
+            this.p_view.Controls.Clear();
+            this.p_view.Controls.Add(carp);
+            carp.catNum = 4;
+            carp.Show();
 
+            
 
-
+            /*
             con.abrir();
             try
             {
@@ -141,11 +166,12 @@ namespace Local_Money
                     CommandText = "SELECT * FROM tb_categoria WHERE id_menu = '4'",
                 };
                 SqlDataReader reader = com.ExecuteReader();
+
                 while (reader.Read())
                 {
                     string nome = reader.GetInt32(0) + " - " + reader.GetString(1);
                     int id = reader.GetInt32(0);
-                    //flp_sub.Controls.Add(BotaoMenu(nome, id));
+                    p_view.Controls.Add(BotaoMenu(nome, id));
                 }
                 reader.Close();
             }
@@ -154,7 +180,7 @@ namespace Local_Money
                 MessageBox.Show("Erro! " + er);
             }
             con.fechar();
-
+            */
 
 
             btn_bebidas.Enabled = true;

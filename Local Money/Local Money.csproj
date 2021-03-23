@@ -51,6 +51,12 @@
     <Compile Include="AdicionarProduto.Designer.cs">
       <DependentUpon>AdicionarProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cardapio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cardapio.Designer.cs">
+      <DependentUpon>Cardapio.cs</DependentUpon>
+    </Compile>
     <Compile Include="modelos\BotaoMenu.cs" />
     <Compile Include="modelos\CartaoProduto.cs" />
     <Compile Include="modelos\Conexao.cs" />
@@ -82,6 +88,9 @@
     </Compile>
     <EmbeddedResource Include="AdicionarProduto.resx">
       <DependentUpon>AdicionarProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cardapio.resx">
+      <DependentUpon>Cardapio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

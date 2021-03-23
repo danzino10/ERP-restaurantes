@@ -12,16 +12,19 @@ namespace Local_Money
     class CartaoProduto
     {
         Conexao con = new Conexao();
-        public CartaoProduto(string nome, int i, int x, int y, Image imagem, Label lbl_mesa, Label lbl_total, Label lbl_subtot, TableLayoutPanel tlp_pedido)
+        int x = 1, y = 0;
+        TableLayoutPanel tlfp_cartao = new TableLayoutPanel
+        {
+            Width = 120,
+            Height = 150,
+            ColumnCount = 1,
+            RowCount = 2,
+        };
+
+        public CartaoProduto(string nome, int i, Image imagem, Label lbl_mesa, Label lbl_total, Label lbl_subtot, TableLayoutPanel tlp_pedido)
         { 
             string[] nn = nome.Split('-');
-            TableLayoutPanel tlfp_cartao = new TableLayoutPanel
-            {
-                Width = 120,
-                Height = 150,
-                ColumnCount = 1,
-                RowCount = 2,
-            };
+            
             tlfp_cartao.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tlfp_cartao.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tlfp_cartao.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
@@ -133,6 +136,11 @@ namespace Local_Money
 
 
             };
+        }
+
+        public TableLayoutPanel CriarCartao()
+        {
+            return tlfp_cartao;
         }
     }
 }

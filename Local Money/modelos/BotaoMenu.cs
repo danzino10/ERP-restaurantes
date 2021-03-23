@@ -13,20 +13,19 @@ namespace Local_Money
 {
     class BotaoMenu
     {
-        Button btn;
+        Button btn = new Button
+        {
+            Width = 105,
+            Height = 68,
+
+        };
         Conexao con = new Conexao();
-        public BotaoMenu(int i, string nome, FlowLayoutPanel flp_view)
+        public BotaoMenu(int i, string nome, FlowLayoutPanel flp_cardapio)
         {
             string[] nn = nome.Split('-');
-            Button btn = new Button
-            {
-                Width = 105,
-                Height = 68,
-                Text = nome,
-
-            };
+            btn.Text = nome;
             btn.MouseClick += (s, e) => {
-                flp_view.Controls.Clear();
+                
                 con.abrir();
                 SqlCommand com = new SqlCommand
                 {
@@ -39,6 +38,8 @@ namespace Local_Money
                 SqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
+                    string nomeProduto = reader.GetString(3);
+                    int id = reader.GetInt32(0);
                     byte[] foto = (byte[])(reader[5]);
                     Image imagem;
                     if (foto == null)
@@ -50,13 +51,19 @@ namespace Local_Money
                         MemoryStream memory = new MemoryStream(foto);
                         imagem = Image.FromStream(memory);
                     }
-                    //flp_view.Controls.Add(CartaoProduto(reader.GetInt32(0).ToString() + " - " + reader.GetString(3), reader.GetInt32(0), imagem));
+                    Home home = (Home)Application.OpenForms[1];
+                    CartaoProduto cartPro = new CartaoProduto(nomeProduto, id, imagem, home.lbl_mesa, home.lbl_total, home.lbl_subtot, home.tlp_pedido);
+                    flp_cardapio.Controls.Add(cartPro.CriarCartao());
                 }
                 reader.Close();
                 con.fechar();
             };
         }
-
+        
+        public Button CriarBotao ()
+        {
+            return btn;
+        }
         
 
        

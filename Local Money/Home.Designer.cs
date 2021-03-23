@@ -561,7 +561,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_sistema;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TableLayoutPanel tlp_pedido;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label lbl_subtotal;
         private System.Windows.Forms.Label lbl_valor;
@@ -569,12 +568,9 @@
         private System.Windows.Forms.Label lbl_id;
         private System.Windows.Forms.Label lbl_produto;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label lbl_taxas;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label lbl_total;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lbl_subtot;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btn_editar;
@@ -588,5 +584,9 @@
         public System.Windows.Forms.Button btn_pastelaria;
         public System.Windows.Forms.Button btn_pratos;
         public System.Windows.Forms.Panel p_view;
+        public System.Windows.Forms.Label lbl_taxas;
+        public System.Windows.Forms.Label lbl_total;
+        public System.Windows.Forms.Label lbl_subtot;
+        public System.Windows.Forms.TableLayoutPanel tlp_pedido;
     }
 }

@@ -57,7 +57,7 @@ namespace Local_Money
                         Home home = (Home)Application.OpenForms[1];
                         home.lbl_mesa.Text = "Pedido da Mesa " + mesa;
                         home.p_view.Controls.Clear();
-                        home.BotaoMenu();
+                        //home.BotaoMenu();
                     };
                 } 
                 else
@@ -85,5 +85,9 @@ namespace Local_Money
 
         }
 
+        private void flp_view_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
