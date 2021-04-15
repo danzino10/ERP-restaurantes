@@ -165,7 +165,7 @@
             this.p_pedido.Controls.Add(this.panel3);
             this.p_pedido.Location = new System.Drawing.Point(776, 0);
             this.p_pedido.Name = "p_pedido";
-            this.p_pedido.Size = new System.Drawing.Size(455, 761);
+            this.p_pedido.Size = new System.Drawing.Size(455, 749);
             this.p_pedido.TabIndex = 8;
             // 
             // panel5
@@ -175,7 +175,7 @@
             this.panel5.Controls.Add(this.panel7);
             this.panel5.Controls.Add(this.panel6);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 659);
+            this.panel5.Location = new System.Drawing.Point(0, 647);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(453, 100);
             this.panel5.TabIndex = 4;
@@ -456,20 +456,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("News706 BT", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(5, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(249, 18);
+            this.label1.Size = new System.Drawing.Size(260, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "Desktop - gestão de restaurantes";
             // 
             // lbl_sistema
             // 
             this.lbl_sistema.AutoSize = true;
-            this.lbl_sistema.Font = new System.Drawing.Font("News706 BT", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_sistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_sistema.Location = new System.Drawing.Point(3, 9);
             this.lbl_sistema.Name = "lbl_sistema";
-            this.lbl_sistema.Size = new System.Drawing.Size(298, 25);
+            this.lbl_sistema.Size = new System.Drawing.Size(304, 25);
             this.lbl_sistema.TabIndex = 0;
             this.lbl_sistema.Text = "FoodGest - Danilo Carvalho";
             // 
@@ -490,7 +490,7 @@
             this.panel4.Controls.Add(this.btn_adicionar);
             this.panel4.Controls.Add(this.lbl_cat);
             this.panel4.Controls.Add(this.btnSair);
-            this.panel4.Location = new System.Drawing.Point(12, 465);
+            this.panel4.Location = new System.Drawing.Point(12, 453);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(764, 295);
             this.panel4.TabIndex = 10;
@@ -519,7 +519,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1231, 761);
+            this.ClientSize = new System.Drawing.Size(1231, 749);
             this.Controls.Add(this.p_view);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.p_pedido);

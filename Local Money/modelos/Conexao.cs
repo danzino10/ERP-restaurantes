@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 
+
 namespace Local_Money
 {
     class Conexao
     {
-        const string conexao_string = @"Data Source=DESKTOP-99UBTBS;Initial Catalog=local_money;Integrated Security=True";
+        const string conexao_string = @"Data Source=DANZ;Initial Catalog=local_money;Integrated Security=True";
         SqlConnection conn;
  
         public Conexao() => conn = new SqlConnection(conexao_string);

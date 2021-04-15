@@ -68,6 +68,7 @@
     <Compile Include="modelos\Button_WOC.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="modelos\CartaoCategoriaCardapio.cs" />
     <Compile Include="modelos\CartaoProduto.cs" />
     <Compile Include="modelos\Conexao.cs" />
     <Compile Include="Home.cs">
