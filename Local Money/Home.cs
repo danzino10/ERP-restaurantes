@@ -36,11 +36,26 @@ namespace Local_Money
 
         private void btn_bebidas_Click(object sender, EventArgs e)
         {
-            Cardapio carp = new Cardapio { Dock = DockStyle.Fill, TopMost = true, TopLevel = false };
-            this.p_view.Controls.Clear();
-            this.p_view.Controls.Add(carp);
-            carp.catNum = 1;
-            carp.Show();
+            if(lbl_mesa.Tag.ToString() == "0")
+            {
+                MessageBox.Show("Não é possível iniciar um pedido sem registar antes a mesa ou take-away");
+            }
+            else
+            {
+                Cardapio carp = new Cardapio { Dock = DockStyle.Fill, TopMost = true, TopLevel = false };
+                this.p_view.Controls.Clear();
+                this.p_view.Controls.Add(carp);
+                carp.catNum = 1;
+                carp.Show();
+
+                btn_bebidas.Enabled = false;
+                btn_promo.Enabled = true;
+                btn_pratos.Enabled = true;
+                btn_entradas.Enabled = true;
+                btn_pastelaria.Enabled = true;
+            }
+
+            
 
             /*
             con.abrir();
@@ -65,21 +80,30 @@ namespace Local_Money
             con.fechar();
             */
 
-            btn_bebidas.Enabled = false;
-            btn_promo.Enabled = true;
-            btn_pratos.Enabled = true;
-            btn_entradas.Enabled = true;
-            btn_pastelaria.Enabled = true;
+            
         }
 
         private void btn_pastelaria_Click(object sender, EventArgs e)
         {
+            if (lbl_mesa.Tag.ToString() == "0")
+            {
+                MessageBox.Show("Não é possível iniciar um pedido sem registar antes a mesa ou take-away");
+            }
+            else
+            {
+                Cardapio carp = new Cardapio { Dock = DockStyle.Fill, TopMost = true, TopLevel = false };
+                this.p_view.Controls.Clear();
+                this.p_view.Controls.Add(carp);
+                carp.catNum = 3;
+                carp.Show();
 
-            Cardapio carp = new Cardapio { Dock = DockStyle.Fill, TopMost = true, TopLevel = false };
-            this.p_view.Controls.Clear();
-            this.p_view.Controls.Add(carp);
-            carp.catNum = 3;
-            carp.Show();
+                btn_bebidas.Enabled = true;
+                btn_promo.Enabled = true;
+                btn_pratos.Enabled = true;
+                btn_entradas.Enabled = true;
+                btn_pastelaria.Enabled = false;
+            }
+            
 
             /*
             con.abrir();
@@ -104,55 +128,82 @@ namespace Local_Money
             con.fechar();
             */
 
-            btn_bebidas.Enabled = true;
-            btn_promo.Enabled = true;
-            btn_pratos.Enabled = true;
-            btn_entradas.Enabled = true;
-            btn_pastelaria.Enabled = false;
+            
         }
 
         private void btn_entradas_Click(object sender, EventArgs e)
         {
-            Cardapio carp = new Cardapio { Dock = DockStyle.Fill, TopMost = true, TopLevel = false };
-            this.p_view.Controls.Clear();
-            this.p_view.Controls.Add(carp);
-            carp.catNum = 5;
-            carp.Show();
 
-            lbl_cat.Text = btn_entradas.Text;
+            if (lbl_mesa.Tag.ToString() == "0")
+            {
+                MessageBox.Show("Não é possível iniciar um pedido sem registar antes a mesa ou take-away");
+            }
+            else
+            {
+                Cardapio carp = new Cardapio { Dock = DockStyle.Fill, TopMost = true, TopLevel = false };
+                this.p_view.Controls.Clear();
+                this.p_view.Controls.Add(carp);
+                carp.catNum = 5;
+                carp.Show();
 
-            btn_bebidas.Enabled = true;
-            btn_promo.Enabled = true;
-            btn_pratos.Enabled = true;
-            btn_entradas.Enabled = false;
-            btn_pastelaria.Enabled = true;
+                lbl_cat.Text = btn_entradas.Text;
+
+                btn_bebidas.Enabled = true;
+                btn_promo.Enabled = true;
+                btn_pratos.Enabled = true;
+                btn_entradas.Enabled = false;
+                btn_pastelaria.Enabled = true;
+            }
+            
         }
 
         private void btn_promo_Click(object sender, EventArgs e)
         {
-            Cardapio carp = new Cardapio { Dock = DockStyle.Fill, TopMost = true, TopLevel = false };
-            this.p_view.Controls.Clear();
-            this.p_view.Controls.Add(carp);
-            carp.catNum = 2;
-            carp.Show();
 
-            lbl_cat.Text = btn_promo.Text;
+            if (lbl_mesa.Tag.ToString() == "0")
+            {
+                MessageBox.Show("Não é possível iniciar um pedido sem registar antes a mesa ou take-away");
+            }
+            else
+            {
+                Cardapio carp = new Cardapio { Dock = DockStyle.Fill, TopMost = true, TopLevel = false };
+                this.p_view.Controls.Clear();
+                this.p_view.Controls.Add(carp);
+                carp.catNum = 2;
+                carp.Show();
 
-            btn_bebidas.Enabled = true;
-            btn_promo.Enabled = false;
-            btn_pratos.Enabled = true;
-            btn_entradas.Enabled = true;
-            btn_pastelaria.Enabled = true;
+                lbl_cat.Text = btn_promo.Text;
+
+                btn_bebidas.Enabled = true;
+                btn_promo.Enabled = false;
+                btn_pratos.Enabled = true;
+                btn_entradas.Enabled = true;
+                btn_pastelaria.Enabled = true;
+            }
+            
         }
 
         private void btn_pratos_Click(object sender, EventArgs e)
         {
+            if (lbl_mesa.Tag.ToString() == "0")
+            {
+                MessageBox.Show("Não é possível iniciar um pedido sem registar antes a mesa ou take-away");
+            }
+            else
+            {
+                Cardapio carp = new Cardapio { Dock = DockStyle.Fill, TopMost = true, TopLevel = false };
+                this.p_view.Controls.Clear();
+                this.p_view.Controls.Add(carp);
+                carp.catNum = 4;
+                carp.Show();
+
+                btn_bebidas.Enabled = true;
+                btn_promo.Enabled = true;
+                btn_pratos.Enabled = false;
+                btn_entradas.Enabled = true;
+                btn_pastelaria.Enabled = true;
+            }
             
-            Cardapio carp = new Cardapio { Dock = DockStyle.Fill, TopMost = true, TopLevel = false };
-            this.p_view.Controls.Clear();
-            this.p_view.Controls.Add(carp);
-            carp.catNum = 4;
-            carp.Show();
 
             
 
@@ -183,11 +234,7 @@ namespace Local_Money
             */
 
 
-            btn_bebidas.Enabled = true;
-            btn_promo.Enabled = true;
-            btn_pratos.Enabled = false;
-            btn_entradas.Enabled = true;
-            btn_pastelaria.Enabled = true;
+            
         }
 
         public Button BotaoMenu (string nome, int valor)
@@ -373,7 +420,10 @@ namespace Local_Money
             ped.Show();
         }
 
-        
+        private void btn_finalizar_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void btn_adicionar_Click(object sender, EventArgs e)
         {

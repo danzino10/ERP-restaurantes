@@ -39,6 +39,7 @@ namespace Local_Money
             this.flp_cardapio.Name = "flp_cardapio";
             this.flp_cardapio.Size = new System.Drawing.Size(635, 450);
             this.flp_cardapio.TabIndex = 0;
+            this.flp_cardapio.Paint += new System.Windows.Forms.PaintEventHandler(this.flp_cardapio_Paint);
             // 
             // Cardapio
             // 

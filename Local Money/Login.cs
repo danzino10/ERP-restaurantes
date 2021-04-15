@@ -100,6 +100,7 @@ namespace Local_Money
                         com2.CommandText = "UPDATE tb_user SET ultimo_login = '" + DateTime.Now.ToString() + "'";
                         com2.ExecuteNonQuery();
 
+                        /*
                         Home h = new Home();
                         h.Id = Id;
                         h.Nome = Nome;
@@ -107,6 +108,14 @@ namespace Local_Money
                         h.Email = Email;
                         this.Hide();
                         h.ShowDialog();
+                        */
+
+                        btn_takwaway d = new btn_takwaway();
+                        d.Id = Id;
+                        d.Nome = Nome;
+                        d.Email = Email;
+                        this.Hide();
+                        d.Show();
                     }
                     
 

@@ -36,6 +36,7 @@ namespace Local_Money
                 categoria.Value = int.Parse(nn[0]);
                 com.Parameters.Add(categoria);
                 SqlDataReader reader = com.ExecuteReader();
+                flp_cardapio.Controls.Clear();
                 while (reader.Read())
                 {
                     string nomeProduto = reader.GetString(3);

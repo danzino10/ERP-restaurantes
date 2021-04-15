@@ -163,7 +163,7 @@
             this.p_pedido.Controls.Add(this.tlp_pedido);
             this.p_pedido.Controls.Add(this.pl_);
             this.p_pedido.Controls.Add(this.panel3);
-            this.p_pedido.Location = new System.Drawing.Point(779, 0);
+            this.p_pedido.Location = new System.Drawing.Point(776, 0);
             this.p_pedido.Name = "p_pedido";
             this.p_pedido.Size = new System.Drawing.Size(455, 761);
             this.p_pedido.TabIndex = 8;
@@ -422,6 +422,7 @@
             this.btn_finalizar.TabIndex = 2;
             this.btn_finalizar.Text = "Finalizar pedido";
             this.btn_finalizar.UseVisualStyleBackColor = true;
+            this.btn_finalizar.Click += new System.EventHandler(this.btn_finalizar_Click);
             // 
             // btn_salvar
             // 
@@ -518,7 +519,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1234, 761);
+            this.ClientSize = new System.Drawing.Size(1231, 761);
             this.Controls.Add(this.p_view);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.p_pedido);

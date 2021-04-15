@@ -23,7 +23,7 @@ namespace Local_Money
 
         public CartaoProduto(string nome, int i, Image imagem, Label lbl_mesa, Label lbl_total, Label lbl_subtot, TableLayoutPanel tlp_pedido)
         { 
-            string[] nn = nome.Split('-');
+            
             
             tlfp_cartao.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tlfp_cartao.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
@@ -44,11 +44,11 @@ namespace Local_Money
                 Height = 21,
                 Text = nome,
                 TextAlign = ContentAlignment.BottomCenter,
-                TabIndex = i,
+                
             };
+            tlfp_cartao.Controls.Add(btn_cartao, 0, 1);
 
-
-            int id_produto = int.Parse(nn[0].Trim());
+            int id_produto = i;
             btn_cartao.MouseClick += (s, e) => {
 
                 con.abrir();
@@ -58,7 +58,7 @@ namespace Local_Money
                 SqlCommand com = new SqlCommand
                 {
                     Connection = con.SaberConexao(),
-                    CommandText = "SELECT * FROM tb_produto WHERE id_produto = '" + nn[0] + "'",
+                    CommandText = "SELECT * FROM tb_produto WHERE id_produto = '" + i + "'",
                 };
                 SqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
@@ -114,6 +114,21 @@ namespace Local_Money
                         };
 
 
+                        Label lbl_adicionar = new Label
+                        {
+                            Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom),
+                            Text = "+",
+                            Font = new Font("Arial", 9F, (FontStyle)(FontStyle.Bold)),
+                            
+                        };
+
+                        Label lbl_remover = new Label
+                        {
+                            Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom),
+                            Text = "-",
+                            Font = new Font("Arial", 9F, (FontStyle)(FontStyle.Bold)),
+                        };
+
 
                         string[] tot = lbl_total.Text.Split(' ');
                         lbl_total.Text = (float.Parse(tot[0]) + conta).ToString() + " Kz";
@@ -127,7 +142,10 @@ namespace Local_Money
                         tlp_pedido.Controls.Add(lbl_qtd, y + 2, x);
                         tlp_pedido.Controls.Add(lbl_valor, y + 3, x);
                         tlp_pedido.Controls.Add(lbl_subtotal, y + 4, x);
+                        tlp_pedido.Controls.Add(lbl_adicionar, y + 5, x);
+                        tlp_pedido.Controls.Add(lbl_remover, y + 6, x);
                         x++;
+                        
 
                     }
                 }
