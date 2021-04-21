@@ -5,13 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
+using System.Drawing;
 
 namespace Local_Money.modelos
 {
-    class CartaoCategoriaCardapio
+    class CartaoSubCategoriaCardapio
     {
         int id_cat;
-
+         
         Conexao con = new Conexao();
 
         Panel PainelCartao = new Panel
@@ -19,6 +21,7 @@ namespace Local_Money.modelos
             Width = 205,
             Height = 170,
             Cursor = Cursors.Hand,
+            
         };
 
         Panel PainelCima = new Panel
@@ -65,7 +68,7 @@ namespace Local_Money.modelos
             BackColor = System.Drawing.SystemColors.MenuHighlight,
         };
 
-        PictureBox IconeCategoria = new PictureBox
+        PictureBox IconeSubCategoria = new PictureBox
         {
             Width = 64,
             Height = 64,
@@ -73,7 +76,7 @@ namespace Local_Money.modelos
             Image = global::Local_Money.Properties.Resources._004_chef,
         };
 
-        Label NomeCategoria = new Label
+        Label NomeSubCategoria = new Label
         {
             ForeColor = System.Drawing.SystemColors.Control,
             Dock = DockStyle.Bottom,
@@ -82,9 +85,8 @@ namespace Local_Money.modelos
             
         };
 
-        public CartaoCategoriaCardapio (string n, int i, FlowLayoutPanel flp_cardapio)
+        public CartaoSubCategoriaCardapio (string n, int i, FlowLayoutPanel flp_cardapio)
         {
-
             id_cat = i;
 
             PainelBack.Click += (sender2, e2) => Categoria_Click(sender2, e2, flp_cardapio);
@@ -94,11 +96,11 @@ namespace Local_Money.modelos
             PainelDireita.Click += (sender2, e2) => Categoria_Click(sender2, e2, flp_cardapio);
             PainelEsquerda.Click += (sender2, e2) => Categoria_Click(sender2, e2, flp_cardapio);
             PainelFront.Click += (sender2, e2) => Categoria_Click(sender2, e2, flp_cardapio);
-            IconeCategoria.Click += (sender2, e2) => Categoria_Click(sender2, e2, flp_cardapio);
-            NomeCategoria.Click += (sender2, e2) => Categoria_Click(sender2, e2, flp_cardapio);
+            IconeSubCategoria.Click += (sender2, e2) => Categoria_Click(sender2, e2, flp_cardapio);
+            NomeSubCategoria.Click += (sender2, e2) => Categoria_Click(sender2, e2, flp_cardapio);
 
-            PainelFront.Controls.Add(IconeCategoria);
-            PainelBack.Controls.Add(NomeCategoria);
+            PainelFront.Controls.Add(IconeSubCategoria);
+            PainelBack.Controls.Add(NomeSubCategoria);
             PainelCartao.Controls.Add(PainelEsquerda);
             PainelCartao.Controls.Add(PainelCima);
             PainelCartao.Controls.Add(PainelBaixo);
@@ -106,10 +108,7 @@ namespace Local_Money.modelos
            
             PainelCartao.Controls.Add(PainelFront);
             PainelCartao.Controls.Add(PainelBack);
-
-            NomeCategoria.Text = n;
-
-            
+            NomeSubCategoria.Text = n;
         }
 
         public Panel Criar ()
@@ -117,12 +116,8 @@ namespace Local_Money.modelos
             return PainelCartao;
         }
 
-        
-
         private void Categoria_Click(object sender, EventArgs e, FlowLayoutPanel flp_cardapio)
         {
-            
-
             con.abrir();
 
             try
@@ -130,14 +125,22 @@ namespace Local_Money.modelos
                 SqlCommand com = new SqlCommand
                 {
                     Connection = con.SaberConexao(),
-                    CommandText = "SELECT * FROM tb_categoria WHERE id_menu = '" + id_cat + "'",
+                    CommandText = "SELECT * FROM tb_produto WHERE id_categoria = '" + id_cat + "'",
                 };
                 SqlDataReader reader = com.ExecuteReader();
 
                 flp_cardapio.Controls.Clear();
                 while (reader.Read())
                 {
-                    CartaoSubCategoriaCardapio cartao = new CartaoSubCategoriaCardapio(reader.GetString(1), reader.GetInt32(0), flp_cardapio);
+                    byte[] dados = (byte[])(reader.GetValue(5));
+                    MemoryStream mem = new MemoryStream(dados);
+                    bool disp;
+                    if (reader.GetString(7) == "disponível")
+                        disp = true;
+                    else
+                        disp = false;
+
+                    CartaoProduto cartao = new CartaoProduto(reader.GetString(3), disp, float.Parse(reader.GetValue(4).ToString()), reader.GetInt32(0), Image.FromStream(mem));
                     flp_cardapio.Controls.Add(cartao.Criar());
                 }
             }

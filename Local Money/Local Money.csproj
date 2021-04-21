@@ -68,6 +68,7 @@
     <Compile Include="modelos\Button_WOC.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="modelos\CartaoSubCategoriaCardapio.cs" />
     <Compile Include="modelos\CartaoCategoriaCardapio.cs" />
     <Compile Include="modelos\CartaoProduto.cs" />
     <Compile Include="modelos\Conexao.cs" />
@@ -195,6 +196,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\down-arrow2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pica-pau.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check-mark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

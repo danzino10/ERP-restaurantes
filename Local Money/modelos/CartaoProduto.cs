@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Local_Money.modelos;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -12,153 +13,168 @@ namespace Local_Money
     class CartaoProduto
     {
         Conexao con = new Conexao();
-        int x = 1, y = 0;
-        TableLayoutPanel tlfp_cartao = new TableLayoutPanel
+
+        Panel PainelCartao = new Panel
         {
-            Width = 120,
-            Height = 150,
-            ColumnCount = 1,
-            RowCount = 2,
+            Width = 205,
+            Height = 170,
+            Cursor = Cursors.Hand,
         };
 
-        public CartaoProduto(string nome, int i, Image imagem, Label lbl_mesa, Label lbl_total, Label lbl_subtot, TableLayoutPanel tlp_pedido)
-        { 
-            
-            
-            tlfp_cartao.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tlfp_cartao.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlfp_cartao.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
+        Panel PainelCima = new Panel
+        {
+            Height = 2,
+            BackColor = System.Drawing.Color.DarkSlateGray,
+            Dock = DockStyle.Top,
+        };
 
-            PictureBox pb_cartao = new PictureBox
+        Panel PainelBaixo = new Panel
+        {
+            Height = 2,
+            BackColor = System.Drawing.Color.DarkSlateGray,
+            Dock = DockStyle.Bottom,
+        };
+
+        Panel PainelDireita = new Panel
+        {
+            Width = 2,
+            BackColor = System.Drawing.Color.DarkSlateGray,
+            Dock = DockStyle.Right,
+        };
+
+        Panel PainelEsquerda = new Panel
+        {
+            Width = 2,
+            BackColor = System.Drawing.Color.DarkSlateGray,
+            Dock = DockStyle.Left,
+        };
+
+        Panel PainelProduto = new Panel
+        {
+            Width = 185,
+            Height = 150,
+            Location = new System.Drawing.Point(10, 10),
+            BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom,
+        };
+
+        Panel PainelPreco = new Panel
+        {
+            Width = 100,
+            Height = 20,
+            Location = new System.Drawing.Point(0, 30),
+            BackColor = System.Drawing.SystemColors.MenuHighlight,
+        };
+
+        Panel PainelNome = new Panel
+        {
+            Width = 145,
+            Height = 20,
+            Location = new System.Drawing.Point(41,102),
+            BackColor = System.Drawing.SystemColors.MenuHighlight,
+        };
+
+        Panel PainelConfirma = new Panel
+        {
+            Width = 40,
+            Height = 40,
+            Location = new System.Drawing.Point(0, 0),
+            BackColor = Color.Transparent,
+            BackgroundImageLayout = ImageLayout.Zoom,
+        };
+
+        Label Preco = new Label
+        {
+            Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
+            ForeColor = Color.Black,
+
+        };
+
+        Label Nome = new Label
+        {
+            Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
+            ForeColor = Color.Black,
+            Dock = DockStyle.Fill,
+        };
+
+        public CartaoProduto(string nome, bool disp, float preco, int id, Image imagem)
+        {
+            PainelBaixo.Click += (sender2, e2) => Produto_Click(sender2, e2);
+            PainelCartao.Click += (sender2, e2) => Produto_Click(sender2, e2);
+            PainelCima.Click += (sender2, e2) => Produto_Click(sender2, e2);
+            PainelConfirma.Click += (sender2, e2) => Produto_Click(sender2, e2);
+            PainelDireita.Click += (sender2, e2) => Produto_Click(sender2, e2);
+            PainelEsquerda.Click += (sender2, e2) => Produto_Click(sender2, e2);
+            PainelNome.Click += (sender2, e2) => Produto_Click(sender2, e2);
+            PainelPreco.Click += (sender2, e2) => Produto_Click(sender2, e2);
+            PainelProduto.Click += (sender2, e2) => Produto_Click(sender2, e2);
+            Preco.Click += (sender2, e2) => Produto_Click(sender2, e2);
+            Nome.Click += (sender2, e2) => Produto_Click(sender2, e2);
+
+            if(disp == false)
             {
-                Width = 114,
-                Height = 117,
-                Image = imagem,
-                SizeMode = PictureBoxSizeMode.StretchImage,
-            };
-            tlfp_cartao.Controls.Add(pb_cartao, 0, 0);
+                PainelCima.BackColor = Color.Brown;
+                PainelBaixo.BackColor = Color.Brown;
+                PainelDireita.BackColor = Color.Brown;
+                PainelEsquerda.BackColor = Color.Brown;
+                PainelConfirma.BackColor = Color.Brown;
+                PainelConfirma.BackgroundImage = global::Local_Money.Properties.Resources.cancel_button;
+                PainelCartao.Cursor = Cursors.Default;
+                PainelCartao.Enabled = false;
 
-            Button btn_cartao = new Button
-            {
-                Width = 114,
-                Height = 21,
-                Text = nome,
-                TextAlign = ContentAlignment.BottomCenter,
-                
-            };
-            tlfp_cartao.Controls.Add(btn_cartao, 0, 1);
+            }
+            Nome.Text = nome;
+            Preco.Text = "Kz " + preco;
+            PainelProduto.BackgroundImage = imagem;
 
-            int id_produto = i;
-            btn_cartao.MouseClick += (s, e) => {
+            PainelCartao.Controls.Add(PainelCima);
+            PainelCartao.Controls.Add(PainelBaixo);
+            PainelCartao.Controls.Add(PainelDireita);
+            PainelCartao.Controls.Add(PainelEsquerda);
 
-                con.abrir();
+            PainelPreco.Controls.Add(Preco);
+            PainelNome.Controls.Add(Nome);
 
+            PainelProduto.Controls.Add(PainelPreco);
+            PainelProduto.Controls.Add(PainelNome);
+            PainelProduto.Controls.Add(PainelConfirma);
 
+            PainelCartao.Controls.Add(PainelProduto);
 
-                SqlCommand com = new SqlCommand
-                {
-                    Connection = con.SaberConexao(),
-                    CommandText = "SELECT * FROM tb_produto WHERE id_produto = '" + i + "'",
-                };
-                SqlDataReader reader = com.ExecuteReader();
-                while (reader.Read())
-                {
-                    if (reader.GetString(7) == "indisponível")
-                    {
-                        MessageBox.Show("Este produto encontra-se indisponível\n Contacte o cozinheiro ou a logistica para mais informações");
-                    }
-                    else
-                    {
-
-                        if (lbl_mesa.Tag.ToString() == "0")
-                        {
-                            MessageBox.Show("Deu certo");
-                        }
-
-
-
-                        Label lbl_id = new Label
-                        {
-                            Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom),
-                            Text = reader.GetValue(0).ToString(),
-                            Font = new Font("Arial", 9F),
-                        };
-
-                        Label lbl_nome = new Label
-                        {
-                            Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom),
-                            Text = reader.GetString(3),
-                            Font = new Font("Arial", 9F),
-                        };
-
-                        Label lbl_qtd = new Label
-                        {
-                            Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom),
-                            Text = "1",
-                            Font = new Font("Arial", 9F),
-                        };
-
-                        Label lbl_valor = new Label
-                        {
-                            Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom),
-                            Text = reader.GetValue(4).ToString(),
-                            Font = new Font("Arial", 9F),
-                        };
-
-                        float conta = float.Parse(lbl_valor.Text) * int.Parse(lbl_qtd.Text);
-                        Label lbl_subtotal = new Label
-                        {
-                            Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom),
-                            Text = conta.ToString(),
-                            Font = new Font("Arial", 9F),
-                        };
-
-
-                        Label lbl_adicionar = new Label
-                        {
-                            Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom),
-                            Text = "+",
-                            Font = new Font("Arial", 9F, (FontStyle)(FontStyle.Bold)),
-                            
-                        };
-
-                        Label lbl_remover = new Label
-                        {
-                            Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Bottom),
-                            Text = "-",
-                            Font = new Font("Arial", 9F, (FontStyle)(FontStyle.Bold)),
-                        };
-
-
-                        string[] tot = lbl_total.Text.Split(' ');
-                        lbl_total.Text = (float.Parse(tot[0]) + conta).ToString() + " Kz";
-                        string[] subtot = lbl_total.Text.Split(' ');
-                        lbl_subtot.Text = (float.Parse(subtot[0]) + (float.Parse(subtot[0])) * 14 / 100).ToString() + " Kz";
-
-                        tlp_pedido.RowCount++;
-                        tlp_pedido.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-                        tlp_pedido.Controls.Add(lbl_id, y, x);
-                        tlp_pedido.Controls.Add(lbl_nome, y + 1, x);
-                        tlp_pedido.Controls.Add(lbl_qtd, y + 2, x);
-                        tlp_pedido.Controls.Add(lbl_valor, y + 3, x);
-                        tlp_pedido.Controls.Add(lbl_subtotal, y + 4, x);
-                        tlp_pedido.Controls.Add(lbl_adicionar, y + 5, x);
-                        tlp_pedido.Controls.Add(lbl_remover, y + 6, x);
-                        x++;
-                        
-
-                    }
-                }
-
-                con.fechar();
-
-
-            };
         }
 
-        public TableLayoutPanel CriarCartao()
+        public Panel Criar()
         {
-            return tlfp_cartao;
+            return PainelCartao;
+        }
+
+        
+        private void Produto_Click(object sender, EventArgs e)
+        {
+            con.abrir();
+
+            try
+            {
+                ProdutoListado pl = new ProdutoListado(Nome.Text, Preco.Text);
+
+                PedidoNovo pn = (PedidoNovo)Application.OpenForms[2];
+                pn.p_lista_produtos.Controls.Add(pl.Criar());
+
+                PainelCima.BackColor = SystemColors.MenuHighlight;
+                PainelBaixo.BackColor = SystemColors.MenuHighlight;
+                PainelDireita.BackColor = SystemColors.MenuHighlight;
+                PainelEsquerda.BackColor = SystemColors.MenuHighlight;
+                PainelConfirma.BackColor = SystemColors.MenuHighlight;
+                PainelConfirma.BackgroundImage = global::Local_Money.Properties.Resources.check_mark;
+                PainelCartao.Cursor = Cursors.Default;
+                PainelCartao.Enabled = false;
+
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show("Erro!!!!! " + er);
+            }
+
+            con.fechar();
         }
     }
 }

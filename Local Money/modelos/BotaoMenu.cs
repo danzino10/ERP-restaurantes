@@ -53,8 +53,8 @@ namespace Local_Money
                         imagem = Image.FromStream(memory);
                     }
                     Home home = (Home)Application.OpenForms[1];
-                    CartaoProduto cartPro = new CartaoProduto(nomeProduto, id, imagem, home.lbl_mesa, home.lbl_total, home.lbl_subtot, home.tlp_pedido);
-                    flp_cardapio.Controls.Add(cartPro.CriarCartao());
+                    //CartaoProduto cartPro = new CartaoProduto(nomeProduto, id, imagem, home.lbl_mesa, home.lbl_total, home.lbl_subtot, home.tlp_pedido);
+                    //flp_cardapio.Controls.Add(cartPro.CriarCartao());
                 }
                 reader.Close();
                 con.fechar();

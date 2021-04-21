@@ -9,7 +9,9 @@ namespace Local_Money.modelos
 {
     class ProdutoListado
     {
-
+        PedidoNovo pn = (PedidoNovo)Application.OpenForms[2];
+        string[] ss;
+        float valor_produto, total_produto, subtotal_geral;
         Panel PainelProduto = new Panel
         {
             Width = 320,
@@ -17,8 +19,23 @@ namespace Local_Money.modelos
             Dock = DockStyle.Top,
         };
 
-        public ProdutoListado()
+        public ProdutoListado(string nome, string preco)
         {
+            NomeProduto.Text = nome;
+            ValorProduto.Text = preco;
+            TotalProduto.Text = preco;
+
+            
+
+            ss = pn.lbl_subtotal_valor.Text.Split(' ');
+            string[]pp = preco.Split(' ');
+            valor_produto = float.Parse(pp[1]);
+            pn.lbl_subtotal_valor.Text = "Kz " + (float.Parse(ss[1]) + valor_produto).ToString();
+
+            Adicionar.Click += new System.EventHandler(this.AdicinarQuantidade);
+            Retirar.Click += new System.EventHandler(this.SubtrairQuantidade);
+            Apagar.Click += new System.EventHandler(this.RetirarProduto);
+
             PainelProduto.Controls.Add(PainelBaixo);
             PainelProduto.Controls.Add(PainelCima);
             PainelProduto.Controls.Add(PainelDireita);
@@ -30,6 +47,7 @@ namespace Local_Money.modelos
             PainelProduto.Controls.Add(Adicionar);
             PainelProduto.Controls.Add(Apagar);
             PainelProduto.Controls.Add(Retirar);
+
         }
 
         Panel PainelCima = new Panel
@@ -68,7 +86,6 @@ namespace Local_Money.modelos
             Size = new System.Drawing.Size(72, 24),
             TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
             AutoSize = true,
-            Text = "Picanha",
         };
 
         Label ValorProduto = new Label
@@ -78,7 +95,6 @@ namespace Local_Money.modelos
             Size = new System.Drawing.Size(51, 15),
             TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
             AutoSize = true,
-            Text = "Kz 7500,00",
         };
 
         Label TotalProduto = new Label
@@ -102,7 +118,7 @@ namespace Local_Money.modelos
             Text = "1",
         };
 
-        Button Adicionar = new Button
+        Button Retirar = new Button
         {
             BackColor = System.Drawing.Color.DarkSlateGray,
             FlatStyle = System.Windows.Forms.FlatStyle.Flat,
@@ -110,9 +126,11 @@ namespace Local_Money.modelos
             Location = new System.Drawing.Point(60, 51),
             Size = new System.Drawing.Size(23, 15),
             UseVisualStyleBackColor = false,
+            Cursor = Cursors.Hand,
+            Enabled = false,
         };
 
-        Button Retirar = new Button
+        Button Adicionar = new Button
         {
             BackColor = System.Drawing.Color.DarkSlateGray,
             FlatStyle = System.Windows.Forms.FlatStyle.Flat,
@@ -120,6 +138,7 @@ namespace Local_Money.modelos
             Location = new System.Drawing.Point(60, 36),
             Size = new System.Drawing.Size(23, 15),
             UseVisualStyleBackColor = false,
+            Cursor = Cursors.Hand,
         };
 
         PictureBox Apagar = new PictureBox
@@ -129,11 +148,60 @@ namespace Local_Money.modelos
             Size = new System.Drawing.Size(32, 32),
             SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize,
             TabStop = false,
+            Cursor = Cursors.Hand,
         };
 
-        public Panel CriarProdutoListado()
+        public Panel Criar()
         {
             return PainelProduto;
+        }
+
+        private void AdicinarQuantidade(object sender, EventArgs e)
+        {
+            QuantidadeProduto.Text = (int.Parse(QuantidadeProduto.Text) + 1).ToString();
+            if (int.Parse(QuantidadeProduto.Text) > 1)
+                Retirar.Enabled = true;
+            else
+                Retirar.Enabled = false;
+
+            string[] vv = ValorProduto.Text.Split(' ');
+            total_produto = int.Parse(QuantidadeProduto.Text) * float.Parse(vv[1]);
+            TotalProduto.Text = "Kz " + total_produto.ToString();
+
+
+            ss = pn.lbl_subtotal_valor.Text.Split(' ');
+            subtotal_geral = float.Parse(ss[1]) + valor_produto;
+            pn.lbl_subtotal_valor.Text = "Kz " + subtotal_geral.ToString();
+
+        }
+
+        private void SubtrairQuantidade(object sender, EventArgs e)
+        {
+            QuantidadeProduto.Text = (int.Parse(QuantidadeProduto.Text) - 1).ToString();
+            if(QuantidadeProduto.Text == "1")
+            {
+                Retirar.Enabled = false;
+            }
+
+            string[] vv = ValorProduto.Text.Split(' ');
+            total_produto = int.Parse(QuantidadeProduto.Text) * float.Parse(vv[1]);
+            TotalProduto.Text = "Kz " + total_produto.ToString();
+
+            ss = pn.lbl_subtotal_valor.Text.Split(' ');
+            subtotal_geral = float.Parse(ss[1]) - valor_produto;
+            pn.lbl_subtotal_valor.Text = "Kz " + subtotal_geral.ToString();
+
+        }
+
+        private void RetirarProduto(object sender, EventArgs e)
+        {
+            string[] vv = ValorProduto.Text.Split(' ');
+            total_produto = int.Parse(QuantidadeProduto.Text) * float.Parse(vv[1]);
+            ss = pn.lbl_subtotal_valor.Text.Split(' ');
+            subtotal_geral = float.Parse(ss[1]) - total_produto;
+            pn.lbl_subtotal_valor.Text = "Kz " + subtotal_geral.ToString();
+
+            pn.p_lista_produtos.Controls.Remove(this.PainelProduto);
         }
     }
 }
