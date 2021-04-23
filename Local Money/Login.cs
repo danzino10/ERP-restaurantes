@@ -110,7 +110,7 @@ namespace Local_Money
                         h.ShowDialog();
                         */
 
-                        btn_takwaway d = new btn_takwaway();
+                        frm_dashboard d = new frm_dashboard();
                         d.Id = Id;
                         d.Nome = Nome;
                         d.Email = Email;

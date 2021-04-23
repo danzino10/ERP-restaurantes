@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Local_Money.modelos
 {
@@ -19,7 +20,7 @@ namespace Local_Money.modelos
             Dock = DockStyle.Top,
         };
 
-        public ProdutoListado(string nome, string preco)
+        public ProdutoListado(string nome, string preco, int IdProduto)
         {
             NomeProduto.Text = nome;
             ValorProduto.Text = preco;
@@ -202,6 +203,17 @@ namespace Local_Money.modelos
             pn.lbl_subtotal_valor.Text = "Kz " + subtotal_geral.ToString();
 
             pn.p_lista_produtos.Controls.Remove(this.PainelProduto);
+
+            /*
+            PainelCima.BackColor = SystemColors.MenuHighlight;
+            PainelBaixo.BackColor = SystemColors.MenuHighlight;
+            PainelDireita.BackColor = SystemColors.MenuHighlight;
+            PainelEsquerda.BackColor = SystemColors.MenuHighlight;
+            PainelConfirma.BackColor = SystemColors.MenuHighlight;
+            PainelConfirma.BackgroundImage = global::Local_Money.Properties.Resources.check_mark;
+            PainelCartao.Cursor = Cursors.Default;
+            PainelCartao.Enabled = false;
+            */
         }
     }
 }

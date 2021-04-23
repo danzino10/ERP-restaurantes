@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace Local_Money
 {
@@ -104,6 +105,47 @@ namespace Local_Money
 
             total = subtotal + subtotal * 14/100;
             lbl_total_valor.Text = "Kz " + total;
+        }
+
+        private void p_navegador_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            con.abrir();
+
+            try
+            {
+                SqlCommand com = new SqlCommand
+                {
+                    Connection = con.SaberConexao(),
+                    CommandText = "SELECT * FROM tb_produto WHERE nome = '" + textBox1.Text + "'",
+                };
+                SqlDataReader reader = com.ExecuteReader();
+
+                flp_cardapio.Controls.Clear();
+                while (reader.Read())
+                {
+                    byte[] dados = (byte[])(reader.GetValue(5));
+                    MemoryStream mem = new MemoryStream(dados);
+                    bool disp;
+                    if (reader.GetString(7) == "disponível")
+                        disp = true;
+                    else
+                        disp = false;
+
+                    CartaoProduto cartao = new CartaoProduto(reader.GetString(3), disp, float.Parse(reader.GetValue(4).ToString()), reader.GetInt32(0), Image.FromStream(mem));
+                    flp_cardapio.Controls.Add(cartao.Criar());
+                }
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show("Erro!!!!! " + er);
+            }
+
+            con.fechar();
         }
     }
 }
