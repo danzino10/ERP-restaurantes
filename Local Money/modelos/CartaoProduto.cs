@@ -14,8 +14,6 @@ namespace Local_Money
     {
         Conexao con = new Conexao();
 
-        int IdProduto;
-
         Panel PainelCartao = new Panel
         {
             Width = 205,
@@ -100,8 +98,6 @@ namespace Local_Money
 
         public CartaoProduto(string nome, bool disp, float preco, int id, Image imagem)
         {
-            IdProduto = id;
-
             PainelBaixo.Click += (sender2, e2) => Produto_Click(sender2, e2);
             PainelCartao.Click += (sender2, e2) => Produto_Click(sender2, e2);
             PainelCima.Click += (sender2, e2) => Produto_Click(sender2, e2);
@@ -126,7 +122,6 @@ namespace Local_Money
                 PainelCartao.Enabled = false;
 
             }
-
             Nome.Text = nome;
             Preco.Text = "Kz " + preco;
             PainelProduto.BackgroundImage = imagem;
@@ -159,7 +154,7 @@ namespace Local_Money
 
             try
             {
-                ProdutoListado pl = new ProdutoListado(Nome.Text, Preco.Text, IdProduto);
+                ProdutoListado pl = new ProdutoListado(Nome.Text, Preco.Text);
 
                 PedidoNovo pn = (PedidoNovo)Application.OpenForms[2];
                 pn.p_lista_produtos.Controls.Add(pl.Criar());

@@ -7,17 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Globalization;
 
 namespace Local_Money
 {
-    public partial class frm_dashboard : Form
+    public partial class btn_takwaway : Form
     {
         public int Id;
         public string Nome, Email;
-        public string data;
         private Form janelaAberta = null;
-        public frm_dashboard()
+        public btn_takwaway()
         {
             InitializeComponent();
             CostumizarDesign();
@@ -158,21 +156,6 @@ namespace Local_Money
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void p_janela_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void frm_dashboard_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
         {
 
         }

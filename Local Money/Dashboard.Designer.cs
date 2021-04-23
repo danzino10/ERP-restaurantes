@@ -1,7 +1,7 @@
 ﻿
 namespace Local_Money
 {
-    partial class frm_dashboard
+    partial class btn_takwaway
     {
         /// <summary>
         /// Required designer variable.
@@ -527,11 +527,6 @@ namespace Local_Money
             this.panel3.Size = new System.Drawing.Size(190, 2);
             this.panel3.TabIndex = 11;
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.DarkSlateGray;
@@ -607,9 +602,8 @@ namespace Local_Money
             this.p_janela.Name = "p_janela";
             this.p_janela.Size = new System.Drawing.Size(744, 501);
             this.p_janela.TabIndex = 2;
-            this.p_janela.Paint += new System.Windows.Forms.PaintEventHandler(this.p_janela_Paint);
             // 
-            // frm_dashboard
+            // btn_takwaway
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -619,10 +613,9 @@ namespace Local_Money
             this.Controls.Add(this.p_sidemenu);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(950, 600);
-            this.Name = "frm_dashboard";
+            this.Name = "btn_takwaway";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FoodGest";
-            this.Load += new System.EventHandler(this.frm_dashboard_Load);
             this.p_sidemenu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.p_sub_clientes.ResumeLayout(false);

@@ -29,6 +29,7 @@ namespace Local_Money
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PedidoNovo));
             this.p_pedido = new System.Windows.Forms.Panel();
             this.p_lista_produtos = new System.Windows.Forms.Panel();
             this.p_total = new System.Windows.Forms.Panel();
@@ -57,9 +58,14 @@ namespace Local_Money
             this.btn_voltar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.flp_cardapio = new System.Windows.Forms.FlowLayoutPanel();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.button_WOC1 = new ePOSOne.btnProduct.Button_WOC();
             this.btn_salvar = new ePOSOne.btnProduct.Button_WOC();
             this.p_pedido.SuspendLayout();
@@ -71,6 +77,11 @@ namespace Local_Money
             this.p_numero_pedido.SuspendLayout();
             this.p_mesa_cabecalho.SuspendLayout();
             this.p_navegador.SuspendLayout();
+            this.flp_cardapio.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // p_pedido
@@ -125,10 +136,10 @@ namespace Local_Money
             // lbl_total_valor
             // 
             this.lbl_total_valor.AutoSize = true;
-            this.lbl_total_valor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_total_valor.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_total_valor.Location = new System.Drawing.Point(180, 87);
             this.lbl_total_valor.Name = "lbl_total_valor";
-            this.lbl_total_valor.Size = new System.Drawing.Size(42, 20);
+            this.lbl_total_valor.Size = new System.Drawing.Size(39, 19);
             this.lbl_total_valor.TabIndex = 11;
             this.lbl_total_valor.Text = "kz 0";
             this.lbl_total_valor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -136,10 +147,10 @@ namespace Local_Money
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(238, 68);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 16);
+            this.label3.Size = new System.Drawing.Size(31, 15);
             this.label3.TabIndex = 10;
             this.label3.Text = "14%";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -147,10 +158,10 @@ namespace Local_Money
             // lbl_codpromo_valor
             // 
             this.lbl_codpromo_valor.AutoSize = true;
-            this.lbl_codpromo_valor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_codpromo_valor.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_codpromo_valor.Location = new System.Drawing.Point(238, 47);
             this.lbl_codpromo_valor.Name = "lbl_codpromo_valor";
-            this.lbl_codpromo_valor.Size = new System.Drawing.Size(31, 16);
+            this.lbl_codpromo_valor.Size = new System.Drawing.Size(30, 15);
             this.lbl_codpromo_valor.TabIndex = 9;
             this.lbl_codpromo_valor.Text = "kz 0";
             this.lbl_codpromo_valor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -158,10 +169,10 @@ namespace Local_Money
             // lbl_promodia_valor
             // 
             this.lbl_promodia_valor.AutoSize = true;
-            this.lbl_promodia_valor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_promodia_valor.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_promodia_valor.Location = new System.Drawing.Point(238, 27);
             this.lbl_promodia_valor.Name = "lbl_promodia_valor";
-            this.lbl_promodia_valor.Size = new System.Drawing.Size(31, 16);
+            this.lbl_promodia_valor.Size = new System.Drawing.Size(30, 15);
             this.lbl_promodia_valor.TabIndex = 8;
             this.lbl_promodia_valor.Text = "kz 0";
             this.lbl_promodia_valor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -169,10 +180,10 @@ namespace Local_Money
             // lbl_subtotal_valor
             // 
             this.lbl_subtotal_valor.AutoSize = true;
-            this.lbl_subtotal_valor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_subtotal_valor.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_subtotal_valor.Location = new System.Drawing.Point(238, 5);
             this.lbl_subtotal_valor.Name = "lbl_subtotal_valor";
-            this.lbl_subtotal_valor.Size = new System.Drawing.Size(35, 16);
+            this.lbl_subtotal_valor.Size = new System.Drawing.Size(31, 15);
             this.lbl_subtotal_valor.TabIndex = 7;
             this.lbl_subtotal_valor.Text = "kz 0";
             this.lbl_subtotal_valor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -181,10 +192,10 @@ namespace Local_Money
             // lbl_total
             // 
             this.lbl_total.AutoSize = true;
-            this.lbl_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_total.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_total.Location = new System.Drawing.Point(32, 87);
             this.lbl_total.Name = "lbl_total";
-            this.lbl_total.Size = new System.Drawing.Size(49, 20);
+            this.lbl_total.Size = new System.Drawing.Size(44, 19);
             this.lbl_total.TabIndex = 6;
             this.lbl_total.Text = "Total";
             this.lbl_total.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -192,10 +203,10 @@ namespace Local_Money
             // cb_codpromo
             // 
             this.cb_codpromo.AutoSize = true;
-            this.cb_codpromo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_codpromo.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_codpromo.Location = new System.Drawing.Point(16, 46);
             this.cb_codpromo.Name = "cb_codpromo";
-            this.cb_codpromo.Size = new System.Drawing.Size(149, 20);
+            this.cb_codpromo.Size = new System.Drawing.Size(138, 19);
             this.cb_codpromo.TabIndex = 5;
             this.cb_codpromo.Text = "Código promocional";
             this.cb_codpromo.UseVisualStyleBackColor = true;
@@ -203,10 +214,10 @@ namespace Local_Money
             // cb_promodia
             // 
             this.cb_promodia.AutoSize = true;
-            this.cb_promodia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_promodia.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_promodia.Location = new System.Drawing.Point(16, 23);
             this.cb_promodia.Name = "cb_promodia";
-            this.cb_promodia.Size = new System.Drawing.Size(131, 20);
+            this.cb_promodia.Size = new System.Drawing.Size(121, 19);
             this.cb_promodia.TabIndex = 4;
             this.cb_promodia.Text = "Promoção do dia";
             this.cb_promodia.UseVisualStyleBackColor = true;
@@ -214,10 +225,10 @@ namespace Local_Money
             // lbl_iva
             // 
             this.lbl_iva.AutoSize = true;
-            this.lbl_iva.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_iva.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_iva.Location = new System.Drawing.Point(33, 68);
             this.lbl_iva.Name = "lbl_iva";
-            this.lbl_iva.Size = new System.Drawing.Size(91, 16);
+            this.lbl_iva.Size = new System.Drawing.Size(89, 15);
             this.lbl_iva.TabIndex = 3;
             this.lbl_iva.Text = "Imposto  (IVA)";
             this.lbl_iva.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -225,10 +236,10 @@ namespace Local_Money
             // lbl_subtotal
             // 
             this.lbl_subtotal.AutoSize = true;
-            this.lbl_subtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_subtotal.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_subtotal.Location = new System.Drawing.Point(33, 5);
             this.lbl_subtotal.Name = "lbl_subtotal";
-            this.lbl_subtotal.Size = new System.Drawing.Size(65, 16);
+            this.lbl_subtotal.Size = new System.Drawing.Size(54, 15);
             this.lbl_subtotal.TabIndex = 1;
             this.lbl_subtotal.Text = "Subtotal";
             this.lbl_subtotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -290,12 +301,12 @@ namespace Local_Money
             // 
             this.lbl_pedido.AutoSize = true;
             this.lbl_pedido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_pedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_pedido.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_pedido.Location = new System.Drawing.Point(0, 0);
             this.lbl_pedido.Name = "lbl_pedido";
             this.lbl_pedido.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
             this.lbl_pedido.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbl_pedido.Size = new System.Drawing.Size(107, 29);
+            this.lbl_pedido.Size = new System.Drawing.Size(100, 28);
             this.lbl_pedido.TabIndex = 0;
             this.lbl_pedido.Text = "Pedido nº";
             this.lbl_pedido.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -313,11 +324,11 @@ namespace Local_Money
             // 
             this.lbl_mesa.AutoSize = true;
             this.lbl_mesa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_mesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_mesa.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_mesa.Location = new System.Drawing.Point(0, 0);
             this.lbl_mesa.Name = "lbl_mesa";
             this.lbl_mesa.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
-            this.lbl_mesa.Size = new System.Drawing.Size(86, 29);
+            this.lbl_mesa.Size = new System.Drawing.Size(79, 28);
             this.lbl_mesa.TabIndex = 0;
             this.lbl_mesa.Text = "Mesa X";
             this.lbl_mesa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -333,8 +344,6 @@ namespace Local_Money
             // 
             // p_navegador
             // 
-            this.p_navegador.Controls.Add(this.textBox1);
-            this.p_navegador.Controls.Add(this.panel4);
             this.p_navegador.Controls.Add(this.button1);
             this.p_navegador.Controls.Add(this.btn_voltar);
             this.p_navegador.Controls.Add(this.panel3);
@@ -343,7 +352,6 @@ namespace Local_Money
             this.p_navegador.Name = "p_navegador";
             this.p_navegador.Size = new System.Drawing.Size(422, 50);
             this.p_navegador.TabIndex = 2;
-            this.p_navegador.Paint += new System.Windows.Forms.PaintEventHandler(this.p_navegador_Paint);
             // 
             // button1
             // 
@@ -385,31 +393,91 @@ namespace Local_Money
             // flp_cardapio
             // 
             this.flp_cardapio.AutoScroll = true;
+            this.flp_cardapio.Controls.Add(this.panel7);
             this.flp_cardapio.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flp_cardapio.Location = new System.Drawing.Point(0, 50);
             this.flp_cardapio.Name = "flp_cardapio";
             this.flp_cardapio.Size = new System.Drawing.Size(422, 451);
             this.flp_cardapio.TabIndex = 4;
             // 
+            // panel7
+            // 
+            this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel7.Controls.Add(this.panel4);
+            this.panel7.Enabled = false;
+            this.panel7.Location = new System.Drawing.Point(3, 3);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(205, 170);
+            this.panel7.TabIndex = 1;
+            this.panel7.Click += new System.EventHandler(this.panel7_Click);
+            // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel4.Location = new System.Drawing.Point(56, 42);
+            this.panel4.BackColor = System.Drawing.SystemColors.Control;
+            this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
+            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel4.Controls.Add(this.panel8);
+            this.panel4.Controls.Add(this.panel6);
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Location = new System.Drawing.Point(10, 10);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(300, 2);
-            this.panel4.TabIndex = 3;
+            this.panel4.Size = new System.Drawing.Size(185, 150);
+            this.panel4.TabIndex = 0;
+            this.panel4.Click += new System.EventHandler(this.panel7_Click);
             // 
-            // textBox1
+            // panel8
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(99, 6);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(257, 33);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.panel8.BackColor = System.Drawing.Color.Transparent;
+            this.panel8.BackgroundImage = global::Local_Money.Properties.Resources.check_mark;
+            this.panel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(30, 30);
+            this.panel8.TabIndex = 1;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel6.Controls.Add(this.label2);
+            this.panel6.Location = new System.Drawing.Point(41, 102);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(145, 20);
+            this.panel6.TabIndex = 1;
+            this.panel6.Click += new System.EventHandler(this.panel7_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 15);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Bolo de Banana";
+            this.label2.Click += new System.EventHandler(this.panel7_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel5.Controls.Add(this.label1);
+            this.panel5.Location = new System.Drawing.Point(0, 30);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(100, 20);
+            this.panel5.TabIndex = 0;
+            this.panel5.Click += new System.EventHandler(this.panel7_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 15);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Kz 10.500";
+            this.label1.Click += new System.EventHandler(this.panel7_Click);
             // 
             // button_WOC1
             // 
@@ -418,7 +486,7 @@ namespace Local_Money
             this.button_WOC1.ButtonColor = System.Drawing.Color.DarkSlateGray;
             this.button_WOC1.FlatAppearance.BorderSize = 0;
             this.button_WOC1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_WOC1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_WOC1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_WOC1.Location = new System.Drawing.Point(143, 3);
             this.button_WOC1.Name = "button_WOC1";
             this.button_WOC1.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -437,7 +505,7 @@ namespace Local_Money
             this.btn_salvar.ButtonColor = System.Drawing.Color.DarkSlateGray;
             this.btn_salvar.FlatAppearance.BorderSize = 0;
             this.btn_salvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_salvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_salvar.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_salvar.Location = new System.Drawing.Point(16, 3);
             this.btn_salvar.Name = "btn_salvar";
             this.btn_salvar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -476,7 +544,13 @@ namespace Local_Money
             this.p_mesa_cabecalho.ResumeLayout(false);
             this.p_mesa_cabecalho.PerformLayout();
             this.p_navegador.ResumeLayout(false);
-            this.p_navegador.PerformLayout();
+            this.flp_cardapio.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -508,14 +582,19 @@ namespace Local_Money
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel p_navegador;
+        private System.Windows.Forms.FlowLayoutPanel flp_cardapio;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btn_voltar;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         public System.Windows.Forms.Panel p_lista_produtos;
         public System.Windows.Forms.Label lbl_subtotal_valor;
-        public System.Windows.Forms.FlowLayoutPanel flp_cardapio;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel8;
     }
 }
