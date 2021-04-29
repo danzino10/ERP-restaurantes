@@ -11,8 +11,10 @@ namespace Local_Money.modelos
     class ProdutoListado
     {
         PedidoNovo pn = (PedidoNovo)Application.OpenForms[2];
-        string[] ss;
-        float valor_produto, total_produto, subtotal_geral;
+        private string[] ss;
+        private float valor_produto, total_produto, subtotal_geral;
+        private int Id;
+
         Panel PainelProduto = new Panel
         {
             Width = 320,
@@ -25,7 +27,7 @@ namespace Local_Money.modelos
             NomeProduto.Text = nome;
             ValorProduto.Text = preco;
             TotalProduto.Text = preco;
-
+            Id = IdProduto;
             
 
             ss = pn.lbl_subtotal_valor.Text.Split(' ');
@@ -202,8 +204,9 @@ namespace Local_Money.modelos
             subtotal_geral = float.Parse(ss[1]) - total_produto;
             pn.lbl_subtotal_valor.Text = "Kz " + subtotal_geral.ToString();
 
+            
+            
             pn.p_lista_produtos.Controls.Remove(this.PainelProduto);
-
             /*
             PainelCima.BackColor = SystemColors.MenuHighlight;
             PainelBaixo.BackColor = SystemColors.MenuHighlight;

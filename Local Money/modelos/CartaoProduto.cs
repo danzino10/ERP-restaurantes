@@ -12,9 +12,9 @@ namespace Local_Money
 {
     class CartaoProduto
     {
-        Conexao con = new Conexao();
-
-        int IdProduto;
+        private Conexao con = new Conexao();
+        public int IdProduto;
+        PedidoNovo pn = (PedidoNovo)Application.OpenForms[2];
 
         Panel PainelCartao = new Panel
         {
@@ -116,15 +116,7 @@ namespace Local_Money
 
             if(disp == false)
             {
-                PainelCima.BackColor = Color.Brown;
-                PainelBaixo.BackColor = Color.Brown;
-                PainelDireita.BackColor = Color.Brown;
-                PainelEsquerda.BackColor = Color.Brown;
-                PainelConfirma.BackColor = Color.Brown;
-                PainelConfirma.BackgroundImage = global::Local_Money.Properties.Resources.cancel_button;
-                PainelCartao.Cursor = Cursors.Default;
-                PainelCartao.Enabled = false;
-
+                indisponivel();
             }
 
             Nome.Text = nome;
@@ -160,19 +152,15 @@ namespace Local_Money
             try
             {
                 ProdutoListado pl = new ProdutoListado(Nome.Text, Preco.Text, IdProduto);
-
-                PedidoNovo pn = (PedidoNovo)Application.OpenForms[2];
                 pn.p_lista_produtos.Controls.Add(pl.Criar());
-
-                PainelCima.BackColor = SystemColors.MenuHighlight;
-                PainelBaixo.BackColor = SystemColors.MenuHighlight;
-                PainelDireita.BackColor = SystemColors.MenuHighlight;
-                PainelEsquerda.BackColor = SystemColors.MenuHighlight;
-                PainelConfirma.BackColor = SystemColors.MenuHighlight;
-                PainelConfirma.BackgroundImage = global::Local_Money.Properties.Resources.check_mark;
-                PainelCartao.Cursor = Cursors.Default;
-                PainelCartao.Enabled = false;
-
+                pn.prod_selec.Add(IdProduto);
+                pn.numero_produtos++;
+                foreach(var item in pn.prod_selec)
+                {
+                    pn.label_teste.Text = pn.label_teste.Text + item + ", ";
+                }
+                selecionado();
+                
             }
             catch (Exception er)
             {
@@ -180,6 +168,44 @@ namespace Local_Money
             }
 
             con.fechar();
+        }
+
+        
+
+        private void indisponivel ()
+        {
+            PainelCima.BackColor = Color.Brown;
+            PainelBaixo.BackColor = Color.Brown;
+            PainelDireita.BackColor = Color.Brown;
+            PainelEsquerda.BackColor = Color.Brown;
+            PainelConfirma.BackColor = Color.Brown;
+            PainelConfirma.BackgroundImage = global::Local_Money.Properties.Resources.cancel_button;
+            PainelCartao.Cursor = Cursors.Default;
+            PainelCartao.Enabled = false;
+        }
+
+        public void selecionado()
+        {
+            PainelCima.BackColor = SystemColors.MenuHighlight;
+            PainelBaixo.BackColor = SystemColors.MenuHighlight;
+            PainelDireita.BackColor = SystemColors.MenuHighlight;
+            PainelEsquerda.BackColor = SystemColors.MenuHighlight;
+            PainelConfirma.BackColor = SystemColors.MenuHighlight;
+            PainelConfirma.BackgroundImage = global::Local_Money.Properties.Resources.check_mark;
+            PainelCartao.Cursor = Cursors.Default;
+            PainelCartao.Enabled = false;
+        }
+
+        public void Removido()
+        {
+            PainelCima.BackColor = Color.DarkSlateGray;
+            PainelBaixo.BackColor = Color.DarkSlateGray;
+            PainelDireita.BackColor = Color.DarkSlateGray;
+            PainelEsquerda.BackColor = Color.DarkSlateGray;
+            PainelConfirma.BackColor = Color.DarkSlateGray;
+            PainelConfirma.BackgroundImage = null;
+            PainelCartao.Cursor = Cursors.Hand;
+            PainelCartao.Enabled = false;
         }
     }
 }

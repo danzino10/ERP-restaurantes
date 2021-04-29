@@ -10,13 +10,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using System.Collections;
 
 namespace Local_Money
 {
     public partial class PedidoNovo : Form
     {
-        Conexao con = new Conexao();
-        int id_cat;
+        private Conexao con = new Conexao();
+        private int id_cat;
+        public int numero_produtos = 0;
+        public ArrayList prod_selec = new ArrayList();
 
         public PedidoNovo()
         {
@@ -107,10 +110,7 @@ namespace Local_Money
             lbl_total_valor.Text = "Kz " + total;
         }
 
-        private void p_navegador_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -121,7 +121,7 @@ namespace Local_Money
                 SqlCommand com = new SqlCommand
                 {
                     Connection = con.SaberConexao(),
-                    CommandText = "SELECT * FROM tb_produto WHERE nome = '" + textBox1.Text + "'",
+                    CommandText = "SELECT * FROM tb_produto WHERE nome LIKE '" + txt_pesquisar.Text + "%'",
                 };
                 SqlDataReader reader = com.ExecuteReader();
 
@@ -138,6 +138,17 @@ namespace Local_Money
 
                     CartaoProduto cartao = new CartaoProduto(reader.GetString(3), disp, float.Parse(reader.GetValue(4).ToString()), reader.GetInt32(0), Image.FromStream(mem));
                     flp_cardapio.Controls.Add(cartao.Criar());
+                    if (numero_produtos > 0)
+                    {
+                        for (int i = 0; i < prod_selec.Count; i++)
+                        {
+                            if ((int)prod_selec[i] == reader.GetInt32(0))
+                            {
+                                cartao.selecionado();
+                            }
+                        }
+                    }
+
                 }
             }
             catch (Exception er)
@@ -147,5 +158,12 @@ namespace Local_Money
 
             con.fechar();
         }
+
+        private void txt_pesquisar_Click(object sender, EventArgs e)
+        {
+            txt_pesquisar.Text = "";
+        }
+
+
     }
 }

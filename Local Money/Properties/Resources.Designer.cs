@@ -203,6 +203,16 @@ namespace Local_Money.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap loupe {
+            get {
+                object obj = ResourceManager.GetObject("loupe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap novo_pedido {
             get {
                 object obj = ResourceManager.GetObject("novo-pedido", resourceCulture);
