@@ -153,7 +153,7 @@ namespace Local_Money
             {
                 ProdutoListado pl = new ProdutoListado(Nome.Text, Preco.Text, IdProduto);
                 pn.p_lista_produtos.Controls.Add(pl.Criar());
-                pn.prod_selec.Add(IdProduto);
+                pn.produtos.Add(IdProduto);
                 pn.numero_produtos++;
                 foreach(var item in pn.prod_selec)
                 {
@@ -179,6 +179,8 @@ namespace Local_Money
             PainelDireita.BackColor = Color.Brown;
             PainelEsquerda.BackColor = Color.Brown;
             PainelConfirma.BackColor = Color.Brown;
+            PainelNome.BackColor = Color.Brown;
+            PainelPreco.BackColor = Color.Brown;
             PainelConfirma.BackgroundImage = global::Local_Money.Properties.Resources.cancel_button;
             PainelCartao.Cursor = Cursors.Default;
             PainelCartao.Enabled = false;

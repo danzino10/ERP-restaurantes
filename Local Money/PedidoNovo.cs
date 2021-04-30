@@ -19,7 +19,8 @@ namespace Local_Money
         private Conexao con = new Conexao();
         private int id_cat;
         public int numero_produtos = 0;
-        public ArrayList prod_selec = new ArrayList();
+        public List<int> produtos = new List<int>();
+        
 
         public PedidoNovo()
         {
@@ -140,12 +141,9 @@ namespace Local_Money
                     flp_cardapio.Controls.Add(cartao.Criar());
                     if (numero_produtos > 0)
                     {
-                        for (int i = 0; i < prod_selec.Count; i++)
+                        if(produtos.Contains(reader.GetInt32(0)))
                         {
-                            if ((int)prod_selec[i] == reader.GetInt32(0))
-                            {
-                                cartao.selecionado();
-                            }
+                            cartao.selecionado();
                         }
                     }
 

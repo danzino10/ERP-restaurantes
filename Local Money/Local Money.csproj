@@ -84,6 +84,7 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="modelos\Pedidos.cs" />
     <Compile Include="modelos\ProdutoListado.cs" />
     <Compile Include="PedidoNovo.cs">
       <SubType>Form</SubType>

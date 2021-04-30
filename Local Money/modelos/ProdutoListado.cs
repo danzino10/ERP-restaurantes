@@ -203,7 +203,8 @@ namespace Local_Money.modelos
             ss = pn.lbl_subtotal_valor.Text.Split(' ');
             subtotal_geral = float.Parse(ss[1]) - total_produto;
             pn.lbl_subtotal_valor.Text = "Kz " + subtotal_geral.ToString();
-
+            if (pn.produtos.Contains(Id))
+                pn.produtos.Remove(Id);
             
             
             pn.p_lista_produtos.Controls.Remove(this.PainelProduto);
