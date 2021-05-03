@@ -155,10 +155,7 @@ namespace Local_Money
                 pn.p_lista_produtos.Controls.Add(pl.Criar());
                 pn.produtos.Add(IdProduto);
                 pn.numero_produtos++;
-                foreach(var item in pn.prod_selec)
-                {
-                    pn.label_teste.Text = pn.label_teste.Text + item + ", ";
-                }
+                
                 selecionado();
                 
             }

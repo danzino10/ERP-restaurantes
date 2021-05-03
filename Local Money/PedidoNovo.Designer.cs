@@ -49,11 +49,6 @@ namespace Local_Money
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_salvar = new ePOSOne.btnProduct.Button_WOC();
             this.p_cabecalho_pedido = new System.Windows.Forms.Panel();
-            this.p_numero_pedido = new System.Windows.Forms.Panel();
-            this.label_teste = new System.Windows.Forms.Label();
-            this.lbl_pedido = new System.Windows.Forms.Label();
-            this.p_mesa_cabecalho = new System.Windows.Forms.Panel();
-            this.lbl_mesa = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.p_navegador = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -68,9 +63,6 @@ namespace Local_Money
             this.p_botoes_pedido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_pagar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.p_cabecalho_pedido.SuspendLayout();
-            this.p_numero_pedido.SuspendLayout();
-            this.p_mesa_cabecalho.SuspendLayout();
             this.p_navegador.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -90,9 +82,9 @@ namespace Local_Money
             // 
             this.p_lista_produtos.AutoScroll = true;
             this.p_lista_produtos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.p_lista_produtos.Location = new System.Drawing.Point(0, 84);
+            this.p_lista_produtos.Location = new System.Drawing.Point(0, 50);
             this.p_lista_produtos.Name = "p_lista_produtos";
-            this.p_lista_produtos.Size = new System.Drawing.Size(320, 245);
+            this.p_lista_produtos.Size = new System.Drawing.Size(320, 279);
             this.p_lista_produtos.TabIndex = 2;
             // 
             // p_total
@@ -305,76 +297,16 @@ namespace Local_Money
             this.btn_salvar.Text = "          Salvar";
             this.btn_salvar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_salvar.UseVisualStyleBackColor = false;
+            this.btn_salvar.Click += new System.EventHandler(this.btn_salvar_Click);
             // 
             // p_cabecalho_pedido
             // 
             this.p_cabecalho_pedido.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.p_cabecalho_pedido.Controls.Add(this.p_numero_pedido);
-            this.p_cabecalho_pedido.Controls.Add(this.p_mesa_cabecalho);
             this.p_cabecalho_pedido.Dock = System.Windows.Forms.DockStyle.Top;
             this.p_cabecalho_pedido.Location = new System.Drawing.Point(0, 0);
             this.p_cabecalho_pedido.Name = "p_cabecalho_pedido";
-            this.p_cabecalho_pedido.Size = new System.Drawing.Size(320, 84);
+            this.p_cabecalho_pedido.Size = new System.Drawing.Size(320, 50);
             this.p_cabecalho_pedido.TabIndex = 0;
-            // 
-            // p_numero_pedido
-            // 
-            this.p_numero_pedido.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.p_numero_pedido.Controls.Add(this.label_teste);
-            this.p_numero_pedido.Controls.Add(this.lbl_pedido);
-            this.p_numero_pedido.Location = new System.Drawing.Point(114, 45);
-            this.p_numero_pedido.Name = "p_numero_pedido";
-            this.p_numero_pedido.Size = new System.Drawing.Size(206, 27);
-            this.p_numero_pedido.TabIndex = 1;
-            // 
-            // label_teste
-            // 
-            this.label_teste.AutoSize = true;
-            this.label_teste.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label_teste.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_teste.Location = new System.Drawing.Point(201, 0);
-            this.label_teste.Name = "label_teste";
-            this.label_teste.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
-            this.label_teste.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label_teste.Size = new System.Drawing.Size(5, 29);
-            this.label_teste.TabIndex = 1;
-            this.label_teste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbl_pedido
-            // 
-            this.lbl_pedido.AutoSize = true;
-            this.lbl_pedido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_pedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_pedido.Location = new System.Drawing.Point(0, 0);
-            this.lbl_pedido.Name = "lbl_pedido";
-            this.lbl_pedido.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
-            this.lbl_pedido.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbl_pedido.Size = new System.Drawing.Size(85, 29);
-            this.lbl_pedido.TabIndex = 0;
-            this.lbl_pedido.Text = "array = ";
-            this.lbl_pedido.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // p_mesa_cabecalho
-            // 
-            this.p_mesa_cabecalho.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.p_mesa_cabecalho.Controls.Add(this.lbl_mesa);
-            this.p_mesa_cabecalho.Location = new System.Drawing.Point(0, 12);
-            this.p_mesa_cabecalho.Name = "p_mesa_cabecalho";
-            this.p_mesa_cabecalho.Size = new System.Drawing.Size(206, 27);
-            this.p_mesa_cabecalho.TabIndex = 0;
-            // 
-            // lbl_mesa
-            // 
-            this.lbl_mesa.AutoSize = true;
-            this.lbl_mesa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_mesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_mesa.Location = new System.Drawing.Point(0, 0);
-            this.lbl_mesa.Name = "lbl_mesa";
-            this.lbl_mesa.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
-            this.lbl_mesa.Size = new System.Drawing.Size(86, 29);
-            this.lbl_mesa.TabIndex = 0;
-            this.lbl_mesa.Text = "Mesa X";
-            this.lbl_mesa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
@@ -497,11 +429,6 @@ namespace Local_Money
             this.p_botoes_pedido.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_pagar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.p_cabecalho_pedido.ResumeLayout(false);
-            this.p_numero_pedido.ResumeLayout(false);
-            this.p_numero_pedido.PerformLayout();
-            this.p_mesa_cabecalho.ResumeLayout(false);
-            this.p_mesa_cabecalho.PerformLayout();
             this.p_navegador.ResumeLayout(false);
             this.p_navegador.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -513,10 +440,6 @@ namespace Local_Money
 
         private System.Windows.Forms.Panel p_pedido;
         private System.Windows.Forms.Panel p_cabecalho_pedido;
-        private System.Windows.Forms.Panel p_mesa_cabecalho;
-        private System.Windows.Forms.Panel p_numero_pedido;
-        private System.Windows.Forms.Label lbl_pedido;
-        private System.Windows.Forms.Label lbl_mesa;
         private System.Windows.Forms.Panel p_total;
         private System.Windows.Forms.Panel p_botoes_pedido;
         
@@ -545,6 +468,5 @@ namespace Local_Money
         private System.Windows.Forms.TextBox txt_pesquisar;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox2;
-        public System.Windows.Forms.Label label_teste;
     }
 }

@@ -14,6 +14,7 @@ namespace Local_Money.modelos
         private string[] ss;
         private float valor_produto, total_produto, subtotal_geral;
         private int Id;
+        public int Mesa;
 
         Panel PainelProduto = new Panel
         {

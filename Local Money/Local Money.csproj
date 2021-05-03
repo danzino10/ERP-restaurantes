@@ -64,7 +64,14 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="GuardarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GuardarPedido.Designer.cs">
+      <DependentUpon>GuardarPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="modelos\BotaoMenu.cs" />
+    <Compile Include="modelos\BotaoMesa.cs" />
     <Compile Include="modelos\Button_WOC.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -85,18 +92,13 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="modelos\Pedidos.cs" />
+    <Compile Include="modelos\Produto.cs" />
     <Compile Include="modelos\ProdutoListado.cs" />
     <Compile Include="PedidoNovo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PedidoNovo.Designer.cs">
       <DependentUpon>PedidoNovo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Pedidos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pedidos.Designer.cs">
-      <DependentUpon>Pedidos.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,6 +122,9 @@
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GuardarPedido.resx">
+      <DependentUpon>GuardarPedido.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,9 +133,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PedidoNovo.resx">
       <DependentUpon>PedidoNovo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pedidos.resx">
-      <DependentUpon>Pedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
