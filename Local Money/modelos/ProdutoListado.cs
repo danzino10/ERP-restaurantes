@@ -120,6 +120,7 @@ namespace Local_Money.modelos
             TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
             AutoSize = true,
             Text = "1",
+            Tag = "0",
         };
 
         Button Retirar = new Button

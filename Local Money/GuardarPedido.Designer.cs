@@ -38,15 +38,15 @@ namespace Local_Money
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.p_botoes_pedido = new System.Windows.Forms.Panel();
-            this.btn_confirmar = new ePOSOne.btnProduct.Button_WOC();
-            this.pb_confirmar = new System.Windows.Forms.PictureBox();
             this.pb_cancelar = new System.Windows.Forms.PictureBox();
-            this.btn_cancelar = new ePOSOne.btnProduct.Button_WOC();
+            this.pb_confirmar = new System.Windows.Forms.PictureBox();
             this.lbl_confirmar = new System.Windows.Forms.Label();
             this.flp_mesas = new System.Windows.Forms.FlowLayoutPanel();
+            this.btn_cancelar = new ePOSOne.btnProduct.Button_WOC();
+            this.btn_confirmar = new ePOSOne.btnProduct.Button_WOC();
             this.p_botoes_pedido.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_confirmar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_cancelar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_confirmar)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -137,25 +137,15 @@ namespace Local_Money
             this.p_botoes_pedido.Size = new System.Drawing.Size(402, 59);
             this.p_botoes_pedido.TabIndex = 8;
             // 
-            // btn_confirmar
+            // pb_cancelar
             // 
-            this.btn_confirmar.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_confirmar.BorderColor = System.Drawing.Color.Black;
-            this.btn_confirmar.ButtonColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_confirmar.FlatAppearance.BorderSize = 0;
-            this.btn_confirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_confirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_confirmar.Location = new System.Drawing.Point(226, 3);
-            this.btn_confirmar.Name = "btn_confirmar";
-            this.btn_confirmar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_confirmar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btn_confirmar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_confirmar.Size = new System.Drawing.Size(143, 53);
-            this.btn_confirmar.TabIndex = 6;
-            this.btn_confirmar.Text = "            Confirmar";
-            this.btn_confirmar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_confirmar.UseVisualStyleBackColor = false;
-            this.btn_confirmar.Click += new System.EventHandler(this.btn_confirmar_Click);
+            this.pb_cancelar.Image = global::Local_Money.Properties.Resources.cancel_button;
+            this.pb_cancelar.Location = new System.Drawing.Point(65, 15);
+            this.pb_cancelar.Name = "pb_cancelar";
+            this.pb_cancelar.Size = new System.Drawing.Size(32, 32);
+            this.pb_cancelar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_cancelar.TabIndex = 7;
+            this.pb_cancelar.TabStop = false;
             // 
             // pb_confirmar
             // 
@@ -167,15 +157,22 @@ namespace Local_Money
             this.pb_confirmar.TabIndex = 3;
             this.pb_confirmar.TabStop = false;
             // 
-            // pb_cancelar
+            // lbl_confirmar
             // 
-            this.pb_cancelar.Image = global::Local_Money.Properties.Resources.cancel_button;
-            this.pb_cancelar.Location = new System.Drawing.Point(65, 15);
-            this.pb_cancelar.Name = "pb_cancelar";
-            this.pb_cancelar.Size = new System.Drawing.Size(32, 32);
-            this.pb_cancelar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb_cancelar.TabIndex = 7;
-            this.pb_cancelar.TabStop = false;
+            this.lbl_confirmar.AutoSize = true;
+            this.lbl_confirmar.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_confirmar.Location = new System.Drawing.Point(48, 34);
+            this.lbl_confirmar.Name = "lbl_confirmar";
+            this.lbl_confirmar.Size = new System.Drawing.Size(215, 19);
+            this.lbl_confirmar.TabIndex = 9;
+            this.lbl_confirmar.Text = "Deseja guardar este pedido?";
+            // 
+            // flp_mesas
+            // 
+            this.flp_mesas.Location = new System.Drawing.Point(16, 65);
+            this.flp_mesas.Name = "flp_mesas";
+            this.flp_mesas.Size = new System.Drawing.Size(402, 209);
+            this.flp_mesas.TabIndex = 10;
             // 
             // btn_cancelar
             // 
@@ -197,22 +194,25 @@ namespace Local_Money
             this.btn_cancelar.UseVisualStyleBackColor = false;
             this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
             // 
-            // lbl_confirmar
+            // btn_confirmar
             // 
-            this.lbl_confirmar.AutoSize = true;
-            this.lbl_confirmar.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_confirmar.Location = new System.Drawing.Point(48, 34);
-            this.lbl_confirmar.Name = "lbl_confirmar";
-            this.lbl_confirmar.Size = new System.Drawing.Size(215, 19);
-            this.lbl_confirmar.TabIndex = 9;
-            this.lbl_confirmar.Text = "Deseja guardar este pedido?";
-            // 
-            // flp_mesas
-            // 
-            this.flp_mesas.Location = new System.Drawing.Point(16, 65);
-            this.flp_mesas.Name = "flp_mesas";
-            this.flp_mesas.Size = new System.Drawing.Size(402, 209);
-            this.flp_mesas.TabIndex = 10;
+            this.btn_confirmar.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_confirmar.BorderColor = System.Drawing.Color.Black;
+            this.btn_confirmar.ButtonColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_confirmar.FlatAppearance.BorderSize = 0;
+            this.btn_confirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_confirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_confirmar.Location = new System.Drawing.Point(226, 3);
+            this.btn_confirmar.Name = "btn_confirmar";
+            this.btn_confirmar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_confirmar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btn_confirmar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_confirmar.Size = new System.Drawing.Size(143, 53);
+            this.btn_confirmar.TabIndex = 6;
+            this.btn_confirmar.Text = "            Confirmar";
+            this.btn_confirmar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_confirmar.UseVisualStyleBackColor = false;
+            this.btn_confirmar.Click += new System.EventHandler(this.btn_confirmar_Click);
             // 
             // GuardarPedido
             // 
@@ -234,8 +234,8 @@ namespace Local_Money
             this.Name = "GuardarPedido";
             this.Text = "GuardarPedido";
             this.p_botoes_pedido.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pb_confirmar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_cancelar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_confirmar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,6 +257,6 @@ namespace Local_Money
         private System.Windows.Forms.PictureBox pb_cancelar;
         private ePOSOne.btnProduct.Button_WOC btn_cancelar;
         private System.Windows.Forms.Label lbl_confirmar;
-        private System.Windows.Forms.FlowLayoutPanel flp_mesas;
+        public System.Windows.Forms.FlowLayoutPanel flp_mesas;
     }
 }

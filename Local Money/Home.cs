@@ -414,10 +414,14 @@ namespace Local_Money
 
         private void btn_novo_Click(object sender, EventArgs e)
         {
+
+            /*
             Mesas ped = new Mesas { Dock = DockStyle.Fill, TopMost = true, TopLevel = false};
             this.p_view.Controls.Clear();
             this.p_view.Controls.Add(ped);
             ped.Show();
+            */
+
         }
 
         private void btn_finalizar_Click(object sender, EventArgs e)

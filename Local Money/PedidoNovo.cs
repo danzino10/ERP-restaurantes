@@ -20,7 +20,7 @@ namespace Local_Money
         private int id_cat;
         public int numero_produtos = 0;
         public List<int> produtos = new List<int>();
-        
+        public List<int> quantidades = new List<int>();
 
         public PedidoNovo()
         {
@@ -164,7 +164,24 @@ namespace Local_Money
 
         private void btn_salvar_Click(object sender, EventArgs e)
         {
-
+            foreach(Control pl in p_lista_produtos.Controls)
+            {
+                if(pl is Panel)
+                {
+                    foreach(Control p in pl.Controls)
+                    {
+                        if(p is Label)
+                        {
+                            if(p.Tag == "0")
+                            {
+                                quantidades.Add(int.Parse(p.Text));
+                            }
+                        }
+                    }
+                }
+            }
+            GuardarPedido gp = new GuardarPedido();
+            gp.ShowDialog();
         }
     }
 }

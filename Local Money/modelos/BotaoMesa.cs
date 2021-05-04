@@ -9,14 +9,18 @@ namespace Local_Money.modelos
 {
     class BotaoMesa
     {
-        
-
-        public BotaoMesa (int mesa)
+        private int Escolhido;
+        private int Selec;
+        private int Mesa;
+        public BotaoMesa (int mesa, int selecionado)
         {
+            Selec = selecionado;
+            Mesa = mesa;
             PainelBotao.Controls.Add(PainelCima);
             PainelBotao.Controls.Add(PainelBaixo);
             PainelBotao.Controls.Add(PainelDireita);
             PainelBotao.Controls.Add(PainelEsquerda);
+            
             if(mesa > 9)
             {
                 DoisDigitos.Text = mesa.ToString();
@@ -28,9 +32,11 @@ namespace Local_Money.modelos
                 PainelBotao.Controls.Add(UmDigito);
             }
 
-            PainelBotao.Click += BotaoMesa_Click;
-            
+            PainelBotao.Click += (sender2, e2) => BotaoMesa_Click(sender2, e2);
+
         }
+
+
 
         Panel PainelBotao = new Panel
         {
@@ -81,7 +87,7 @@ namespace Local_Money.modelos
             ForeColor = Color.DarkSlateGray,
         };
 
-        private void Ocupado()
+        public void Ocupado()
         {
             PainelBotao.Enabled = false;
             PainelBaixo.BackColor = Color.Brown;
@@ -92,7 +98,7 @@ namespace Local_Money.modelos
             DoisDigitos.ForeColor = Color.Brown;
         }
 
-        private void Selecionado()
+        public void Selecionado()
         {
             PainelBotao.Enabled = false;
             PainelBaixo.BackColor = SystemColors.MenuHighlight;
@@ -101,9 +107,11 @@ namespace Local_Money.modelos
             PainelEsquerda.BackColor = SystemColors.MenuHighlight;
             UmDigito.ForeColor = SystemColors.MenuHighlight;
             DoisDigitos.ForeColor = SystemColors.MenuHighlight;
+            
+           
         }
 
-        private void Desselecionado()
+        public void Desselecionar()
         {
             PainelBotao.Enabled = true;
             PainelBaixo.BackColor = Color.DarkSlateGray;
@@ -114,9 +122,20 @@ namespace Local_Money.modelos
             DoisDigitos.ForeColor = Color.DarkSlateGray;
         }
 
+        public Panel Criar()
+        {
+            return PainelBotao;
+        }
+
+       
+
+
         private void BotaoMesa_Click(Object sender, EventArgs e)
         {
             Selecionado();
+            GuardarPedido gp = (GuardarPedido)Application.OpenForms[3];
+            gp.Selec++;
+            gp.Mesa = Mesa;
         }
     }
 }
