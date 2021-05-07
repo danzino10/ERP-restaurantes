@@ -268,6 +268,7 @@ namespace Local_Money
             this.button_WOC1.Text = "             Pagar agora";
             this.button_WOC1.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_WOC1.UseVisualStyleBackColor = false;
+            this.button_WOC1.Click += new System.EventHandler(this.button_WOC1_Click);
             // 
             // pictureBox1
             // 

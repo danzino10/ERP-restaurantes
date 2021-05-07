@@ -183,5 +183,10 @@ namespace Local_Money
             GuardarPedido gp = new GuardarPedido();
             gp.ShowDialog();
         }
+
+        private void button_WOC1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

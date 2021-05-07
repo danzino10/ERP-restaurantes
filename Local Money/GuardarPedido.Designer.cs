@@ -39,11 +39,11 @@ namespace Local_Money
             this.panel8 = new System.Windows.Forms.Panel();
             this.p_botoes_pedido = new System.Windows.Forms.Panel();
             this.pb_cancelar = new System.Windows.Forms.PictureBox();
+            this.btn_cancelar = new ePOSOne.btnProduct.Button_WOC();
             this.pb_confirmar = new System.Windows.Forms.PictureBox();
+            this.btn_confirmar = new ePOSOne.btnProduct.Button_WOC();
             this.lbl_confirmar = new System.Windows.Forms.Label();
             this.flp_mesas = new System.Windows.Forms.FlowLayoutPanel();
-            this.btn_cancelar = new ePOSOne.btnProduct.Button_WOC();
-            this.btn_confirmar = new ePOSOne.btnProduct.Button_WOC();
             this.p_botoes_pedido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_cancelar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_confirmar)).BeginInit();
@@ -55,25 +55,25 @@ namespace Local_Money
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.panel1.Size = new System.Drawing.Size(5, 361);
+            this.panel1.Size = new System.Drawing.Size(5, 360);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(429, 0);
+            this.panel2.Location = new System.Drawing.Point(430, 0);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.panel2.Size = new System.Drawing.Size(5, 361);
+            this.panel2.Size = new System.Drawing.Size(5, 360);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(5, 356);
+            this.panel3.Location = new System.Drawing.Point(5, 355);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.panel3.Size = new System.Drawing.Size(424, 5);
+            this.panel3.Size = new System.Drawing.Size(425, 5);
             this.panel3.TabIndex = 2;
             // 
             // panel4
@@ -82,7 +82,7 @@ namespace Local_Money
             this.panel4.Location = new System.Drawing.Point(5, 0);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.panel4.Size = new System.Drawing.Size(424, 5);
+            this.panel4.Size = new System.Drawing.Size(425, 5);
             this.panel4.TabIndex = 3;
             // 
             // panel5
@@ -92,17 +92,17 @@ namespace Local_Money
             this.panel5.Location = new System.Drawing.Point(5, 5);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.panel5.Size = new System.Drawing.Size(424, 5);
+            this.panel5.Size = new System.Drawing.Size(425, 5);
             this.panel5.TabIndex = 4;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.DarkSlateGray;
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(5, 351);
+            this.panel6.Location = new System.Drawing.Point(5, 350);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.panel6.Size = new System.Drawing.Size(424, 5);
+            this.panel6.Size = new System.Drawing.Size(425, 5);
             this.panel6.TabIndex = 5;
             // 
             // panel7
@@ -112,17 +112,17 @@ namespace Local_Money
             this.panel7.Location = new System.Drawing.Point(5, 10);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.panel7.Size = new System.Drawing.Size(5, 341);
+            this.panel7.Size = new System.Drawing.Size(5, 340);
             this.panel7.TabIndex = 6;
             // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.DarkSlateGray;
             this.panel8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel8.Location = new System.Drawing.Point(424, 10);
+            this.panel8.Location = new System.Drawing.Point(425, 10);
             this.panel8.Name = "panel8";
             this.panel8.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.panel8.Size = new System.Drawing.Size(5, 341);
+            this.panel8.Size = new System.Drawing.Size(5, 340);
             this.panel8.TabIndex = 7;
             // 
             // p_botoes_pedido
@@ -147,33 +147,6 @@ namespace Local_Money
             this.pb_cancelar.TabIndex = 7;
             this.pb_cancelar.TabStop = false;
             // 
-            // pb_confirmar
-            // 
-            this.pb_confirmar.Image = global::Local_Money.Properties.Resources.check_mark;
-            this.pb_confirmar.Location = new System.Drawing.Point(249, 15);
-            this.pb_confirmar.Name = "pb_confirmar";
-            this.pb_confirmar.Size = new System.Drawing.Size(32, 32);
-            this.pb_confirmar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb_confirmar.TabIndex = 3;
-            this.pb_confirmar.TabStop = false;
-            // 
-            // lbl_confirmar
-            // 
-            this.lbl_confirmar.AutoSize = true;
-            this.lbl_confirmar.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_confirmar.Location = new System.Drawing.Point(48, 34);
-            this.lbl_confirmar.Name = "lbl_confirmar";
-            this.lbl_confirmar.Size = new System.Drawing.Size(215, 19);
-            this.lbl_confirmar.TabIndex = 9;
-            this.lbl_confirmar.Text = "Deseja guardar este pedido?";
-            // 
-            // flp_mesas
-            // 
-            this.flp_mesas.Location = new System.Drawing.Point(16, 65);
-            this.flp_mesas.Name = "flp_mesas";
-            this.flp_mesas.Size = new System.Drawing.Size(402, 209);
-            this.flp_mesas.TabIndex = 10;
-            // 
             // btn_cancelar
             // 
             this.btn_cancelar.BackColor = System.Drawing.Color.DarkSlateGray;
@@ -193,6 +166,16 @@ namespace Local_Money
             this.btn_cancelar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_cancelar.UseVisualStyleBackColor = false;
             this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
+            // 
+            // pb_confirmar
+            // 
+            this.pb_confirmar.Image = global::Local_Money.Properties.Resources.check_mark;
+            this.pb_confirmar.Location = new System.Drawing.Point(249, 15);
+            this.pb_confirmar.Name = "pb_confirmar";
+            this.pb_confirmar.Size = new System.Drawing.Size(32, 32);
+            this.pb_confirmar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_confirmar.TabIndex = 3;
+            this.pb_confirmar.TabStop = false;
             // 
             // btn_confirmar
             // 
@@ -214,11 +197,28 @@ namespace Local_Money
             this.btn_confirmar.UseVisualStyleBackColor = false;
             this.btn_confirmar.Click += new System.EventHandler(this.btn_confirmar_Click);
             // 
+            // lbl_confirmar
+            // 
+            this.lbl_confirmar.AutoSize = true;
+            this.lbl_confirmar.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_confirmar.Location = new System.Drawing.Point(100, 25);
+            this.lbl_confirmar.Name = "lbl_confirmar";
+            this.lbl_confirmar.Size = new System.Drawing.Size(215, 19);
+            this.lbl_confirmar.TabIndex = 9;
+            this.lbl_confirmar.Text = "Deseja guardar este pedido?";
+            // 
+            // flp_mesas
+            // 
+            this.flp_mesas.Location = new System.Drawing.Point(16, 65);
+            this.flp_mesas.Name = "flp_mesas";
+            this.flp_mesas.Size = new System.Drawing.Size(402, 209);
+            this.flp_mesas.TabIndex = 10;
+            // 
             // GuardarPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 361);
+            this.ClientSize = new System.Drawing.Size(435, 360);
             this.Controls.Add(this.flp_mesas);
             this.Controls.Add(this.lbl_confirmar);
             this.Controls.Add(this.p_botoes_pedido);
@@ -232,6 +232,7 @@ namespace Local_Money
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GuardarPedido";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GuardarPedido";
             this.p_botoes_pedido.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pb_cancelar)).EndInit();

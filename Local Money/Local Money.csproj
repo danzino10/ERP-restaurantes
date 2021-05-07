@@ -33,6 +33,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=8.0.23.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="PrinterUtility, Version=1.0.2.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\PrinterUtility.1.2.0\lib\PrinterUtility.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -51,12 +54,6 @@
     </Compile>
     <Compile Include="AdicionarProduto.Designer.cs">
       <DependentUpon>AdicionarProduto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Cardapio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cardapio.Designer.cs">
-      <DependentUpon>Cardapio.cs</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
@@ -94,6 +91,18 @@
     <Compile Include="modelos\Pedidos.cs" />
     <Compile Include="modelos\Produto.cs" />
     <Compile Include="modelos\ProdutoListado.cs" />
+    <Compile Include="Pagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pagamento.Designer.cs">
+      <DependentUpon>Pagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PagamentoDinheiro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PagamentoDinheiro.Designer.cs">
+      <DependentUpon>PagamentoDinheiro.cs</DependentUpon>
+    </Compile>
     <Compile Include="PedidoNovo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,9 +125,6 @@
     <EmbeddedResource Include="AdicionarProduto.resx">
       <DependentUpon>AdicionarProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cardapio.resx">
-      <DependentUpon>Cardapio.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,6 +137,12 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pagamento.resx">
+      <DependentUpon>Pagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PagamentoDinheiro.resx">
+      <DependentUpon>PagamentoDinheiro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PedidoNovo.resx">
       <DependentUpon>PedidoNovo.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,6 +154,7 @@
     <EmbeddedResource Include="Registo.resx">
       <DependentUpon>Registo.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -220,6 +233,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\loupe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\credit-card %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
