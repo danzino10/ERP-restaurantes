@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using NPOI.SS.Util;
 
 namespace Local_Money.modelos
 {
@@ -12,11 +13,12 @@ namespace Local_Money.modelos
     {
         PedidoNovo pn = (PedidoNovo)Application.OpenForms[2];
         private string[] ss;
-        private float valor_produto, total_produto, subtotal_geral;
+        private double valor_produto, total_produto, subtotal_geral;
         private int Id;
         public int Mesa;
+        DecimalFormat df = new DecimalFormat("#.##");
 
-        Panel PainelProduto = new Panel
+        public Panel PainelProduto = new Panel
         {
             Width = 320,
             Height = 75,
@@ -34,11 +36,11 @@ namespace Local_Money.modelos
             ss = pn.lbl_subtotal_valor.Text.Split(' ');
             string[]pp = preco.Split(' ');
             valor_produto = float.Parse(pp[1]);
-            pn.lbl_subtotal_valor.Text = "Kz " + (float.Parse(ss[1]) + valor_produto).ToString();
+            pn.lbl_subtotal_valor.Text = "Kz " + df.Format((float.Parse(ss[1]) + valor_produto));
 
-            Adicionar.Click += new System.EventHandler(this.AdicinarQuantidade);
-            Retirar.Click += new System.EventHandler(this.SubtrairQuantidade);
-            Apagar.Click += new System.EventHandler(this.RetirarProduto);
+            Adicionar.Click += new EventHandler(this.AdicinarQuantidade);
+            Retirar.Click += new EventHandler(this.SubtrairQuantidade);
+            Apagar.Click += new EventHandler(this.RetirarProduto);
 
             PainelProduto.Controls.Add(PainelBaixo);
             PainelProduto.Controls.Add(PainelCima);
@@ -56,68 +58,71 @@ namespace Local_Money.modelos
 
         Panel PainelCima = new Panel
         {
-            BackColor = System.Drawing.Color.DarkSlateGray,
-            Location = new System.Drawing.Point(16, 34),
-            Size = new System.Drawing.Size(67, 2),
+            BackColor = Color.DarkSlateGray,
+            Location = new Point(16, 34),
+            Size = new Size(67, 2),
         };
 
         Panel PainelBaixo = new Panel
         {
-            BackColor = System.Drawing.Color.DarkSlateGray,
-            Location = new System.Drawing.Point(16, 66),
-            Size = new System.Drawing.Size(67, 2),
+            BackColor = Color.DarkSlateGray,
+            Location = new Point(16, 66),
+            Size = new Size(67, 2),
         };
 
         Panel PainelEsquerda = new Panel
         {
             BackColor = System.Drawing.Color.DarkSlateGray,
-            Location = new System.Drawing.Point(16, 36),
-            Size = new System.Drawing.Size(2, 30),
+            Location = new Point(16, 36),
+            Size = new Size(2, 30),
         };
 
         Panel PainelDireita = new Panel
         {
-            BackColor = System.Drawing.Color.DarkSlateGray,
-            Location = new System.Drawing.Point(81, 36),
-            Size = new System.Drawing.Size(2, 30),
+            BackColor = Color.DarkSlateGray,
+            Location = new Point(81, 36),
+            Size = new Size(2, 30),
         };
 
-        Label NomeProduto = new Label
+        public Label NomeProduto = new Label
         {
-            Location = new System.Drawing.Point(6, 7),
-            Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
-            Padding = new System.Windows.Forms.Padding(5, 5, 0, 0),
-            Size = new System.Drawing.Size(72, 24),
-            TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            Location = new Point(6, 7),
+            Font = new Font("Roboto", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0))),
+            Padding = new Padding(5, 5, 0, 0),
+            Size = new Size(72, 24),
+            TextAlign = ContentAlignment.MiddleCenter,
             AutoSize = true,
+            Tag = "3",
         };
 
-        Label ValorProduto = new Label
+        public Label ValorProduto = new Label
         {
-            Location = new System.Drawing.Point(103, 52),
-            Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
-            Size = new System.Drawing.Size(51, 15),
-            TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            Location = new Point(103, 52),
+            Font = new Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
+            Size = new Size(51, 15),
+            TextAlign = ContentAlignment.MiddleCenter,
             AutoSize = true,
+            Tag = "1",
         };
 
-        Label TotalProduto = new Label
+        public Label TotalProduto = new Label
         {
-            Location = new System.Drawing.Point(217, 47),
-            Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
-            Size = new System.Drawing.Size(89, 20),
-            TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-            Padding = new System.Windows.Forms.Padding(5, 5, 0, 0),
+            Location = new Point(217, 47),
+            Font = new Font("Roboto", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0))),
+            Size = new Size(89, 20),
+            TextAlign = ContentAlignment.MiddleCenter,
+            Padding = new Padding(5, 5, 0, 0),
             AutoSize = true,
             Text = "Kz 0",
+            Tag = "2",
         };
 
-        Label QuantidadeProduto = new Label
+        public Label QuantidadeProduto = new Label
         {
-            Location = new System.Drawing.Point(19, 44),
-            Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
-            Size = new System.Drawing.Size(14, 15),
-            TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            Location = new Point(19, 44),
+            Font = new Font("Roboto", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0))),
+            Size = new Size(14, 15),
+            TextAlign = ContentAlignment.MiddleCenter,
             AutoSize = true,
             Text = "1",
             Tag = "0",
@@ -125,11 +130,11 @@ namespace Local_Money.modelos
 
         Button Retirar = new Button
         {
-            BackColor = System.Drawing.Color.DarkSlateGray,
-            FlatStyle = System.Windows.Forms.FlatStyle.Flat,
-            Image = global::Local_Money.Properties.Resources.down_arrow2,
-            Location = new System.Drawing.Point(60, 51),
-            Size = new System.Drawing.Size(23, 15),
+            BackColor = Color.DarkSlateGray,
+            FlatStyle = FlatStyle.Flat,
+            Image = Properties.Resources.down_arrow2,
+            Location = new Point(60, 51),
+            Size = new Size(23, 15),
             UseVisualStyleBackColor = false,
             Cursor = Cursors.Hand,
             Enabled = false,
@@ -137,21 +142,21 @@ namespace Local_Money.modelos
 
         Button Adicionar = new Button
         {
-            BackColor = System.Drawing.Color.DarkSlateGray,
-            FlatStyle = System.Windows.Forms.FlatStyle.Flat,
-            Image = global::Local_Money.Properties.Resources.up_arrow2,
-            Location = new System.Drawing.Point(60, 36),
-            Size = new System.Drawing.Size(23, 15),
+            BackColor = Color.DarkSlateGray,
+            FlatStyle = FlatStyle.Flat,
+            Image = Properties.Resources.up_arrow2,
+            Location = new Point(60, 36),
+            Size = new Size(23, 15),
             UseVisualStyleBackColor = false,
             Cursor = Cursors.Hand,
         };
 
         PictureBox Apagar = new PictureBox
         {
-            Image = global::Local_Money.Properties.Resources.delete__1_,
-            Location = new System.Drawing.Point(276, 6),
-            Size = new System.Drawing.Size(32, 32),
-            SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize,
+            Image = Properties.Resources.delete__1_,
+            Location = new Point(276, 6),
+            Size = new Size(32, 32),
+            SizeMode = PictureBoxSizeMode.AutoSize,
             TabStop = false,
             Cursor = Cursors.Hand,
         };
@@ -171,12 +176,12 @@ namespace Local_Money.modelos
 
             string[] vv = ValorProduto.Text.Split(' ');
             total_produto = int.Parse(QuantidadeProduto.Text) * float.Parse(vv[1]);
-            TotalProduto.Text = "Kz " + total_produto.ToString();
+            TotalProduto.Text = "Kz " + df.Format(total_produto);
 
 
             ss = pn.lbl_subtotal_valor.Text.Split(' ');
             subtotal_geral = float.Parse(ss[1]) + valor_produto;
-            pn.lbl_subtotal_valor.Text = "Kz " + subtotal_geral.ToString();
+            pn.lbl_subtotal_valor.Text = "Kz " + df.Format(subtotal_geral);
 
         }
 
@@ -190,25 +195,34 @@ namespace Local_Money.modelos
 
             string[] vv = ValorProduto.Text.Split(' ');
             total_produto = int.Parse(QuantidadeProduto.Text) * float.Parse(vv[1]);
-            TotalProduto.Text = "Kz " + total_produto.ToString();
+            TotalProduto.Text = "Kz " + df.Format(total_produto);
 
             ss = pn.lbl_subtotal_valor.Text.Split(' ');
             subtotal_geral = float.Parse(ss[1]) - valor_produto;
-            pn.lbl_subtotal_valor.Text = "Kz " + subtotal_geral.ToString();
+            pn.lbl_subtotal_valor.Text = "Kz " + df.Format(subtotal_geral);
 
         }
 
         private void RetirarProduto(object sender, EventArgs e)
         {
+
             string[] vv = ValorProduto.Text.Split(' ');
             total_produto = int.Parse(QuantidadeProduto.Text) * float.Parse(vv[1]);
             ss = pn.lbl_subtotal_valor.Text.Split(' ');
             subtotal_geral = float.Parse(ss[1]) - total_produto;
-            pn.lbl_subtotal_valor.Text = "Kz " + subtotal_geral.ToString();
+            pn.lbl_subtotal_valor.Text = "Kz " + df.Format(subtotal_geral);
+            int index;
+
             if (pn.produtos.Contains(Id))
+            {
+                index = pn.produtos.IndexOf(Id);
                 pn.produtos.Remove(Id);
-            
-            
+                
+                pn.totais.RemoveAt(index);
+                pn.totais.RemoveAt(index);
+            }
+                
+
             pn.p_lista_produtos.Controls.Remove(this.PainelProduto);
             /*
             PainelCima.BackColor = SystemColors.MenuHighlight;

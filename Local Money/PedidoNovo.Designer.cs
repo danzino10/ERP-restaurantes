@@ -45,7 +45,7 @@ namespace Local_Money
             this.lbl_subtotal = new System.Windows.Forms.Label();
             this.p_botoes_pedido = new System.Windows.Forms.Panel();
             this.pb_pagar = new System.Windows.Forms.PictureBox();
-            this.button_WOC1 = new ePOSOne.btnProduct.Button_WOC();
+            this.btn_pagar = new ePOSOne.btnProduct.Button_WOC();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_salvar = new ePOSOne.btnProduct.Button_WOC();
             this.p_cabecalho_pedido = new System.Windows.Forms.Panel();
@@ -122,9 +122,9 @@ namespace Local_Money
             this.lbl_total_valor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_total_valor.Location = new System.Drawing.Point(180, 87);
             this.lbl_total_valor.Name = "lbl_total_valor";
-            this.lbl_total_valor.Size = new System.Drawing.Size(42, 20);
+            this.lbl_total_valor.Size = new System.Drawing.Size(67, 20);
             this.lbl_total_valor.TabIndex = 11;
-            this.lbl_total_valor.Text = "kz 0";
+            this.lbl_total_valor.Text = "kz 0,00";
             this.lbl_total_valor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
@@ -144,9 +144,9 @@ namespace Local_Money
             this.lbl_codpromo_valor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_codpromo_valor.Location = new System.Drawing.Point(238, 47);
             this.lbl_codpromo_valor.Name = "lbl_codpromo_valor";
-            this.lbl_codpromo_valor.Size = new System.Drawing.Size(31, 16);
+            this.lbl_codpromo_valor.Size = new System.Drawing.Size(48, 16);
             this.lbl_codpromo_valor.TabIndex = 9;
-            this.lbl_codpromo_valor.Text = "kz 0";
+            this.lbl_codpromo_valor.Text = "kz 0,00";
             this.lbl_codpromo_valor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_promodia_valor
@@ -155,9 +155,9 @@ namespace Local_Money
             this.lbl_promodia_valor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_promodia_valor.Location = new System.Drawing.Point(238, 27);
             this.lbl_promodia_valor.Name = "lbl_promodia_valor";
-            this.lbl_promodia_valor.Size = new System.Drawing.Size(31, 16);
+            this.lbl_promodia_valor.Size = new System.Drawing.Size(48, 16);
             this.lbl_promodia_valor.TabIndex = 8;
-            this.lbl_promodia_valor.Text = "kz 0";
+            this.lbl_promodia_valor.Text = "kz 0,00";
             this.lbl_promodia_valor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_subtotal_valor
@@ -166,9 +166,9 @@ namespace Local_Money
             this.lbl_subtotal_valor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_subtotal_valor.Location = new System.Drawing.Point(238, 5);
             this.lbl_subtotal_valor.Name = "lbl_subtotal_valor";
-            this.lbl_subtotal_valor.Size = new System.Drawing.Size(35, 16);
+            this.lbl_subtotal_valor.Size = new System.Drawing.Size(55, 16);
             this.lbl_subtotal_valor.TabIndex = 7;
-            this.lbl_subtotal_valor.Text = "kz 0";
+            this.lbl_subtotal_valor.Text = "kz 0,00";
             this.lbl_subtotal_valor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_subtotal_valor.TextChanged += new System.EventHandler(this.lbl_subtotal_valor_TextChanged);
             // 
@@ -231,7 +231,7 @@ namespace Local_Money
             // 
             this.p_botoes_pedido.BackColor = System.Drawing.Color.DarkSlateGray;
             this.p_botoes_pedido.Controls.Add(this.pb_pagar);
-            this.p_botoes_pedido.Controls.Add(this.button_WOC1);
+            this.p_botoes_pedido.Controls.Add(this.btn_pagar);
             this.p_botoes_pedido.Controls.Add(this.pictureBox1);
             this.p_botoes_pedido.Controls.Add(this.btn_salvar);
             this.p_botoes_pedido.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -250,25 +250,25 @@ namespace Local_Money
             this.pb_pagar.TabIndex = 3;
             this.pb_pagar.TabStop = false;
             // 
-            // button_WOC1
+            // btn_pagar
             // 
-            this.button_WOC1.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.button_WOC1.BorderColor = System.Drawing.Color.Black;
-            this.button_WOC1.ButtonColor = System.Drawing.Color.DarkSlateGray;
-            this.button_WOC1.FlatAppearance.BorderSize = 0;
-            this.button_WOC1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_WOC1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_WOC1.Location = new System.Drawing.Point(143, 3);
-            this.button_WOC1.Name = "button_WOC1";
-            this.button_WOC1.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_WOC1.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button_WOC1.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_WOC1.Size = new System.Drawing.Size(143, 53);
-            this.button_WOC1.TabIndex = 6;
-            this.button_WOC1.Text = "             Pagar agora";
-            this.button_WOC1.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_WOC1.UseVisualStyleBackColor = false;
-            this.button_WOC1.Click += new System.EventHandler(this.button_WOC1_Click);
+            this.btn_pagar.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_pagar.BorderColor = System.Drawing.Color.Black;
+            this.btn_pagar.ButtonColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_pagar.FlatAppearance.BorderSize = 0;
+            this.btn_pagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_pagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_pagar.Location = new System.Drawing.Point(143, 3);
+            this.btn_pagar.Name = "btn_pagar";
+            this.btn_pagar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_pagar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btn_pagar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_pagar.Size = new System.Drawing.Size(143, 53);
+            this.btn_pagar.TabIndex = 6;
+            this.btn_pagar.Text = "             Pagar agora";
+            this.btn_pagar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_pagar.UseVisualStyleBackColor = false;
+            this.btn_pagar.Click += new System.EventHandler(this.btn_pagar_Click);
             // 
             // pictureBox1
             // 
@@ -454,7 +454,7 @@ namespace Local_Money
         private System.Windows.Forms.CheckBox cb_promodia;
         private System.Windows.Forms.Label lbl_iva;
         private System.Windows.Forms.Label lbl_subtotal;
-        private ePOSOne.btnProduct.Button_WOC button_WOC1;
+        private ePOSOne.btnProduct.Button_WOC btn_pagar;
         private System.Windows.Forms.PictureBox pictureBox1;
         private ePOSOne.btnProduct.Button_WOC btn_salvar;
         private System.Windows.Forms.Panel panel1;

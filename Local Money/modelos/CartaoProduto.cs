@@ -14,6 +14,7 @@ namespace Local_Money
     {
         private Conexao con = new Conexao();
         public int IdProduto;
+        public double SubtotProduto;
         PedidoNovo pn = (PedidoNovo)Application.OpenForms[2];
 
         Panel PainelCartao = new Panel
@@ -26,28 +27,28 @@ namespace Local_Money
         Panel PainelCima = new Panel
         {
             Height = 2,
-            BackColor = System.Drawing.Color.DarkSlateGray,
+            BackColor = Color.DarkSlateGray,
             Dock = DockStyle.Top,
         };
 
         Panel PainelBaixo = new Panel
         {
             Height = 2,
-            BackColor = System.Drawing.Color.DarkSlateGray,
+            BackColor = Color.DarkSlateGray,
             Dock = DockStyle.Bottom,
         };
 
         Panel PainelDireita = new Panel
         {
             Width = 2,
-            BackColor = System.Drawing.Color.DarkSlateGray,
+            BackColor = Color.DarkSlateGray,
             Dock = DockStyle.Right,
         };
 
         Panel PainelEsquerda = new Panel
         {
             Width = 2,
-            BackColor = System.Drawing.Color.DarkSlateGray,
+            BackColor = Color.DarkSlateGray,
             Dock = DockStyle.Left,
         };
 
@@ -55,45 +56,45 @@ namespace Local_Money
         {
             Width = 185,
             Height = 150,
-            Location = new System.Drawing.Point(10, 10),
-            BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom,
+            Location = new Point(10, 10),
+            BackgroundImageLayout = ImageLayout.Zoom,
         };
 
         Panel PainelPreco = new Panel
         {
             Width = 100,
             Height = 20,
-            Location = new System.Drawing.Point(0, 30),
-            BackColor = System.Drawing.SystemColors.MenuHighlight,
+            Location = new Point(0, 30),
+            BackColor = SystemColors.MenuHighlight,
         };
 
         Panel PainelNome = new Panel
         {
             Width = 145,
             Height = 20,
-            Location = new System.Drawing.Point(41,102),
-            BackColor = System.Drawing.SystemColors.MenuHighlight,
+            Location = new Point(41,102),
+            BackColor = SystemColors.MenuHighlight,
         };
 
         Panel PainelConfirma = new Panel
         {
             Width = 40,
             Height = 40,
-            Location = new System.Drawing.Point(0, 0),
+            Location = new Point(0, 0),
             BackColor = Color.Transparent,
             BackgroundImageLayout = ImageLayout.Zoom,
         };
 
         Label Preco = new Label
         {
-            Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
+            Font = new Font("Roboto Medium", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0))),
             ForeColor = Color.Black,
 
         };
 
         Label Nome = new Label
         {
-            Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
+            Font = new Font("Roboto Medium", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0))),
             ForeColor = Color.Black,
             Dock = DockStyle.Fill,
         };
@@ -101,6 +102,7 @@ namespace Local_Money
         public CartaoProduto(string nome, bool disp, float preco, int id, Image imagem)
         {
             IdProduto = id;
+            SubtotProduto = preco;
 
             PainelBaixo.Click += (sender2, e2) => Produto_Click(sender2, e2);
             PainelCartao.Click += (sender2, e2) => Produto_Click(sender2, e2);
@@ -178,7 +180,7 @@ namespace Local_Money
             PainelConfirma.BackColor = Color.Brown;
             PainelNome.BackColor = Color.Brown;
             PainelPreco.BackColor = Color.Brown;
-            PainelConfirma.BackgroundImage = global::Local_Money.Properties.Resources.cancel_button;
+            PainelConfirma.BackgroundImage = Properties.Resources.cancel_button;
             PainelCartao.Cursor = Cursors.Default;
             PainelCartao.Enabled = false;
         }
@@ -190,7 +192,7 @@ namespace Local_Money
             PainelDireita.BackColor = SystemColors.MenuHighlight;
             PainelEsquerda.BackColor = SystemColors.MenuHighlight;
             PainelConfirma.BackColor = SystemColors.MenuHighlight;
-            PainelConfirma.BackgroundImage = global::Local_Money.Properties.Resources.check_mark;
+            PainelConfirma.BackgroundImage = Properties.Resources.check_mark;
             PainelCartao.Cursor = Cursors.Default;
             PainelCartao.Enabled = false;
         }

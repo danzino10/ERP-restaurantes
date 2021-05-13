@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
 using System.Collections;
+using NPOI.SS.Util;
 
 namespace Local_Money
 {
@@ -21,6 +22,10 @@ namespace Local_Money
         public int numero_produtos = 0;
         public List<int> produtos = new List<int>();
         public List<int> quantidades = new List<int>();
+        public List<double> subtotais = new List<double>();
+        public List<double> totais = new List<double>();
+        public List<string> nomes = new List<string>();
+        DecimalFormat df = new DecimalFormat("#.##");
 
         public PedidoNovo()
         {
@@ -164,29 +169,102 @@ namespace Local_Money
 
         private void btn_salvar_Click(object sender, EventArgs e)
         {
-            foreach(Control pl in p_lista_produtos.Controls)
-            {
-                if(pl is Panel)
-                {
-                    foreach(Control p in pl.Controls)
-                    {
-                        if(p is Label)
-                        {
-                            if(p.Tag == "0")
-                            {
-                                quantidades.Add(int.Parse(p.Text));
-                            }
-                        }
-                    }
-                }
-            }
+            AddQuantidade();
+            AddSubtotal();
+            AddTotal();
+            AddNomes();
             GuardarPedido gp = new GuardarPedido();
             gp.ShowDialog();
         }
 
-        private void button_WOC1_Click(object sender, EventArgs e)
+        private void btn_pagar_Click(object sender, EventArgs e)
+        {
+            AddQuantidade();
+            AddSubtotal();
+            AddTotal();
+            AddNomes();
+            Pagamento p = new Pagamento();
+            
+            string[] separa = lbl_subtotal_valor.Text.Split(' ');
+            p.Subtotal = double.Parse(separa[1]) ;
+            
+            separa = lbl_total_valor.Text.Split(' ');
+            p.Total = double.Parse(separa[1]);
+            
+            separa = lbl_promodia_valor.Text.Split(' ');
+            p.Descontos = double.Parse(separa[1]);
+
+            separa = lbl_codpromo_valor.Text.Split(' ');
+            p.Descontos = p.Descontos + double.Parse(separa[1]);
+
+            
+            p.ShowDialog();
+        }
+
+        public void AddQuantidade()
+        {
+            quantidades.AddRange(from Control pl in p_lista_produtos.Controls
+                                 where pl is Panel
+                                 from Control p in pl.Controls
+                                 where p is Label
+                                 where p.Tag is "0"
+                                 select int.Parse(p.Text));
+        }
+
+        public void AddSubtotal()
+        {
+            subtotais.AddRange(from Control pl in p_lista_produtos.Controls
+                            where pl is Panel
+                            from Control p in pl.Controls
+                            where p is Label && p.Tag is "1"
+                            let s = p.Text.Split(' ')
+                            select double.Parse(s[1]));
+        }
+
+        public void AddTotal()
         {
 
+            totais.AddRange(from Control pl in p_lista_produtos.Controls
+                               where pl is Panel
+                               from Control p in pl.Controls
+                               where p is Label && p.Tag is "2"
+                               let s = p.Text.Split(' ')
+                               select double.Parse(s[1]));
+            /*
+            int qtd = 0;
+            double preco = 0;
+            foreach (Control pl in p_lista_produtos.Controls)
+            {
+                if(pl is Panel)
+                {
+                    
+                    
+                    foreach (Control p in pl.Controls)
+                    {
+                        if (p is Label && Tag is "1")
+                        {
+                            string[] separa = p.Text.Split(' ');
+                            preco = double.Parse(separa[1]);
+                        }
+                        if (p is Label && Tag is "0")
+                        {
+                            qtd = int.Parse(p.Text);
+                            totais.Add(qtd * preco);
+                        }
+                        
+                    }
+                }
+            }
+            */
+        }
+
+        public void AddNomes()
+        {
+            nomes.AddRange(from Control pl in p_lista_produtos.Controls
+                           where pl is Panel
+                           from Control p in pl.Controls
+                           where p is Label && p.Tag is "3"
+                           select p.Text);
         }
     }
 }
