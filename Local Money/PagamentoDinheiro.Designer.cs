@@ -40,7 +40,9 @@ namespace Local_Money
             this.panel9 = new System.Windows.Forms.Panel();
             this.lbl_montante = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_converter = new System.Windows.Forms.Button();
             this.txt_montante = new System.Windows.Forms.TextBox();
             this.btn_1 = new System.Windows.Forms.Button();
             this.btn_2 = new System.Windows.Forms.Button();
@@ -52,16 +54,12 @@ namespace Local_Money
             this.btn_8 = new System.Windows.Forms.Button();
             this.btn_7 = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
+            this.pb_cancelar = new System.Windows.Forms.PictureBox();
+            this.btn_cancelar = new ePOSOne.btnProduct.Button_WOC();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btn_confirmar = new ePOSOne.btnProduct.Button_WOC();
             this.btn_0 = new System.Windows.Forms.Button();
             this.btn_00 = new System.Windows.Forms.Button();
-            this.pb_cancelar = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btn_converter = new System.Windows.Forms.Button();
-            this.btn_cancelar = new ePOSOne.btnProduct.Button_WOC();
-            this.btn_confirmar = new ePOSOne.btnProduct.Button_WOC();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel18.SuspendLayout();
@@ -166,8 +164,6 @@ namespace Local_Money
             // 
             // panel10
             // 
-            this.panel10.Controls.Add(this.textBox1);
-            this.panel10.Controls.Add(this.label2);
             this.panel10.Controls.Add(this.button1);
             this.panel10.Controls.Add(this.label1);
             this.panel10.Controls.Add(this.btn_converter);
@@ -177,6 +173,19 @@ namespace Local_Money
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(414, 42);
             this.panel10.TabIndex = 25;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Roboto", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::Local_Money.Properties.Resources.reload__3_;
+            this.button1.Location = new System.Drawing.Point(352, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(43, 36);
+            this.button1.TabIndex = 31;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -188,13 +197,26 @@ namespace Local_Money
             this.label1.TabIndex = 30;
             this.label1.Text = "Kz";
             // 
+            // btn_converter
+            // 
+            this.btn_converter.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_converter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_converter.Font = new System.Drawing.Font("Roboto", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_converter.Image = global::Local_Money.Properties.Resources.arrow_1;
+            this.btn_converter.Location = new System.Drawing.Point(306, 3);
+            this.btn_converter.Name = "btn_converter";
+            this.btn_converter.Size = new System.Drawing.Size(40, 36);
+            this.btn_converter.TabIndex = 29;
+            this.btn_converter.UseVisualStyleBackColor = false;
+            this.btn_converter.Click += new System.EventHandler(this.btn_converter_Click);
+            // 
             // txt_montante
             // 
             this.txt_montante.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_montante.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_montante.Location = new System.Drawing.Point(71, 6);
             this.txt_montante.Name = "txt_montante";
-            this.txt_montante.Size = new System.Drawing.Size(131, 27);
+            this.txt_montante.Size = new System.Drawing.Size(201, 27);
             this.txt_montante.TabIndex = 0;
             this.txt_montante.Leave += new System.EventHandler(this.txt_montante_Leave);
             // 
@@ -327,6 +349,67 @@ namespace Local_Money
             this.panel18.Size = new System.Drawing.Size(402, 59);
             this.panel18.TabIndex = 35;
             // 
+            // pb_cancelar
+            // 
+            this.pb_cancelar.Image = global::Local_Money.Properties.Resources.cancel_button;
+            this.pb_cancelar.Location = new System.Drawing.Point(65, 15);
+            this.pb_cancelar.Name = "pb_cancelar";
+            this.pb_cancelar.Size = new System.Drawing.Size(32, 32);
+            this.pb_cancelar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_cancelar.TabIndex = 7;
+            this.pb_cancelar.TabStop = false;
+            // 
+            // btn_cancelar
+            // 
+            this.btn_cancelar.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_cancelar.BorderColor = System.Drawing.Color.Black;
+            this.btn_cancelar.ButtonColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_cancelar.FlatAppearance.BorderSize = 0;
+            this.btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cancelar.Location = new System.Drawing.Point(42, 3);
+            this.btn_cancelar.Name = "btn_cancelar";
+            this.btn_cancelar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_cancelar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btn_cancelar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_cancelar.Size = new System.Drawing.Size(143, 53);
+            this.btn_cancelar.TabIndex = 8;
+            this.btn_cancelar.Text = "             Cancelar";
+            this.btn_cancelar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_cancelar.UseVisualStyleBackColor = false;
+            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Local_Money.Properties.Resources.check_mark;
+            this.pictureBox3.Location = new System.Drawing.Point(249, 15);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 3;
+            this.pictureBox3.TabStop = false;
+            // 
+            // btn_confirmar
+            // 
+            this.btn_confirmar.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_confirmar.BorderColor = System.Drawing.Color.Black;
+            this.btn_confirmar.ButtonColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_confirmar.Enabled = false;
+            this.btn_confirmar.FlatAppearance.BorderSize = 0;
+            this.btn_confirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_confirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_confirmar.Location = new System.Drawing.Point(226, 3);
+            this.btn_confirmar.Name = "btn_confirmar";
+            this.btn_confirmar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_confirmar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btn_confirmar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_confirmar.Size = new System.Drawing.Size(143, 53);
+            this.btn_confirmar.TabIndex = 6;
+            this.btn_confirmar.Text = "            Confirmar";
+            this.btn_confirmar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_confirmar.UseVisualStyleBackColor = false;
+            this.btn_confirmar.Click += new System.EventHandler(this.btn_confirmar_Click);
+            // 
             // btn_0
             // 
             this.btn_0.BackColor = System.Drawing.Color.DarkSlateGray;
@@ -352,112 +435,6 @@ namespace Local_Money
             this.btn_00.Text = "00";
             this.btn_00.UseVisualStyleBackColor = false;
             this.btn_00.Click += new System.EventHandler(this.btn_00_Click);
-            // 
-            // pb_cancelar
-            // 
-            this.pb_cancelar.Image = global::Local_Money.Properties.Resources.cancel_button;
-            this.pb_cancelar.Location = new System.Drawing.Point(65, 15);
-            this.pb_cancelar.Name = "pb_cancelar";
-            this.pb_cancelar.Size = new System.Drawing.Size(32, 32);
-            this.pb_cancelar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb_cancelar.TabIndex = 7;
-            this.pb_cancelar.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::Local_Money.Properties.Resources.check_mark;
-            this.pictureBox3.Location = new System.Drawing.Point(249, 15);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 3;
-            this.pictureBox3.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Roboto", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::Local_Money.Properties.Resources.reload__3_;
-            this.button1.Location = new System.Drawing.Point(352, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(43, 36);
-            this.button1.TabIndex = 31;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btn_converter
-            // 
-            this.btn_converter.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_converter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_converter.Font = new System.Drawing.Font("Roboto", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_converter.Image = global::Local_Money.Properties.Resources.arrow_1;
-            this.btn_converter.Location = new System.Drawing.Point(306, 3);
-            this.btn_converter.Name = "btn_converter";
-            this.btn_converter.Size = new System.Drawing.Size(40, 36);
-            this.btn_converter.TabIndex = 29;
-            this.btn_converter.UseVisualStyleBackColor = false;
-            this.btn_converter.Click += new System.EventHandler(this.btn_converter_Click);
-            // 
-            // btn_cancelar
-            // 
-            this.btn_cancelar.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_cancelar.BorderColor = System.Drawing.Color.Black;
-            this.btn_cancelar.ButtonColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_cancelar.FlatAppearance.BorderSize = 0;
-            this.btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancelar.Location = new System.Drawing.Point(42, 3);
-            this.btn_cancelar.Name = "btn_cancelar";
-            this.btn_cancelar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_cancelar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btn_cancelar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_cancelar.Size = new System.Drawing.Size(143, 53);
-            this.btn_cancelar.TabIndex = 8;
-            this.btn_cancelar.Text = "             Cancelar";
-            this.btn_cancelar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_cancelar.UseVisualStyleBackColor = false;
-            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
-            // 
-            // btn_confirmar
-            // 
-            this.btn_confirmar.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_confirmar.BorderColor = System.Drawing.Color.Black;
-            this.btn_confirmar.ButtonColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_confirmar.Enabled = false;
-            this.btn_confirmar.FlatAppearance.BorderSize = 0;
-            this.btn_confirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_confirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_confirmar.Location = new System.Drawing.Point(226, 3);
-            this.btn_confirmar.Name = "btn_confirmar";
-            this.btn_confirmar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_confirmar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btn_confirmar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_confirmar.Size = new System.Drawing.Size(143, 53);
-            this.btn_confirmar.TabIndex = 6;
-            this.btn_confirmar.Text = "            Confirmar";
-            this.btn_confirmar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_confirmar.UseVisualStyleBackColor = false;
-            this.btn_confirmar.Click += new System.EventHandler(this.btn_confirmar_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(208, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(13, 19);
-            this.label2.TabIndex = 32;
-            this.label2.Text = ",";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(227, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(41, 27);
-            this.textBox1.TabIndex = 33;
             // 
             // PagamentoDinheiro
             // 
@@ -534,7 +511,5 @@ namespace Local_Money
         private System.Windows.Forms.Button btn_0;
         private System.Windows.Forms.Button btn_00;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
     }
 }

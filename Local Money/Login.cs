@@ -74,7 +74,7 @@ namespace Local_Money
 
                     SqlCommand com = new SqlCommand();
                     com.Connection = conn.SaberConexao();
-                    com.CommandText = "SELECT * FROM tb_user WHERE id_user = '" + int.Parse(txtUser.Text.ToString()) + "' OR telefone = '" + int.Parse(txtUser.Text) + "' OR EMAIL = '" + txtUser.Text.ToString() + "' AND password = '" + txtPass.Text.ToString() + "'";
+                    com.CommandText = "SELECT * FROM tb_user WHERE id_user = '" + int.Parse(txtUser.Text.ToString()) + "' AND password = '" + txtPass.Text.ToString() + "'";
 
                     SqlDataReader reader = com.ExecuteReader();
                     if(reader.Read() == false)
@@ -114,6 +114,7 @@ namespace Local_Money
                         d.Id = Id;
                         d.Nome = Nome;
                         d.Email = Email;
+                        d.lbl_user.Text = Nome;
                         this.Hide();
                         d.Show();
                     }

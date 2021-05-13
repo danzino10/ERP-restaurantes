@@ -64,7 +64,7 @@ namespace Local_Money
             this.lbl_pagina = new System.Windows.Forms.Label();
             this.p_foto_pefil = new System.Windows.Forms.Panel();
             this.p_nome = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_user = new System.Windows.Forms.Label();
             this.lbl_timer = new System.Windows.Forms.Label();
             this.p_janela = new System.Windows.Forms.Panel();
             this.p_sidemenu.SuspendLayout();
@@ -568,24 +568,23 @@ namespace Local_Money
             // 
             // p_nome
             // 
-            this.p_nome.Controls.Add(this.label1);
+            this.p_nome.Controls.Add(this.lbl_user);
             this.p_nome.Dock = System.Windows.Forms.DockStyle.Right;
             this.p_nome.Location = new System.Drawing.Point(585, 0);
             this.p_nome.Name = "p_nome";
             this.p_nome.Size = new System.Drawing.Size(159, 60);
             this.p_nome.TabIndex = 2;
             // 
-            // label1
+            // lbl_user
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(31, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Dara Carvalho";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_user.AutoSize = true;
+            this.lbl_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_user.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbl_user.Location = new System.Drawing.Point(31, 20);
+            this.lbl_user.Name = "lbl_user";
+            this.lbl_user.Size = new System.Drawing.Size(0, 16);
+            this.lbl_user.TabIndex = 0;
+            this.lbl_user.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_timer
             // 
@@ -607,7 +606,6 @@ namespace Local_Money
             this.p_janela.Name = "p_janela";
             this.p_janela.Size = new System.Drawing.Size(744, 501);
             this.p_janela.TabIndex = 2;
-            this.p_janela.Paint += new System.Windows.Forms.PaintEventHandler(this.p_janela_Paint);
             // 
             // frm_dashboard
             // 
@@ -674,10 +672,10 @@ namespace Local_Money
         private System.Windows.Forms.Panel p_nome;
         private System.Windows.Forms.Label lbl_timer;
         private System.Windows.Forms.Panel p_foto_pefil;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_pagina;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbl_app;
         private System.Windows.Forms.Panel p_janela;
+        public System.Windows.Forms.Label lbl_user;
     }
 }

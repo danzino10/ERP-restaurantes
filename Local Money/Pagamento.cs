@@ -99,9 +99,28 @@ namespace Local_Money
             */
 
             e.Graphics.DrawString("Subtotal", new Font("Roboto", 14, FontStyle.Regular), Brushes.Black, new Point(30, y + 200));
-            e.Graphics.DrawString("Iva (14%)", new Font("Roboto", 14, FontStyle.Regular), Brushes.Black, new Point(30, y + 240));
+            e.Graphics.DrawString("Imposto Iva (14%)", new Font("Roboto", 14, FontStyle.Regular), Brushes.Black, new Point(30, y + 240));
             e.Graphics.DrawString("Descontos", new Font("Roboto", 14, FontStyle.Regular), Brushes.Black, new Point(30, y + 280));
             e.Graphics.DrawString("Total", new Font("Roboto", 16, FontStyle.Bold), Brushes.Black, new Point(30, y + 320));
+
+            e.Graphics.DrawString(Subtotal + " Kz", new Font("Roboto", 14, FontStyle.Regular), Brushes.Black, new Point(300, y + 200));
+            e.Graphics.DrawString(Impostos + " Kz", new Font("Roboto", 14, FontStyle.Regular), Brushes.Black, new Point(300, y + 240));
+            e.Graphics.DrawString(Descontos + " Kz", new Font("Roboto", 14, FontStyle.Regular), Brushes.Black, new Point(300, y + 280));
+            e.Graphics.DrawString(Total + " Kz", new Font("Roboto", 16, FontStyle.Bold), Brushes.Black, new Point(300, y + 320));
+
+            e.Graphics.DrawString("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ", new Font("Roboto", 16, FontStyle.Regular), Brushes.Black, new Point(10, y + 335));
+
+            e.Graphics.DrawString("Valor Entregue: ", new Font("Roboto", 16, FontStyle.Bold), Brushes.Black, new Point(30, y + 360));
+            e.Graphics.DrawString("Troco:", new Font("Roboto", 16, FontStyle.Bold), Brushes.Black, new Point(30, y + 390));
+
+            e.Graphics.DrawString(Entregue + " Kz", new Font("Roboto", 16, FontStyle.Bold), Brushes.Black, new Point(300, y + 360));
+            e.Graphics.DrawString(Troco + " Kz", new Font("Roboto", 16, FontStyle.Bold), Brushes.Black, new Point(300, y + 390));
+
+            e.Graphics.DrawString("__________________________________________________________________________________________________", new Font("Roboto", 16, FontStyle.Bold), Brushes.Black, new Point(10, y + 400));
+
+            e.Graphics.DrawString("\r\r\r\r\rProcessado por FoodGest Lda.\n\rSoluções tecnológicas para o seu restaurante", new Font("Roboto", 14, FontStyle.Regular), Brushes.Black, new Point(200, y + 420));
+            e.Graphics.DrawString("\r\r\r\r\rDesenvolvido por Danilo Carvalho\n\rdanzino10@gmail.com - (+244) 936530760\n\rRua Samuel Bernardo nº18 1ºc", new Font("Roboto", 12, FontStyle.Regular), Brushes.Black, new Point(200, y + 480));
+
         }
 
         private void Pagamento_Load(object sender, EventArgs e)

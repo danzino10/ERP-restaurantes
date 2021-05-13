@@ -49,6 +49,12 @@ namespace Local_Money
             this.pb_confirmar = new System.Windows.Forms.PictureBox();
             this.btn_cartao = new ePOSOne.btnProduct.Button_WOC();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.lbl_troco = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.lbl_falta = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
             this.lbl_entregue = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -65,19 +71,13 @@ namespace Local_Money
             this.lbl_subtotal = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.panel21 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel18 = new System.Windows.Forms.Panel();
             this.pb_cancelar = new System.Windows.Forms.PictureBox();
             this.btn_cancelar = new ePOSOne.btnProduct.Button_WOC();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btn_confirmar = new ePOSOne.btnProduct.Button_WOC();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.lbl_falta = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.lbl_troco = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.panel21 = new System.Windows.Forms.Panel();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.panel9.SuspendLayout();
@@ -87,6 +87,8 @@ namespace Local_Money
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_confirmar)).BeginInit();
             this.panel11.SuspendLayout();
+            this.panel20.SuspendLayout();
+            this.panel19.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
@@ -96,8 +98,6 @@ namespace Local_Money
             this.panel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_cancelar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.panel19.SuspendLayout();
-            this.panel20.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel8
@@ -323,6 +323,66 @@ namespace Local_Money
             this.panel11.Size = new System.Drawing.Size(403, 270);
             this.panel11.TabIndex = 18;
             // 
+            // panel20
+            // 
+            this.panel20.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel20.Controls.Add(this.lbl_troco);
+            this.panel20.Controls.Add(this.label7);
+            this.panel20.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel20.Location = new System.Drawing.Point(0, 219);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(403, 30);
+            this.panel20.TabIndex = 16;
+            // 
+            // lbl_troco
+            // 
+            this.lbl_troco.AutoSize = true;
+            this.lbl_troco.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_troco.Location = new System.Drawing.Point(162, 11);
+            this.lbl_troco.Name = "lbl_troco";
+            this.lbl_troco.Size = new System.Drawing.Size(0, 19);
+            this.lbl_troco.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(10, 11);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(55, 19);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Troco:";
+            // 
+            // panel19
+            // 
+            this.panel19.BackColor = System.Drawing.SystemColors.Control;
+            this.panel19.Controls.Add(this.lbl_falta);
+            this.panel19.Controls.Add(this.label9);
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel19.Location = new System.Drawing.Point(0, 190);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(403, 29);
+            this.panel19.TabIndex = 15;
+            // 
+            // lbl_falta
+            // 
+            this.lbl_falta.AutoSize = true;
+            this.lbl_falta.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_falta.Location = new System.Drawing.Point(162, 11);
+            this.lbl_falta.Name = "lbl_falta";
+            this.lbl_falta.Size = new System.Drawing.Size(0, 19);
+            this.lbl_falta.TabIndex = 13;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(10, 11);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(116, 19);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Valor em falta:";
+            // 
             // panel17
             // 
             this.panel17.BackColor = System.Drawing.Color.DarkSlateGray;
@@ -437,9 +497,9 @@ namespace Local_Money
             this.label2.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(10, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 19);
+            this.label2.Size = new System.Drawing.Size(122, 19);
             this.label2.TabIndex = 11;
-            this.label2.Text = "Impostos:";
+            this.label2.Text = "Impostos (IVA):";
             // 
             // panel13
             // 
@@ -480,6 +540,14 @@ namespace Local_Money
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(403, 35);
             this.panel12.TabIndex = 0;
+            // 
+            // panel21
+            // 
+            this.panel21.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel21.Location = new System.Drawing.Point(53, 27);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(300, 2);
+            this.panel21.TabIndex = 13;
             // 
             // label6
             // 
@@ -548,6 +616,7 @@ namespace Local_Money
             this.btn_confirmar.BackColor = System.Drawing.Color.DarkSlateGray;
             this.btn_confirmar.BorderColor = System.Drawing.Color.Black;
             this.btn_confirmar.ButtonColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_confirmar.Enabled = false;
             this.btn_confirmar.FlatAppearance.BorderSize = 0;
             this.btn_confirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_confirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -562,74 +631,6 @@ namespace Local_Money
             this.btn_confirmar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_confirmar.UseVisualStyleBackColor = false;
             this.btn_confirmar.Click += new System.EventHandler(this.btn_confirmar_Click);
-            // 
-            // panel19
-            // 
-            this.panel19.BackColor = System.Drawing.SystemColors.Control;
-            this.panel19.Controls.Add(this.lbl_falta);
-            this.panel19.Controls.Add(this.label9);
-            this.panel19.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel19.Location = new System.Drawing.Point(0, 190);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(403, 29);
-            this.panel19.TabIndex = 15;
-            // 
-            // lbl_falta
-            // 
-            this.lbl_falta.AutoSize = true;
-            this.lbl_falta.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_falta.Location = new System.Drawing.Point(162, 11);
-            this.lbl_falta.Name = "lbl_falta";
-            this.lbl_falta.Size = new System.Drawing.Size(0, 19);
-            this.lbl_falta.TabIndex = 13;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(10, 11);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(116, 19);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "Valor em falta:";
-            // 
-            // panel20
-            // 
-            this.panel20.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.panel20.Controls.Add(this.lbl_troco);
-            this.panel20.Controls.Add(this.label7);
-            this.panel20.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel20.Location = new System.Drawing.Point(0, 219);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(403, 30);
-            this.panel20.TabIndex = 16;
-            // 
-            // lbl_troco
-            // 
-            this.lbl_troco.AutoSize = true;
-            this.lbl_troco.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_troco.Location = new System.Drawing.Point(162, 3);
-            this.lbl_troco.Name = "lbl_troco";
-            this.lbl_troco.Size = new System.Drawing.Size(0, 19);
-            this.lbl_troco.TabIndex = 16;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(10, 3);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 19);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Troco:";
-            // 
-            // panel21
-            // 
-            this.panel21.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel21.Location = new System.Drawing.Point(53, 27);
-            this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(300, 2);
-            this.panel21.TabIndex = 13;
             // 
             // printDocument1
             // 
@@ -675,6 +676,10 @@ namespace Local_Money
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_confirmar)).EndInit();
             this.panel11.ResumeLayout(false);
+            this.panel20.ResumeLayout(false);
+            this.panel20.PerformLayout();
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
             this.panel16.ResumeLayout(false);
@@ -690,10 +695,6 @@ namespace Local_Money
             this.panel18.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pb_cancelar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.panel19.ResumeLayout(false);
-            this.panel19.PerformLayout();
-            this.panel20.ResumeLayout(false);
-            this.panel20.PerformLayout();
             this.ResumeLayout(false);
 
         }

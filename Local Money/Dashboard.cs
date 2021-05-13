@@ -157,19 +157,11 @@ namespace Local_Money
             Application.Exit();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void p_janela_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
 
         private void frm_dashboard_Load(object sender, EventArgs e)
         {
-            
+             
         }
 
         private void timer1_Tick(object sender, EventArgs e)

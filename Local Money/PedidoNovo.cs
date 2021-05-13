@@ -169,36 +169,50 @@ namespace Local_Money
 
         private void btn_salvar_Click(object sender, EventArgs e)
         {
-            AddQuantidade();
-            AddSubtotal();
-            AddTotal();
-            AddNomes();
-            GuardarPedido gp = new GuardarPedido();
-            gp.ShowDialog();
+            if (p_lista_produtos.Controls.Count == 0)
+            {
+                MessageBox.Show("Nenhum produto foi selecionado");
+            }
+            else
+            {
+                AddQuantidade();
+                AddSubtotal();
+                AddTotal();
+                AddNomes();
+                GuardarPedido gp = new GuardarPedido();
+                gp.ShowDialog();
+            }
         }
 
         private void btn_pagar_Click(object sender, EventArgs e)
         {
-            AddQuantidade();
-            AddSubtotal();
-            AddTotal();
-            AddNomes();
-            Pagamento p = new Pagamento();
-            
-            string[] separa = lbl_subtotal_valor.Text.Split(' ');
-            p.Subtotal = double.Parse(separa[1]) ;
-            
-            separa = lbl_total_valor.Text.Split(' ');
-            p.Total = double.Parse(separa[1]);
-            
-            separa = lbl_promodia_valor.Text.Split(' ');
-            p.Descontos = double.Parse(separa[1]);
+            if(p_lista_produtos.Controls.Count == 0)
+            {
+                MessageBox.Show("Nenhum produto foi selecionado");
+            }
+            else
+            {
+                AddQuantidade();
+                AddSubtotal();
+                AddTotal();
+                AddNomes();
+                Pagamento p = new Pagamento();
 
-            separa = lbl_codpromo_valor.Text.Split(' ');
-            p.Descontos = p.Descontos + double.Parse(separa[1]);
+                string[] separa = lbl_subtotal_valor.Text.Split(' ');
+                p.Subtotal = double.Parse(separa[1]);
 
-            
-            p.ShowDialog();
+                separa = lbl_total_valor.Text.Split(' ');
+                p.Total = double.Parse(separa[1]);
+
+                separa = lbl_promodia_valor.Text.Split(' ');
+                p.Descontos = double.Parse(separa[1]);
+
+                separa = lbl_codpromo_valor.Text.Split(' ');
+                p.Descontos = p.Descontos + double.Parse(separa[1]);
+
+
+                p.ShowDialog();
+            }
         }
 
         public void AddQuantidade()
