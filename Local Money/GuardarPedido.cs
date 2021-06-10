@@ -48,7 +48,7 @@ namespace Local_Money
                     while (reader2.Read())
                     {
                         
-                        BotaoMesa btn_mesa = new BotaoMesa(reader2.GetInt32(0), Selec);
+                        BotaoMesa btn_mesa = new BotaoMesa(reader2.GetInt32(0));
                         if (reader2.GetString(1) == "ocupado")
                             btn_mesa.Ocupado();
                         flp_mesas.Controls.Add(btn_mesa.Criar());
@@ -59,31 +59,39 @@ namespace Local_Money
                 }  
                 else
                 {
-                        if (Selec > 1)
-                            MessageBox.Show("Só é possível selecionar uma das mesas! \nPorfavor, cancele e volte a guardar o pedido");
-                        else if(Selec == 1)
+                    if (Selec > 1)
+                    MessageBox.Show("Só é possível selecionar uma das mesas! \nPorfavor, cancele e volte a guardar o pedido");
+                    else if(Selec == 1)
+                    {
+                        pn.AddNomes();
+                        pn.AddQuantidade();
+                        pn.AddSubtotal();
+                        pn.AddTotal();
+
+                        con.abrir();
+                        SqlCommand com = new SqlCommand
                         {
-                            con.abrir();
-                            SqlCommand com = new SqlCommand
+                            CommandText = "UPDATE tb_mesa SET estado = 'ocupado', id_pedido = '" + Selec.ToString() + "' WHERE id_mesa = '" + Mesa + "'",
+                            Connection = con.SaberConexao(),
+                        };
+                        com.ExecuteNonQuery();
+
+                        int i= 0; 
+                        foreach(Control pl in pn.p_lista_produtos.Controls)
+                        {
+                            SqlCommand com2 = new SqlCommand
                             {
-                                CommandText = "UPDATE tb_mesa SET estado = 'ocupado', id_pedido = '" + Selec.ToString() + "' WHERE id_mesa = '" + Mesa + "'",
+                                CommandText = "INSERT INTO tb_pedido_currente (id_mesa,id_produto,estado,quantidade,id_pedido) VALUES ('" + Mesa + "', '" + pn.produtos[i] + "', 'Em preparo', '" + pn.quantidades[i] + "', '" + Selec.ToString() + "')",
                                 Connection = con.SaberConexao(),
                             };
-                            com.ExecuteNonQuery();
-
-                            int i= 0; 
-                            foreach(Control pl in pn.p_lista_produtos.Controls)
-                            {
-                                SqlCommand com2 = new SqlCommand
-                                {
-                                    CommandText = "INSERT INTO tb_pedido_currente (id_mesa,id_produto,estado,quantidade,id_pedido) VALUES ('" + Mesa + "', '" + pn.produtos[i] + "', 'Em preparo', '" + pn.quantidades[i] + "', '" + Selec.ToString() + "')",
-                                    Connection = con.SaberConexao(),
-                                };
-                                com2.ExecuteNonQuery();
-                                i++;
-                            }
-                            con.fechar();
+                            com2.ExecuteNonQuery();
+                            i++;
                         }
+                        con.fechar();
+                        MessageBox.Show("Pedido Salvo com sucesso! \n\nEm preparação");
+                        pn.Close();
+                        this.Close();
+                    }
                 }
             }
             catch(Exception er)
@@ -91,6 +99,11 @@ namespace Local_Money
                 MessageBox.Show("ERRRROOOOO!!!! " + er);
             }
             
+        }
+
+        private void GuardarPedido_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

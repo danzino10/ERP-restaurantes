@@ -234,6 +234,7 @@ namespace Local_Money
             this.Name = "GuardarPedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GuardarPedido";
+            this.Load += new System.EventHandler(this.GuardarPedido_Load);
             this.p_botoes_pedido.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pb_cancelar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_confirmar)).EndInit();

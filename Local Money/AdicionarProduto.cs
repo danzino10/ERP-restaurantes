@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
 using System.Drawing.Imaging;
-using System.Drawing;
 
 namespace Local_Money
 {
@@ -97,32 +96,46 @@ namespace Local_Money
                         CommandText = "INSERT INTO tb_produto (nome,valor,descricao,id_categoria,id_menu,imagem,stock) VALUES (@nome,@valor,@descricao,@categoria,@menu,@imagem,@stock)"
                     };
 
-                    SqlParameter nome = new SqlParameter("@nome", SqlDbType.VarChar);
-                    nome.Value = txt_nome.Text;
+                    SqlParameter nome = new SqlParameter("@nome", SqlDbType.VarChar)
+                    {
+                        Value = txt_nome.Text
+                    };
                     com3.Parameters.Add(nome);
 
-                    SqlParameter valor = new SqlParameter("@valor", SqlDbType.Float);
-                    valor.Value = float.Parse(vv[0]);
+                    SqlParameter valor = new SqlParameter("@valor", SqlDbType.Float)
+                    {
+                        Value = float.Parse(vv[0])
+                    };
                     com3.Parameters.Add(valor);
 
-                    SqlParameter descricao = new SqlParameter("@descricao", SqlDbType.Text);
-                    descricao.Value = txt_descricao.Text;
+                    SqlParameter descricao = new SqlParameter("@descricao", SqlDbType.Text)
+                    {
+                        Value = txt_descricao.Text
+                    };
                     com3.Parameters.Add(descricao);
 
-                    SqlParameter categoria = new SqlParameter("@categoria", SqlDbType.Int);
-                    categoria.Value = nn[0].Trim();
+                    SqlParameter categoria = new SqlParameter("@categoria", SqlDbType.Int)
+                    {
+                        Value = nn[0].Trim()
+                    };
                     com3.Parameters.Add(categoria);
 
-                    SqlParameter menu = new SqlParameter("@menu", SqlDbType.Int);
-                    menu.Value = cb_menu.SelectedIndex + 1;
+                    SqlParameter menu = new SqlParameter("@menu", SqlDbType.Int)
+                    {
+                        Value = cb_menu.SelectedIndex + 1
+                    };
                     com3.Parameters.Add(menu);
 
-                    SqlParameter imagem = new SqlParameter("@imagem", SqlDbType.VarBinary);
-                    imagem.Value = foto;
+                    SqlParameter imagem = new SqlParameter("@imagem", SqlDbType.VarBinary)
+                    {
+                        Value = foto
+                    };
                     com3.Parameters.Add(imagem);
 
-                    SqlParameter stock = new SqlParameter("@stock", SqlDbType.VarChar);
-                    stock.Value = "indisponível";
+                    SqlParameter stock = new SqlParameter("@stock", SqlDbType.VarChar)
+                    {
+                        Value = "indisponível"
+                    };
                     com3.Parameters.Add(stock);
 
                     com3.ExecuteNonQuery();
@@ -190,7 +203,7 @@ namespace Local_Money
 
         private void txt_preco_Leave(object sender, EventArgs e)
         {
-            Double value;
+            double value;
             if (Double.TryParse(txt_preco.Text, out value))
                 txt_preco.Text = String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:C2}", value);
             else

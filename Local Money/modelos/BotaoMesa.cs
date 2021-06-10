@@ -9,12 +9,13 @@ namespace Local_Money.modelos
 {
     class BotaoMesa
     {
-        private int Escolhido;
-        private int Selec;
+        
+        
+
         private int Mesa;
-        public BotaoMesa (int mesa, int selecionado)
+
+        public BotaoMesa (int mesa)
         {
-            Selec = selecionado;
             Mesa = mesa;
             PainelBotao.Controls.Add(PainelCima);
             PainelBotao.Controls.Add(PainelBaixo);
@@ -132,10 +133,42 @@ namespace Local_Money.modelos
 
         private void BotaoMesa_Click(Object sender, EventArgs e)
         {
+            
+            
+
             Selecionado();
-            GuardarPedido gp = (GuardarPedido)Application.OpenForms[3];
-            gp.Selec++;
-            gp.Mesa = Mesa;
+            if (Application.OpenForms.Count > 3)
+            {
+                GuardarPedido gp = (GuardarPedido)Application.OpenForms[3];
+
+                if (Application.OpenForms[3] == gp)
+                {
+                    gp.Selec++;
+                    gp.Mesa = Mesa;
+                    
+                }
+            }
+            else
+            {
+                PedidoAlterar pa = (PedidoAlterar)Application.OpenForms[2];
+
+                if (Application.OpenForms[2] == pa)
+                {
+                    pa.Selec++;
+                    pa.Mesa = Mesa;
+                    pa.txt_pesquisar.Text = Mesa.ToString();
+                    
+                    foreach(Control bm in pa.flp_mesas.Controls)
+                    {
+                        if(bm is Panel)
+                        {
+                            
+                        }
+                    }
+                }
+            }
+            
+            
         }
     }
 }

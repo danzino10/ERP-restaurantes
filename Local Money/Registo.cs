@@ -69,7 +69,7 @@ namespace Local_Money
                     com.CommandText = "SELECT * FROM tb_user WHERE email = '" + txtEmail.Text + "' OR telefone = '" + txtTelefone.Text + "'";
                     SqlDataReader reader = com.ExecuteReader();
 
-                    if (reader.Read() == false)
+                    if (reader.Read() is false)
                     {
                         reader.Close();
                         SqlCommand com2 = new SqlCommand();

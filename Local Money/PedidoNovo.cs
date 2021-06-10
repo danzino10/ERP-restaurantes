@@ -175,10 +175,7 @@ namespace Local_Money
             }
             else
             {
-                AddQuantidade();
-                AddSubtotal();
-                AddTotal();
-                AddNomes();
+                
                 GuardarPedido gp = new GuardarPedido();
                 gp.ShowDialog();
             }
@@ -192,10 +189,7 @@ namespace Local_Money
             }
             else
             {
-                AddQuantidade();
-                AddSubtotal();
-                AddTotal();
-                AddNomes();
+                
                 Pagamento p = new Pagamento();
 
                 string[] separa = lbl_subtotal_valor.Text.Split(' ');

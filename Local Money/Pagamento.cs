@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Data.SqlClient;
+using ESCPOS_NET;
+using ESCPOS_NET.Emitters;
+using System.IO;
+using ESCPOS_NET.Utilities;
 
 namespace Local_Money
 {
@@ -18,8 +22,12 @@ namespace Local_Money
     {
 
         public double Subtotal, Total, Impostos, Descontos, Entregue, Troco, Falta;
+        PedidoNovo pn = (PedidoNovo)Application.OpenForms[2];
+        int altura;
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            int y = 320;
+
             e.Graphics.DrawImage(Properties.Resources._004_chef, new Point(380, 10));
             e.Graphics.DrawString("FoodGest LDA.", new Font("Roboto", 20, FontStyle.Bold), Brushes.Black, new Point(320,90));
             e.Graphics.DrawString("NIF: 002869194OE033", new Font("Roboto", 12, FontStyle.Bold), Brushes.Black, new Point(335, 130));
@@ -44,8 +52,8 @@ namespace Local_Money
             e.Graphics.DrawString("Preço un.", new Font("Roboto", 14, FontStyle.Bold), Brushes.Black, new Point(400, 280));
             e.Graphics.DrawString("Preço tot.", new Font("Roboto", 14, FontStyle.Bold), Brushes.Black, new Point(600, 280));
 
-            int y = 320;
-            PedidoNovo pn = (PedidoNovo)Application.OpenForms[2];
+            
+            
             
             foreach(string item in pn.nomes)
             {
@@ -121,6 +129,7 @@ namespace Local_Money
             e.Graphics.DrawString("\r\r\r\r\rProcessado por FoodGest Lda.\n\rSoluções tecnológicas para o seu restaurante", new Font("Roboto", 14, FontStyle.Regular), Brushes.Black, new Point(200, y + 420));
             e.Graphics.DrawString("\r\r\r\r\rDesenvolvido por Danilo Carvalho\n\rdanzino10@gmail.com - (+244) 936530760\n\rRua Samuel Bernardo nº18 1ºc", new Font("Roboto", 12, FontStyle.Regular), Brushes.Black, new Point(200, y + 480));
 
+            altura = y + 200;
         }
 
         private void Pagamento_Load(object sender, EventArgs e)
@@ -138,8 +147,114 @@ namespace Local_Money
 
         private void btn_confirmar_Click(object sender, EventArgs e)
         {
+
+            pn.AddNomes();
+            pn.AddQuantidade();
+            pn.AddSubtotal();
+            pn.AddTotal();
+            
+            printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("Fatura", 500, altura);
             printPreviewDialog1.Document = printDocument1;
             printPreviewDialog1.ShowDialog();
+            printDocument1.Print();
+
+
+            // Ethernet or WiFi
+            //var printer = new NetworkPrinter(ipAddress: "192.168.1.50", port: 9000, reconnectOnTimeout: true);
+
+            // USB, Bluetooth, or Serial
+            var printer = new SerialPrinter(portName: "COM5", baudRate: 115200);
+            // Linux output to USB / Serial file
+            //var printer = new FilePrinter(filePath: "/dev/usb/lp0");
+
+            //byte[] m_Bytes = StreamHelper.ReadToEnd(mystream);
+            var esc = new EPSON();
+            printer.Write(
+              ByteSplicer.Combine(
+                esc.CenterAlign(),
+                esc.PrintImage(ImageToByteArray(Properties.Resources._004_chef), true),
+                esc.PrintLine(""),
+                esc.SetBarcodeHeightInDots(360),
+                esc.SetBarWidth(BarWidth.Default),
+                esc.SetBarLabelPosition(BarLabelPrintPosition.None),
+                esc.PrintBarcode(BarcodeType.ITF, "0123456789"),
+                esc.PrintLine(""),
+                esc.PrintLine("FOODGEST, REESTAURANTE & BAR"),
+                esc.PrintLine("RUA SAMUEL BERNARDO N18,  1-C"),
+                esc.PrintLine("(244) 936530760"),
+                esc.PrintLine(""),
+                esc.PrintLine("BAIRRO DAS INGOMBOTAS, LUANDA"),
+                esc.PrintLine("CONTRIBUINTE Nº "),
+                esc.PrintLine(""),
+                esc.SetStyles(PrintStyle.Underline),
+                esc.PrintLine("www.bhphotovideo.com"),
+                esc.SetStyles(PrintStyle.None),
+                esc.PrintLine(""),
+                esc.PrintLine("----------------------------------------------------------------"),
+                esc.LeftAlign(),
+                esc.PrintLine("Pedido: 123456789        Data:" + DateTime.Now.ToString()),
+                esc.PrintLine(""),
+                esc.PrintLine(""),
+                esc.SetStyles(PrintStyle.Bold)
+              )
+            );
+
+            foreach (var c in from Control c in pn.p_lista_produtos.Controls
+                              where c is Panel
+                              select c)
+            {
+                foreach (Control co in c.Controls)
+                {
+                    int qtd = 0;
+                    double val = 0, tot = 0;
+                    string nome = "";
+
+                    if (co is Label)
+                    {
+
+                        if (co.Tag == "0")
+                            qtd = int.Parse(co.Text);
+                        if (co.Tag == "1")
+                            val = int.Parse(co.Text);
+                        if (co.Tag == "2")
+                            tot = int.Parse(co.Text);
+                        if (co.Tag == "3")
+                            nome = co.Text;
+                        printer.Write(
+                            ByteSplicer.Combine(
+                                esc.PrintLine("" + qtd + "       " + val + "      " + tot),
+                                esc.PrintLine("     " + nome),
+                                esc.PrintLine("")
+                                )
+                            );
+                    }
+                }
+            }
+
+            printer.Write(
+                ByteSplicer.Combine(
+                    esc.RightAlign(),
+                    esc.PrintLine("SUBTOTAL         " + Subtotal + " Kz"),
+                    esc.PrintLine("IMPOSTO (IVA 14%)         " + Impostos + " Kz"),
+                    esc.PrintLine("TOTAL:         " + Total + " Kz"),
+                    esc.PrintLine(""),
+                    esc.PrintLine("Valor Entregue:         " + Entregue + " Kz"),
+                    esc.PrintLine("Troco:        " + Troco + " Kz"),
+                    esc.LeftAlign(),
+                    esc.SetStyles(PrintStyle.Bold | PrintStyle.FontB),
+                    esc.PrintLine("CLIENTE:                   "),
+                    esc.PrintLine(" ________________________________    "),
+                    esc.PrintLine("         Obrigado e volte sempre ")
+                )
+            );
+
+            
+            
+            
+
+
+            this.Close();
+            pn.Close();
         }
 
         public Pagamento()
@@ -157,6 +272,15 @@ namespace Local_Money
         {
             PagamentoDinheiro pd = new PagamentoDinheiro();
             pd.ShowDialog();
+        }
+
+        public byte[] ImageToByteArray(Image imageIn)
+        {
+            using (var ms = new MemoryStream())
+            {
+                imageIn.Save(ms, imageIn.RawFormat);
+                return ms.ToArray();
+            }
         }
     }
 }

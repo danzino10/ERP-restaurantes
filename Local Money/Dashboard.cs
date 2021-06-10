@@ -84,6 +84,7 @@ namespace Local_Money
 
         private void btn_alterar_pedido_Click(object sender, EventArgs e)
         {
+            AbrirJanela(new PedidoAlterar());
             //
             //
             EsconderSubmenu();

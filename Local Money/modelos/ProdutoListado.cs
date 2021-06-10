@@ -15,7 +15,7 @@ namespace Local_Money.modelos
         private string[] ss;
         private double valor_produto, total_produto, subtotal_geral;
         private int Id;
-        public int Mesa;
+        //public int Mesa;
         DecimalFormat df = new DecimalFormat("#.##");
 
         public Panel PainelProduto = new Panel
@@ -218,8 +218,14 @@ namespace Local_Money.modelos
                 index = pn.produtos.IndexOf(Id);
                 pn.produtos.Remove(Id);
                 
-                pn.totais.RemoveAt(index);
-                pn.totais.RemoveAt(index);
+                if(pn.totais.Count > 0)
+                {
+                    pn.totais.RemoveAt(index);
+                    pn.subtotais.RemoveAt(index);
+                    pn.nomes.RemoveAt(index);
+                    pn.quantidades.RemoveAt(index);
+                }
+                
             }
                 
 

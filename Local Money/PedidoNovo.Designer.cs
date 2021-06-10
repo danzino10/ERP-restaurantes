@@ -44,27 +44,31 @@ namespace Local_Money
             this.lbl_iva = new System.Windows.Forms.Label();
             this.lbl_subtotal = new System.Windows.Forms.Label();
             this.p_botoes_pedido = new System.Windows.Forms.Panel();
-            this.pb_pagar = new System.Windows.Forms.PictureBox();
-            this.btn_pagar = new ePOSOne.btnProduct.Button_WOC();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btn_salvar = new ePOSOne.btnProduct.Button_WOC();
             this.p_cabecalho_pedido = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.p_navegador = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txt_pesquisar = new System.Windows.Forms.TextBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btn_voltar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.flp_cardapio = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btn_voltar = new System.Windows.Forms.Button();
+            this.pb_pagar = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btn_pagar = new ePOSOne.btnProduct.Button_WOC();
+            this.btn_salvar = new ePOSOne.btnProduct.Button_WOC();
             this.p_pedido.SuspendLayout();
             this.p_total.SuspendLayout();
             this.p_botoes_pedido.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_pagar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.p_navegador.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_pagar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // p_pedido
@@ -240,66 +244,6 @@ namespace Local_Money
             this.p_botoes_pedido.Size = new System.Drawing.Size(320, 59);
             this.p_botoes_pedido.TabIndex = 0;
             // 
-            // pb_pagar
-            // 
-            this.pb_pagar.Image = global::Local_Money.Properties.Resources.credit_card;
-            this.pb_pagar.Location = new System.Drawing.Point(166, 15);
-            this.pb_pagar.Name = "pb_pagar";
-            this.pb_pagar.Size = new System.Drawing.Size(32, 32);
-            this.pb_pagar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pb_pagar.TabIndex = 3;
-            this.pb_pagar.TabStop = false;
-            // 
-            // btn_pagar
-            // 
-            this.btn_pagar.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_pagar.BorderColor = System.Drawing.Color.Black;
-            this.btn_pagar.ButtonColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_pagar.FlatAppearance.BorderSize = 0;
-            this.btn_pagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_pagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_pagar.Location = new System.Drawing.Point(143, 3);
-            this.btn_pagar.Name = "btn_pagar";
-            this.btn_pagar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_pagar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btn_pagar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_pagar.Size = new System.Drawing.Size(143, 53);
-            this.btn_pagar.TabIndex = 6;
-            this.btn_pagar.Text = "             Pagar agora";
-            this.btn_pagar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_pagar.UseVisualStyleBackColor = false;
-            this.btn_pagar.Click += new System.EventHandler(this.btn_pagar_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Local_Money.Properties.Resources.floppy_disk;
-            this.pictureBox1.Location = new System.Drawing.Point(36, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btn_salvar
-            // 
-            this.btn_salvar.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_salvar.BorderColor = System.Drawing.Color.Black;
-            this.btn_salvar.ButtonColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_salvar.FlatAppearance.BorderSize = 0;
-            this.btn_salvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_salvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_salvar.Location = new System.Drawing.Point(16, 3);
-            this.btn_salvar.Name = "btn_salvar";
-            this.btn_salvar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_salvar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btn_salvar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_salvar.Size = new System.Drawing.Size(117, 53);
-            this.btn_salvar.TabIndex = 4;
-            this.btn_salvar.Text = "          Salvar";
-            this.btn_salvar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_salvar.UseVisualStyleBackColor = false;
-            this.btn_salvar.Click += new System.EventHandler(this.btn_salvar_Click);
-            // 
             // p_cabecalho_pedido
             // 
             this.p_cabecalho_pedido.BackColor = System.Drawing.Color.DarkSlateGray;
@@ -320,9 +264,9 @@ namespace Local_Money
             // 
             // p_navegador
             // 
+            this.p_navegador.Controls.Add(this.panel5);
             this.p_navegador.Controls.Add(this.pictureBox2);
             this.p_navegador.Controls.Add(this.txt_pesquisar);
-            this.p_navegador.Controls.Add(this.panel4);
             this.p_navegador.Controls.Add(this.button1);
             this.p_navegador.Controls.Add(this.btn_voltar);
             this.p_navegador.Controls.Add(this.panel3);
@@ -331,6 +275,37 @@ namespace Local_Money
             this.p_navegador.Name = "p_navegador";
             this.p_navegador.Size = new System.Drawing.Size(422, 50);
             this.p_navegador.TabIndex = 2;
+            // 
+            // txt_pesquisar
+            // 
+            this.txt_pesquisar.BackColor = System.Drawing.SystemColors.Control;
+            this.txt_pesquisar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_pesquisar.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_pesquisar.Location = new System.Drawing.Point(114, 16);
+            this.txt_pesquisar.Name = "txt_pesquisar";
+            this.txt_pesquisar.Size = new System.Drawing.Size(193, 20);
+            this.txt_pesquisar.TabIndex = 4;
+            this.txt_pesquisar.Text = "Nome ou Id do produto";
+            this.txt_pesquisar.Click += new System.EventHandler(this.txt_pesquisar_Click);
+            this.txt_pesquisar.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 48);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(422, 2);
+            this.panel3.TabIndex = 0;
+            // 
+            // flp_cardapio
+            // 
+            this.flp_cardapio.AutoScroll = true;
+            this.flp_cardapio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flp_cardapio.Location = new System.Drawing.Point(0, 50);
+            this.flp_cardapio.Name = "flp_cardapio";
+            this.flp_cardapio.Size = new System.Drawing.Size(422, 451);
+            this.flp_cardapio.TabIndex = 4;
             // 
             // pictureBox2
             // 
@@ -341,27 +316,6 @@ namespace Local_Money
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
-            // 
-            // txt_pesquisar
-            // 
-            this.txt_pesquisar.BackColor = System.Drawing.SystemColors.Control;
-            this.txt_pesquisar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_pesquisar.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_pesquisar.Location = new System.Drawing.Point(99, 16);
-            this.txt_pesquisar.Name = "txt_pesquisar";
-            this.txt_pesquisar.Size = new System.Drawing.Size(257, 20);
-            this.txt_pesquisar.TabIndex = 4;
-            this.txt_pesquisar.Text = "Introduza o nome ou id do produto";
-            this.txt_pesquisar.Click += new System.EventHandler(this.txt_pesquisar_Click);
-            this.txt_pesquisar.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel4.Location = new System.Drawing.Point(56, 42);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(300, 2);
-            this.panel4.TabIndex = 3;
             // 
             // button1
             // 
@@ -391,23 +345,101 @@ namespace Local_Money
             this.btn_voltar.TabIndex = 1;
             this.btn_voltar.UseVisualStyleBackColor = false;
             // 
-            // panel3
+            // pb_pagar
             // 
-            this.panel3.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 48);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(422, 2);
-            this.panel3.TabIndex = 0;
+            this.pb_pagar.Image = global::Local_Money.Properties.Resources.credit_card;
+            this.pb_pagar.Location = new System.Drawing.Point(166, 15);
+            this.pb_pagar.Name = "pb_pagar";
+            this.pb_pagar.Size = new System.Drawing.Size(32, 32);
+            this.pb_pagar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pb_pagar.TabIndex = 3;
+            this.pb_pagar.TabStop = false;
             // 
-            // flp_cardapio
+            // pictureBox1
             // 
-            this.flp_cardapio.AutoScroll = true;
-            this.flp_cardapio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flp_cardapio.Location = new System.Drawing.Point(0, 50);
-            this.flp_cardapio.Name = "flp_cardapio";
-            this.flp_cardapio.Size = new System.Drawing.Size(422, 451);
-            this.flp_cardapio.TabIndex = 4;
+            this.pictureBox1.Image = global::Local_Money.Properties.Resources.floppy_disk;
+            this.pictureBox1.Location = new System.Drawing.Point(36, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.panel7);
+            this.panel5.Controls.Add(this.panel8);
+            this.panel5.Controls.Add(this.panel6);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel5.Location = new System.Drawing.Point(50, 38);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(322, 10);
+            this.panel5.TabIndex = 7;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(50, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(222, 2);
+            this.panel7.TabIndex = 6;
+            // 
+            // panel8
+            // 
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel8.Location = new System.Drawing.Point(272, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(50, 10);
+            this.panel8.TabIndex = 5;
+            // 
+            // panel6
+            // 
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(50, 10);
+            this.panel6.TabIndex = 0;
+            // 
+            // btn_pagar
+            // 
+            this.btn_pagar.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_pagar.BorderColor = System.Drawing.Color.Black;
+            this.btn_pagar.ButtonColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_pagar.FlatAppearance.BorderSize = 0;
+            this.btn_pagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_pagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_pagar.Location = new System.Drawing.Point(143, 3);
+            this.btn_pagar.Name = "btn_pagar";
+            this.btn_pagar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_pagar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btn_pagar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_pagar.Size = new System.Drawing.Size(143, 53);
+            this.btn_pagar.TabIndex = 6;
+            this.btn_pagar.Text = "             Pagar agora";
+            this.btn_pagar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_pagar.UseVisualStyleBackColor = false;
+            this.btn_pagar.Click += new System.EventHandler(this.btn_pagar_Click);
+            // 
+            // btn_salvar
+            // 
+            this.btn_salvar.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_salvar.BorderColor = System.Drawing.Color.Black;
+            this.btn_salvar.ButtonColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_salvar.FlatAppearance.BorderSize = 0;
+            this.btn_salvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_salvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_salvar.Location = new System.Drawing.Point(16, 3);
+            this.btn_salvar.Name = "btn_salvar";
+            this.btn_salvar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_salvar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btn_salvar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_salvar.Size = new System.Drawing.Size(117, 53);
+            this.btn_salvar.TabIndex = 4;
+            this.btn_salvar.Text = "          Salvar";
+            this.btn_salvar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_salvar.UseVisualStyleBackColor = false;
+            this.btn_salvar.Click += new System.EventHandler(this.btn_salvar_Click);
             // 
             // PedidoNovo
             // 
@@ -428,11 +460,12 @@ namespace Local_Money
             this.p_total.PerformLayout();
             this.p_botoes_pedido.ResumeLayout(false);
             this.p_botoes_pedido.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_pagar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.p_navegador.ResumeLayout(false);
             this.p_navegador.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_pagar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -467,7 +500,10 @@ namespace Local_Money
         public System.Windows.Forms.Label lbl_subtotal_valor;
         public System.Windows.Forms.FlowLayoutPanel flp_cardapio;
         private System.Windows.Forms.TextBox txt_pesquisar;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel6;
     }
 }
