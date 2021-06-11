@@ -245,6 +245,7 @@ namespace Local_Money
                     esc.PrintLine("CLIENTE:                   "),
                     esc.PrintLine(" ________________________________    "),
                     esc.PrintLine("         Obrigado e volte sempre ")
+
                 )
             );
 
