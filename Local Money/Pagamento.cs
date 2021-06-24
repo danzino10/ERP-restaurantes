@@ -24,6 +24,9 @@ namespace Local_Money
         public double Subtotal, Total, Impostos, Descontos, Entregue, Troco, Falta;
         PedidoNovo pn = (PedidoNovo)Application.OpenForms[2];
         int altura;
+        private string quantidades, produtos;
+        Conexao con = new Conexao();
+
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             int y = 320;
@@ -144,7 +147,7 @@ namespace Local_Money
             lbl_troco.Text = "Kz " + df.Format(0);
             lbl_falta.Text = "Kz " + df.Format(Total);
         }
-
+        byte[] header, footer, fatura, corpo;
         private void btn_confirmar_Click(object sender, EventArgs e)
         {
 
@@ -164,96 +167,132 @@ namespace Local_Money
 
             // USB, Bluetooth, or Serial
             var printer = new SerialPrinter(portName: "COM5", baudRate: 115200);
+
             // Linux output to USB / Serial file
             //var printer = new FilePrinter(filePath: "/dev/usb/lp0");
 
             //byte[] m_Bytes = StreamHelper.ReadToEnd(mystream);
+            
             var esc = new EPSON();
-            printer.Write(
-              ByteSplicer.Combine(
-                esc.CenterAlign(),
-                esc.PrintImage(ImageToByteArray(Properties.Resources._004_chef), true),
-                esc.PrintLine(""),
-                esc.SetBarcodeHeightInDots(360),
-                esc.SetBarWidth(BarWidth.Default),
-                esc.SetBarLabelPosition(BarLabelPrintPosition.None),
-                esc.PrintBarcode(BarcodeType.ITF, "0123456789"),
-                esc.PrintLine(""),
-                esc.PrintLine("FOODGEST, REESTAURANTE & BAR"),
-                esc.PrintLine("RUA SAMUEL BERNARDO N18,  1-C"),
-                esc.PrintLine("(244) 936530760"),
-                esc.PrintLine(""),
-                esc.PrintLine("BAIRRO DAS INGOMBOTAS, LUANDA"),
-                esc.PrintLine("CONTRIBUINTE Nº "),
-                esc.PrintLine(""),
-                esc.SetStyles(PrintStyle.Underline),
-                esc.PrintLine("www.bhphotovideo.com"),
-                esc.SetStyles(PrintStyle.None),
-                esc.PrintLine(""),
-                esc.PrintLine("----------------------------------------------------------------"),
-                esc.LeftAlign(),
-                esc.PrintLine("Pedido: 123456789        Data:" + DateTime.Now.ToString()),
-                esc.PrintLine(""),
-                esc.PrintLine(""),
-                esc.SetStyles(PrintStyle.Bold)
-              )
-            );
+            header = ByteSplicer.Combine(
+              esc.CenterAlign(),
+              esc.PrintImage(ImageToByteArray(Properties.Resources._004_chef), true),
+              esc.PrintLine(""),
+              esc.SetBarcodeHeightInDots(360),
+              esc.SetBarWidth(BarWidth.Default),
+              esc.SetBarLabelPosition(BarLabelPrintPosition.None),
+              esc.PrintBarcode(BarcodeType.ITF, "0123456789"),
+              esc.PrintLine(""),
+              esc.PrintLine("FOODGEST, REESTAURANTE & BAR"),
+              esc.PrintLine("RUA SAMUEL BERNARDO N18,  1-C"),
+              esc.PrintLine("(244) 936530760"),
+              esc.PrintLine(""),
+              esc.PrintLine("BAIRRO DAS INGOMBOTAS, LUANDA"),
 
-            foreach (var c in from Control c in pn.p_lista_produtos.Controls
-                              where c is Panel
-                              select c)
+              esc.PrintLine("CONTRIBUINTE Nº "),
+              esc.PrintLine(""),
+              esc.SetStyles(PrintStyle.Underline),
+              esc.PrintLine("www.bhphotovideo.com"),
+              esc.SetStyles(PrintStyle.None),
+              esc.PrintLine(""),
+              esc.PrintLine("----------------------------------------------------------------"),
+              esc.LeftAlign(),
+              esc.PrintLine("Pedido: 123456789        Data:" + DateTime.Now.ToString()),
+              esc.PrintLine(""),
+              esc.PrintLine(""),
+              esc.SetStyles(PrintStyle.Bold)
+              );
+            fatura = header;
+
+            string[] split;
+            int qtd = 0;
+            double val = 0, tot = 0;
+            string nome = "";
+            foreach (Control c in from Control c in pn.p_lista_produtos.Controls
+                                      where c is Panel
+                                      select c)
             {
                 foreach (Control co in c.Controls)
                 {
-                    int qtd = 0;
-                    double val = 0, tot = 0;
-                    string nome = "";
+                    
 
                     if (co is Label)
                     {
 
                         if (co.Tag == "0")
+                        {
                             qtd = int.Parse(co.Text);
+                            quantidades = quantidades + "," + qtd;
+                        }
                         if (co.Tag == "1")
-                            val = int.Parse(co.Text);
+                        {
+                            split = co.Text.Split(' ');
+                            val = int.Parse(split[1]);
+                        }
                         if (co.Tag == "2")
-                            tot = int.Parse(co.Text);
+                        {
+                            split = co.Text.Split(' ');
+                            tot = int.Parse(split[1]);
+                        }
                         if (co.Tag == "3")
+                        {
                             nome = co.Text;
-                        printer.Write(
-                            ByteSplicer.Combine(
-                                esc.PrintLine("" + qtd + "       " + val + "      " + tot),
-                                esc.PrintLine("     " + nome),
-                                esc.PrintLine("")
-                                )
+                        }
+                        corpo = ByteSplicer.Combine(
+                            esc.PrintLine("" + qtd + "       " + val + "      " + tot),
+                            esc.PrintLine("     " + nome),
+                            esc.PrintLine("")
                             );
+
+                        fatura = fatura.Concat(corpo).ToArray();
                     }
                 }
             }
-
-            printer.Write(
-                ByteSplicer.Combine(
-                    esc.RightAlign(),
-                    esc.PrintLine("SUBTOTAL         " + Subtotal + " Kz"),
-                    esc.PrintLine("IMPOSTO (IVA 14%)         " + Impostos + " Kz"),
-                    esc.PrintLine("TOTAL:         " + Total + " Kz"),
-                    esc.PrintLine(""),
-                    esc.PrintLine("Valor Entregue:         " + Entregue + " Kz"),
-                    esc.PrintLine("Troco:        " + Troco + " Kz"),
-                    esc.LeftAlign(),
-                    esc.SetStyles(PrintStyle.Bold | PrintStyle.FontB),
-                    esc.PrintLine("CLIENTE:                   "),
-                    esc.PrintLine(" ________________________________    "),
-                    esc.PrintLine("         Obrigado e volte sempre ")
-
-                )
-            );
-
             
-            
+            footer = ByteSplicer.Combine(
+                esc.RightAlign(),
+                esc.PrintLine("SUBTOTAL                  " + Subtotal + " Kz"),
+                esc.PrintLine("IMPOSTO (IVA 14%)         " + Impostos + " Kz"),
+                esc.PrintLine("TOTAL:                    " + Total + " Kz"),
+                esc.PrintLine(""),
+                esc.PrintLine("Valor Entregue:           " + Entregue + " Kz"),
+                esc.PrintLine("Troco:                    " + Troco + " Kz"),
+                esc.LeftAlign(),
+                esc.SetStyles(PrintStyle.Bold | PrintStyle.FontB),
+                esc.PrintLine("CLIENTE:                   "),
+                esc.PrintLine("     ________________________________    "),
+                esc.PrintLine("         Obrigado e volte sempre ")
+                
+                );
+
+            fatura = fatura.Concat(footer).ToArray();
+            var fs = new MemoryStream(fatura);
             
 
+            for(int i = 0; i<pn.produtos.Count; i++)
+            {
+                produtos = produtos + "," + pn.produtos.ElementAt(i);
+            }
 
+            con.abrir();
+
+            try
+            {
+                SqlCommand com = new SqlCommand
+                {
+                    Connection = con.SaberConexao(),
+                    CommandText = "INSERT INTO tb_pedido_concluido (produtos,quantidades,total_geral,fatura) VALUES ('" + produtos + "','" + quantidades + "','" + Total + "','" + fs.ToArray() + "')",
+                };
+                com.ExecuteNonQuery();
+            }
+            catch(Exception er)
+            {
+                MessageBox.Show("Erro   " + er);
+            }
+
+            con.fechar();
+
+            //printer.Write(fatura);
             this.Close();
             pn.Close();
         }

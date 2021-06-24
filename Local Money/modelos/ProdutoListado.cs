@@ -18,7 +18,7 @@ namespace Local_Money.modelos
         //public int Mesa;
         DecimalFormat df = new DecimalFormat("#.##");
 
-        public Panel PainelProduto = new Panel
+        private Panel PainelProduto = new Panel
         {
             Width = 320,
             Height = 75,
@@ -56,35 +56,35 @@ namespace Local_Money.modelos
 
         }
 
-        Panel PainelCima = new Panel
+        private Panel PainelCima = new Panel
         {
             BackColor = Color.DarkSlateGray,
             Location = new Point(16, 34),
             Size = new Size(67, 2),
         };
 
-        Panel PainelBaixo = new Panel
+        private Panel PainelBaixo = new Panel
         {
             BackColor = Color.DarkSlateGray,
             Location = new Point(16, 66),
             Size = new Size(67, 2),
         };
 
-        Panel PainelEsquerda = new Panel
+        private Panel PainelEsquerda = new Panel
         {
             BackColor = System.Drawing.Color.DarkSlateGray,
             Location = new Point(16, 36),
             Size = new Size(2, 30),
         };
 
-        Panel PainelDireita = new Panel
+        private Panel PainelDireita = new Panel
         {
             BackColor = Color.DarkSlateGray,
             Location = new Point(81, 36),
             Size = new Size(2, 30),
         };
 
-        public Label NomeProduto = new Label
+        private Label NomeProduto = new Label
         {
             Location = new Point(6, 7),
             Font = new Font("Roboto", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0))),
@@ -95,7 +95,7 @@ namespace Local_Money.modelos
             Tag = "3",
         };
 
-        public Label ValorProduto = new Label
+        private Label ValorProduto = new Label
         {
             Location = new Point(103, 52),
             Font = new Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
@@ -105,7 +105,7 @@ namespace Local_Money.modelos
             Tag = "1",
         };
 
-        public Label TotalProduto = new Label
+        private Label TotalProduto = new Label
         {
             Location = new Point(217, 47),
             Font = new Font("Roboto", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0))),
@@ -117,7 +117,7 @@ namespace Local_Money.modelos
             Tag = "2",
         };
 
-        public Label QuantidadeProduto = new Label
+        private Label QuantidadeProduto = new Label
         {
             Location = new Point(19, 44),
             Font = new Font("Roboto", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0))),
@@ -128,7 +128,7 @@ namespace Local_Money.modelos
             Tag = "0",
         };
 
-        Button Retirar = new Button
+        private Button Retirar = new Button
         {
             BackColor = Color.DarkSlateGray,
             FlatStyle = FlatStyle.Flat,
@@ -140,7 +140,7 @@ namespace Local_Money.modelos
             Enabled = false,
         };
 
-        Button Adicionar = new Button
+        private Button Adicionar = new Button
         {
             BackColor = Color.DarkSlateGray,
             FlatStyle = FlatStyle.Flat,
@@ -151,7 +151,7 @@ namespace Local_Money.modelos
             Cursor = Cursors.Hand,
         };
 
-        PictureBox Apagar = new PictureBox
+        private PictureBox Apagar = new PictureBox
         {
             Image = Properties.Resources.delete__1_,
             Location = new Point(276, 6),

@@ -19,6 +19,7 @@ namespace Local_Money
     {
         private Conexao con = new Conexao();
         private int id_cat;
+        private int numero_pedido;
         public int numero_produtos = 0;
         public List<int> produtos = new List<int>();
         public List<int> quantidades = new List<int>();
@@ -57,6 +58,25 @@ namespace Local_Money
                     CartaoCategoriaCardapio cartao = new CartaoCategoriaCardapio(reader.GetString(1), reader.GetInt32(0), flp_cardapio);
                     flp_cardapio.Controls.Add(cartao.Criar());
                 }
+                reader.Close();
+
+                SqlCommand com2 = new SqlCommand
+                {
+                    Connection = con.SaberConexao(),
+                    CommandText = "SELECT TOP 1 id_pedido FROM tb_pedido_concluido ORDER BY id_pedido DESC",
+                };
+                SqlDataReader reader2 = com2.ExecuteReader();
+                
+                if(reader2.Read() == false)
+                {
+                    numero_pedido = 1;
+                }
+                else
+                {
+                    numero_pedido = +reader2.GetInt32(0);
+                }
+
+                lbl_num_pedido.Text = numero_pedido.ToString();
                 con.fechar();
             }
             catch(Exception er)
