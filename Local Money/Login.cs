@@ -58,6 +58,7 @@ namespace Local_Money
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
+            conn.abrir();
             try
             {
                 if (txtUser.Text == null || txtUser.Text == "Usuário")
@@ -70,34 +71,27 @@ namespace Local_Money
                 }
                 else
                 {
-                    conn.abrir();
+                    
 
                     SqlCommand com = new SqlCommand();
                     com.Connection = conn.SaberConexao();
                     com.CommandText = "SELECT * FROM tb_user WHERE id_user = '" + int.Parse(txtUser.Text.ToString()) + "' AND password = '" + txtPass.Text.ToString() + "'";
 
                     SqlDataReader reader = com.ExecuteReader();
-                    if(reader.Read() == false)
-                    {
-                        MessageBox.Show("Não existe nenhum usuário com estas credenciais");
-                        txtUser.ForeColor = Color.Red;
-                        txtPass.ForeColor = Color.Red;
-                    }
-                    else
+                    if (reader.HasRows)
                     {
                         while (reader.Read())
                         {
 
                             Id = int.Parse(reader.GetValue(0).ToString());
-                            Nome = reader.GetString(1);
-                            Email = reader.GetString(2);
+                            Nome = reader.GetValue(1).ToString();
+                            Email = reader.GetValue(2).ToString();
                             Telefone = int.Parse(reader.GetValue(3).ToString());
-                            Saldo = float.Parse(reader.GetValue(4).ToString());
                         }
                         reader.Close();
                         SqlCommand com2 = new SqlCommand();
                         com2.Connection = conn.SaberConexao();
-                        com2.CommandText = "UPDATE tb_user SET ultimo_login = '" + DateTime.Now.ToString() + "'";
+                        com2.CommandText = "UPDATE tb_user SET ultimo_login = '" + DateTime.Now.ToString() + "' WHERE id_user = '" + Id + "'";
                         com2.ExecuteNonQuery();
 
                         /*
@@ -114,19 +108,27 @@ namespace Local_Money
                         d.Id = Id;
                         d.Nome = Nome;
                         d.Email = Email;
-                        d.lbl_user.Text = Nome;
+                        d.lbl_usuario.Text = Nome;
                         this.Hide();
-                        d.Show();
+                        d.ShowDialog();
                     }
-                    
 
-                    conn.fechar();
+                    else
+                    {
+
+
+
+                        MessageBox.Show("Não existe nenhum usuário com estas credenciais");
+                        txtUser.ForeColor = Color.Red;
+                        txtPass.ForeColor = Color.Red;
+                    }
                 }
             }
             catch(Exception er)
             {
                 MessageBox.Show("Erro " + er);
-            }            
+            }
+            conn.fechar();
         }
     }
 }

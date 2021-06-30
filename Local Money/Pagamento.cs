@@ -23,6 +23,7 @@ namespace Local_Money
 
         public double Subtotal, Total, Impostos, Descontos, Entregue, Troco, Falta;
         PedidoNovo pn = (PedidoNovo)Application.OpenForms[2];
+        frm_dashboard d = (frm_dashboard)Application.OpenForms[1];
         int altura;
         private string quantidades, produtos;
         Conexao con = new Conexao();
@@ -150,7 +151,7 @@ namespace Local_Money
         byte[] header, footer, fatura, corpo;
         private void btn_confirmar_Click(object sender, EventArgs e)
         {
-
+            
             pn.AddNomes();
             pn.AddQuantidade();
             pn.AddSubtotal();
@@ -158,15 +159,15 @@ namespace Local_Money
             
             printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("Fatura", 500, altura);
             printPreviewDialog1.Document = printDocument1;
-            printPreviewDialog1.ShowDialog();
-            printDocument1.Print();
+            //printPreviewDialog1.ShowDialog();
+            //printDocument1.Print();
 
 
             // Ethernet or WiFi
             //var printer = new NetworkPrinter(ipAddress: "192.168.1.50", port: 9000, reconnectOnTimeout: true);
 
             // USB, Bluetooth, or Serial
-            var printer = new SerialPrinter(portName: "COM5", baudRate: 115200);
+            //var printer = new SerialPrinter(portName: "COM5", baudRate: 115200);
 
             // Linux output to USB / Serial file
             //var printer = new FilePrinter(filePath: "/dev/usb/lp0");
@@ -281,7 +282,7 @@ namespace Local_Money
                 SqlCommand com = new SqlCommand
                 {
                     Connection = con.SaberConexao(),
-                    CommandText = "INSERT INTO tb_pedido_concluido (produtos,quantidades,total_geral,fatura) VALUES ('" + produtos + "','" + quantidades + "','" + Total + "','" + fs.ToArray() + "')",
+                    CommandText = "INSERT INTO tb_pedido_concluido (produtos,quantidades,total_geral,fatura) VALUES ('" + produtos + "','" + quantidades + "','" + Total + "')",
                 };
                 com.ExecuteNonQuery();
             }
@@ -293,6 +294,11 @@ namespace Local_Money
             con.fechar();
 
             //printer.Write(fatura);
+
+            d.dinheiro += Total;
+            d.lbl_dinheiro.Text = d.dinheiro + "";
+            d.clientes++;
+            d.lbl_clientes.Text = d.clientes + "";
             this.Close();
             pn.Close();
         }

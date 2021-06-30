@@ -41,10 +41,10 @@ namespace Local_Money
 
         private void PedidoNovo_Load(object sender, EventArgs e)
         {
-
+            con.abrir();
             try
             {
-                con.abrir();
+                
 
                 SqlCommand com = new SqlCommand
                 {
@@ -77,14 +77,14 @@ namespace Local_Money
                 }
 
                 lbl_num_pedido.Text = numero_pedido.ToString();
-                con.fechar();
+                
             }
             catch(Exception er)
             {
                 MessageBox.Show("Erro!!!!!! " + er);
             }
+            con.fechar();
 
-            
         }
 
         

@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Globalization;
-
 namespace Local_Money
 {
     public partial class frm_dashboard : Form
     {
         public int Id;
-        public string Nome, Email;
+        public string Nome;
+        public string Email;
+
         public string data;
         private Form janelaAberta = null;
+
+        public double dinheiro;
+        public int clientes;
+
         public frm_dashboard()
         {
             InitializeComponent();
@@ -26,7 +23,6 @@ namespace Local_Money
         private void CostumizarDesign() 
         {
             p_sub_pedidos.Visible = false;
-            p_sub_takeaway.Visible = false;
             p_sub_pessoal.Visible = false;
             p_sub_clientes.Visible = false;
         }
@@ -35,8 +31,7 @@ namespace Local_Money
         {
             if (p_sub_pedidos.Visible == true)
                 p_sub_pedidos.Visible = false;
-            if (p_sub_takeaway.Visible == true)
-                p_sub_takeaway.Visible = false;
+            
             if (p_sub_clientes.Visible == true)
                 p_sub_clientes.Visible = false;
             if (p_sub_pessoal.Visible == true)
@@ -77,6 +72,7 @@ namespace Local_Money
         private void btn_novo_pedido_Click(object sender, EventArgs e)
         {
             AbrirJanela(new PedidoNovo());
+            lbl_pagina.Text = "Pedido Novo";
             //
             //
             EsconderSubmenu();
@@ -96,33 +92,7 @@ namespace Local_Money
             //
             EsconderSubmenu();
         }
-
-        private void btn_take_Click(object sender, EventArgs e)
-        {
-            MostrarSubmenu(p_sub_takeaway);
-        }
-
-        private void btn_novo_takeaway_Click(object sender, EventArgs e)
-        {
-            //
-            //
-            EsconderSubmenu();
-        }
-
-        private void btn_alterar_takeaway_Click(object sender, EventArgs e)
-        {
-            //
-            //
-            EsconderSubmenu();
-        }
-
-        private void btn_ver_takeaway_Click(object sender, EventArgs e)
-        {
-            //
-            //
-            EsconderSubmenu();
-        }
-
+        
         private void btn_desempenho_Click(object sender, EventArgs e)
         {
             //
@@ -158,17 +128,8 @@ namespace Local_Money
             Application.Exit();
         }
 
+
        
-
-        private void frm_dashboard_Load(object sender, EventArgs e)
-        {
-             
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-        }
 
         private void btn_tarefas_Click(object sender, EventArgs e)
         {
@@ -177,11 +138,50 @@ namespace Local_Money
             EsconderSubmenu();
         }
 
-        
+        int h = 0, m = 0, s = 0;
+        private void tmr_Tick(object sender, EventArgs e)
+        {
+            s++;
+            if(s == 60)
+            {
+                m++;
+                s = 0;
+            }
 
+            if (m == 60)
+            {
+                h++;
+                m = 0;
+            }
 
-        
-
-
+            if (s < 10 && m < 10 && h < 10)
+            {
+                lbl_timer.Text = h + "0:0" + m + ":0" + s;
+            }
+            else if(s < 10 && m < 10)
+            {
+                lbl_timer.Text = h + ":0" + m + ":0" + s;
+            }
+            else if (s < 10 && h < 10)
+            {
+                lbl_timer.Text = h + "0:" + m + ":0" + s;
+            }
+            else if (h < 10 && m < 10)
+            {
+                lbl_timer.Text = h + "0:0" + m + ":" + s;
+            }
+            else if (s < 10)
+            {
+                lbl_timer.Text = h + ":" + m + ":0" + s;
+            }
+            else if (m < 10)
+            {
+                lbl_timer.Text = h + ":0" + m + ":" + s;
+            }
+            else if (h < 10)
+            {
+                lbl_timer.Text = h + "0:" + m + ":" + s;
+            }
+        }
     }
 }
