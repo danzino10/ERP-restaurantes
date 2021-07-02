@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Data.SqlClient;
+
 namespace Local_Money.modelos
 {
     class BotaoMesa
     {
-        
-        
-
+        Conexao con = new Conexao();
         private int Mesa;
 
         public BotaoMesa (int mesa)
@@ -77,20 +77,31 @@ namespace Local_Money.modelos
         Label UmDigito = new Label
         {
             Location = new Point(18, 14),
-            Font = new Font("Roboto", 26.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
+            Font = new Font("Roboto", 20.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
             ForeColor = Color.DarkSlateGray,
         };
 
         Label DoisDigitos = new Label
         {
             Location = new Point(8, 14),
-            Font = new Font("Roboto", 26.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
+            Font = new Font("Roboto", 20.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
             ForeColor = Color.DarkSlateGray,
         };
 
-        public void Ocupado()
+        public void OcupadoNovo()
         {
             PainelBotao.Enabled = false;
+            PainelBaixo.BackColor = Color.Brown;
+            PainelCima.BackColor = Color.Brown;
+            PainelDireita.BackColor = Color.Brown;
+            PainelEsquerda.BackColor = Color.Brown;
+            UmDigito.ForeColor = Color.Brown;
+            DoisDigitos.ForeColor = Color.Brown;
+        }
+
+        public void OcupadoAlterar()
+        {
+            PainelBotao.Enabled = true;
             PainelBaixo.BackColor = Color.Brown;
             PainelCima.BackColor = Color.Brown;
             PainelDireita.BackColor = Color.Brown;
@@ -112,7 +123,7 @@ namespace Local_Money.modelos
            
         }
 
-        public void Desselecionar()
+        public void DesselecionarNovo()
         {
             PainelBotao.Enabled = true;
             PainelBaixo.BackColor = Color.DarkSlateGray;
@@ -121,6 +132,28 @@ namespace Local_Money.modelos
             PainelEsquerda.BackColor = Color.DarkSlateGray;
             UmDigito.ForeColor = Color.DarkSlateGray;
             DoisDigitos.ForeColor = Color.DarkSlateGray;
+        }
+
+        public void Desocupado()
+        {
+            PainelBotao.Enabled = false;
+            PainelBaixo.BackColor = Color.DarkSlateGray;
+            PainelCima.BackColor = Color.DarkSlateGray;
+            PainelDireita.BackColor = Color.DarkSlateGray;
+            PainelEsquerda.BackColor = Color.DarkSlateGray;
+            UmDigito.ForeColor = Color.DarkSlateGray;
+            DoisDigitos.ForeColor = Color.DarkSlateGray;
+        }
+
+        public void DesselecionarAlterar()
+        {
+            PainelBotao.Enabled = true;
+            PainelBaixo.BackColor = Color.Brown;
+            PainelCima.BackColor = Color.Brown;
+            PainelDireita.BackColor = Color.Brown;
+            PainelEsquerda.BackColor = Color.Brown;
+            UmDigito.ForeColor = Color.Brown;
+            DoisDigitos.ForeColor = Color.Brown;
         }
 
         public Panel Criar()
@@ -136,7 +169,7 @@ namespace Local_Money.modelos
             
             
 
-            Selecionado();
+            
             if (Application.OpenForms.Count > 3)
             {
                 GuardarPedido gp = (GuardarPedido)Application.OpenForms[3];
@@ -157,18 +190,24 @@ namespace Local_Money.modelos
                     pa.Selec++;
                     pa.Mesa = Mesa;
                     pa.txt_pesquisar.Text = Mesa.ToString();
-                    
-                    foreach(Control bm in pa.flp_mesas.Controls)
+                    foreach (var bm in from Control bm in pa.flp_mesas.Controls
+                                       where bm is Panel
+                                       select bm)
                     {
-                        if(bm is Panel)
+                        bm.Enabled = true;
+                        foreach (Control p in bm.Controls)
                         {
-                            
+                            if (p is Panel)
+                                p.BackColor = Color.Brown;
+                            if (p is Label)
+                                p.ForeColor = Color.Brown;
                         }
                     }
+                    pa.MostrarMesa(Mesa);
                 }
             }
-            
-            
+            Selecionado();
+
         }
     }
 }

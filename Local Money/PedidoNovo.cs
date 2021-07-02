@@ -19,7 +19,7 @@ namespace Local_Money
     {
         private Conexao con = new Conexao();
         private int id_cat;
-        private int numero_pedido;
+        public int numero_pedido;
         public int numero_produtos = 0;
         public List<int> produtos = new List<int>();
         public List<int> quantidades = new List<int>();
@@ -224,7 +224,7 @@ namespace Local_Money
                 separa = lbl_codpromo_valor.Text.Split(' ');
                 p.Descontos = p.Descontos + double.Parse(separa[1]);
 
-
+                p.Impostos = p.Total - p.Subtotal;
                 p.ShowDialog();
             }
         }

@@ -20,13 +20,20 @@ namespace Local_Money.modelos
             PainelProduto.Controls.Add(QuantidadeProduto);
             PainelProduto.Controls.Add(NomeProduto);
             PainelProduto.Controls.Add(EstadoProduto);
-
+            PainelProduto.Controls.Add(Separador);
         }
 
         private Panel PainelProduto = new Panel
         {
             Height = 60,
             Dock = DockStyle.Top,
+        };
+
+        private Panel Separador = new Panel
+        {
+            Height = 2,
+            Dock = DockStyle.Bottom,
+            BackColor = Color.DarkSlateGray,
         };
 
         private Label NomeProduto = new Label

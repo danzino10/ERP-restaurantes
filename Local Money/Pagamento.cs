@@ -167,8 +167,7 @@ namespace Local_Money
             //var printer = new NetworkPrinter(ipAddress: "192.168.1.50", port: 9000, reconnectOnTimeout: true);
 
             // USB, Bluetooth, or Serial
-            //var printer = new SerialPrinter(portName: "COM5", baudRate: 115200);
-
+            var printer = new SerialPrinter(portName: "COM6", baudRate: 9600);
             // Linux output to USB / Serial file
             //var printer = new FilePrinter(filePath: "/dev/usb/lp0");
 
@@ -176,103 +175,105 @@ namespace Local_Money
             
             var esc = new EPSON();
             header = ByteSplicer.Combine(
+              
               esc.CenterAlign(),
-              esc.PrintImage(ImageToByteArray(Properties.Resources._004_chef), true),
-              esc.PrintLine(""),
-              esc.SetBarcodeHeightInDots(360),
-              esc.SetBarWidth(BarWidth.Default),
-              esc.SetBarLabelPosition(BarLabelPrintPosition.None),
-              esc.PrintBarcode(BarcodeType.ITF, "0123456789"),
-              esc.PrintLine(""),
               esc.PrintLine("FOODGEST, REESTAURANTE & BAR"),
               esc.PrintLine("RUA SAMUEL BERNARDO N18,  1-C"),
-              esc.PrintLine("(244) 936530760"),
+              esc.PrintLine("(+244) 936530760"),
               esc.PrintLine(""),
               esc.PrintLine("BAIRRO DAS INGOMBOTAS, LUANDA"),
-
-              esc.PrintLine("CONTRIBUINTE Nº "),
+              esc.PrintLine("NIF: 002869194OE033"),
               esc.PrintLine(""),
-              esc.SetStyles(PrintStyle.Underline),
-              esc.PrintLine("www.bhphotovideo.com"),
-              esc.SetStyles(PrintStyle.None),
               esc.PrintLine(""),
               esc.PrintLine("----------------------------------------------------------------"),
               esc.LeftAlign(),
-              esc.PrintLine("Pedido: 123456789        Data:" + DateTime.Now.ToString()),
+              esc.PrintLine("Pedido: " + pn.numero_pedido),
+              esc.PrintLine("Data: " + DateTime.Now.ToString()),
               esc.PrintLine(""),
-              esc.PrintLine(""),
+              esc.SetStyles(PrintStyle.Underline),
+              esc.PrintLine("   qtd         valor       total"),
+              esc.PrintLine("   descricao"),
+              esc.SetStyles(PrintStyle.None),
               esc.SetStyles(PrintStyle.Bold)
               );
             fatura = header;
 
             string[] split;
-            int qtd = 0;
-            double val = 0, tot = 0;
-            string nome = "";
+            int[] qtd = new int[pn.p_lista_produtos.Controls.Count];
+            string[] nomes = new string[pn.p_lista_produtos.Controls.Count];
+            double[] val = new double[pn.p_lista_produtos.Controls.Count], tot = new double[pn.p_lista_produtos.Controls.Count];
+            int i = 0;
+
             foreach (Control c in from Control c in pn.p_lista_produtos.Controls
                                       where c is Panel
                                       select c)
             {
                 foreach (Control co in c.Controls)
                 {
-                    
-
-                    if (co is Label)
+                    if(co is Label && co.Tag == "0")
                     {
-
-                        if (co.Tag == "0")
-                        {
-                            qtd = int.Parse(co.Text);
-                            quantidades = quantidades + "," + qtd;
-                        }
-                        if (co.Tag == "1")
-                        {
-                            split = co.Text.Split(' ');
-                            val = int.Parse(split[1]);
-                        }
-                        if (co.Tag == "2")
-                        {
-                            split = co.Text.Split(' ');
-                            tot = int.Parse(split[1]);
-                        }
-                        if (co.Tag == "3")
-                        {
-                            nome = co.Text;
-                        }
-                        corpo = ByteSplicer.Combine(
-                            esc.PrintLine("" + qtd + "       " + val + "      " + tot),
-                            esc.PrintLine("     " + nome),
-                            esc.PrintLine("")
-                            );
-
-                        fatura = fatura.Concat(corpo).ToArray();
+                        qtd[i] = int.Parse(co.Text);
+                        quantidades = quantidades + "," + qtd[i];
+                    }
+                    if (co is Label && co.Tag == "1")
+                    {
+                        split = co.Text.Split(' ');
+                        val[i] = int.Parse(split[1]);
+                    }
+                    if (co is Label && co.Tag == "2")
+                    {
+                        split = co.Text.Split(' ');
+                        tot[i] = int.Parse(split[1]);
+                    }
+                    if (co is Label && co.Tag == "3")
+                    {
+                        nomes[i] = co.Text;
                     }
                 }
+                i++;
+            }
+
+            i = 0;
+            foreach(var item in qtd)
+            {
+                corpo = ByteSplicer.Combine(
+                            esc.PrintLine("" + qtd[i] + "          " + val[i] + "          " + tot[i]),
+                            esc.PrintLine("     " + nomes[i]),
+                            esc.PrintLine("")
+                            );
+                fatura = fatura.Concat(corpo).ToArray();
+                i++;
             }
             
+            
+
             footer = ByteSplicer.Combine(
                 esc.RightAlign(),
-                esc.PrintLine("SUBTOTAL                  " + Subtotal + " Kz"),
-                esc.PrintLine("IMPOSTO (IVA 14%)         " + Impostos + " Kz"),
-                esc.PrintLine("TOTAL:                    " + Total + " Kz"),
+                esc.PrintLine("SUBTOTAL:          " + Subtotal + " Kz"),
+                esc.PrintLine("IMPOSTO (IVA 14%): " + Impostos + " Kz"),
+                esc.PrintLine("TOTAL:             " + Total + " Kz"),
                 esc.PrintLine(""),
-                esc.PrintLine("Valor Entregue:           " + Entregue + " Kz"),
-                esc.PrintLine("Troco:                    " + Troco + " Kz"),
-                esc.LeftAlign(),
+                esc.PrintLine("Valor Entregue:    " + Entregue + " Kz"),
+                esc.PrintLine("Troco:             " + Troco + " Kz"),
+                esc.CenterAlign(),
                 esc.SetStyles(PrintStyle.Bold | PrintStyle.FontB),
                 esc.PrintLine("CLIENTE:                   "),
-                esc.PrintLine("     ________________________________    "),
-                esc.PrintLine("         Obrigado e volte sempre ")
-                
+                esc.PrintLine("________________________________    "),
+                esc.PrintLine("     Obrigado e volte sempre "),
+                esc.PrintLine(""),
+                esc.PrintLine(""),
+                esc.PrintLine(""),
+                esc.PrintLine(""),
+                esc.PrintLine("")
                 );
 
             fatura = fatura.Concat(footer).ToArray();
             var fs = new MemoryStream(fatura);
             
 
-            for(int i = 0; i<pn.produtos.Count; i++)
+            for(int j = 0; j<pn.produtos.Count; j++)
             {
-                produtos = produtos + "," + pn.produtos.ElementAt(i);
+                produtos = produtos + "," + pn.produtos.ElementAt(j);
             }
 
             con.abrir();
@@ -282,7 +283,7 @@ namespace Local_Money
                 SqlCommand com = new SqlCommand
                 {
                     Connection = con.SaberConexao(),
-                    CommandText = "INSERT INTO tb_pedido_concluido (produtos,quantidades,total_geral,fatura) VALUES ('" + produtos + "','" + quantidades + "','" + Total + "')",
+                    CommandText = "INSERT INTO tb_pedido_concluido (produtos,quantidades,total_geral) VALUES ('" + produtos + "','" + quantidades + "','" + Total + "')",
                 };
                 com.ExecuteNonQuery();
             }
@@ -293,7 +294,7 @@ namespace Local_Money
 
             con.fechar();
 
-            //printer.Write(fatura);
+            printer.Write(fatura);
 
             d.dinheiro += Total;
             d.lbl_dinheiro.Text = d.dinheiro + "";

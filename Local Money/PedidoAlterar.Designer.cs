@@ -42,27 +42,22 @@ namespace Local_Money
             this.panel6 = new System.Windows.Forms.Panel();
             this.btn_anterior = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.flp_mesas = new System.Windows.Forms.FlowLayoutPanel();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.lbl_qtd = new System.Windows.Forms.Label();
+            this.flp_produto_listado = new System.Windows.Forms.FlowLayoutPanel();
             this.panel19 = new System.Windows.Forms.Panel();
             this.panel18 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel21 = new System.Windows.Forms.Panel();
-            this.panel22 = new System.Windows.Forms.Panel();
             this.panel24 = new System.Windows.Forms.Panel();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.flp_mesas = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -70,14 +65,12 @@ namespace Local_Money
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel13.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.panel20.SuspendLayout();
             this.panel18.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel16.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
@@ -208,47 +201,9 @@ namespace Local_Money
             this.panel4.Size = new System.Drawing.Size(553, 2);
             this.panel4.TabIndex = 2;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(191, 50);
-            this.panel2.TabIndex = 0;
-            // 
-            // panel14
-            // 
-            this.panel14.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel14.Location = new System.Drawing.Point(0, 50);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(2, 451);
-            this.panel14.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.flp_mesas);
-            this.panel1.Controls.Add(this.panel14);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(553, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(191, 501);
-            this.panel1.TabIndex = 0;
-            // 
-            // flp_mesas
-            // 
-            this.flp_mesas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flp_mesas.Location = new System.Drawing.Point(2, 50);
-            this.flp_mesas.Name = "flp_mesas";
-            this.flp_mesas.Size = new System.Drawing.Size(189, 451);
-            this.flp_mesas.TabIndex = 11;
-            // 
             // panel13
             // 
-            this.panel13.Controls.Add(this.flowLayoutPanel1);
+            this.panel13.Controls.Add(this.flp_produto_listado);
             this.panel13.Controls.Add(this.panel19);
             this.panel13.Controls.Add(this.panel18);
             this.panel13.Controls.Add(this.panel17);
@@ -260,37 +215,13 @@ namespace Local_Money
             this.panel13.Size = new System.Drawing.Size(553, 451);
             this.panel13.TabIndex = 3;
             // 
-            // flowLayoutPanel1
+            // flp_produto_listado
             // 
-            this.flowLayoutPanel1.Controls.Add(this.panel20);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(35, 86);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(483, 337);
-            this.flowLayoutPanel1.TabIndex = 6;
-            // 
-            // panel20
-            // 
-            this.panel20.BackColor = System.Drawing.SystemColors.Control;
-            this.panel20.Controls.Add(this.panel21);
-            this.panel20.Controls.Add(this.label5);
-            this.panel20.Controls.Add(this.label4);
-            this.panel20.Controls.Add(this.lbl_qtd);
-            this.panel20.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel20.Location = new System.Drawing.Point(3, 3);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(483, 60);
-            this.panel20.TabIndex = 5;
-            // 
-            // lbl_qtd
-            // 
-            this.lbl_qtd.AutoSize = true;
-            this.lbl_qtd.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_qtd.Location = new System.Drawing.Point(46, 19);
-            this.lbl_qtd.Name = "lbl_qtd";
-            this.lbl_qtd.Size = new System.Drawing.Size(16, 18);
-            this.lbl_qtd.TabIndex = 0;
-            this.lbl_qtd.Text = "4";
+            this.flp_produto_listado.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flp_produto_listado.Location = new System.Drawing.Point(35, 86);
+            this.flp_produto_listado.Name = "flp_produto_listado";
+            this.flp_produto_listado.Size = new System.Drawing.Size(483, 337);
+            this.flp_produto_listado.TabIndex = 6;
             // 
             // panel19
             // 
@@ -353,6 +284,15 @@ namespace Local_Money
             this.panel17.Size = new System.Drawing.Size(35, 423);
             this.panel17.TabIndex = 3;
             // 
+            // panel24
+            // 
+            this.panel24.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel24.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel24.Location = new System.Drawing.Point(0, 0);
+            this.panel24.Name = "panel24";
+            this.panel24.Size = new System.Drawing.Size(5, 423);
+            this.panel24.TabIndex = 5;
+            // 
             // panel16
             // 
             this.panel16.BackColor = System.Drawing.SystemColors.Control;
@@ -363,45 +303,6 @@ namespace Local_Money
             this.panel16.Size = new System.Drawing.Size(35, 423);
             this.panel16.TabIndex = 2;
             // 
-            // panel15
-            // 
-            this.panel15.BackColor = System.Drawing.SystemColors.Control;
-            this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel15.Location = new System.Drawing.Point(0, 0);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(553, 28);
-            this.panel15.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(135, 19);
-            this.label4.MaximumSize = new System.Drawing.Size(220, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(179, 36);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Bife grelhado a molho de cervejeira";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(351, 19);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(109, 18);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Em preparação";
-            // 
-            // panel21
-            // 
-            this.panel21.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.panel21.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel21.Location = new System.Drawing.Point(0, 58);
-            this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(483, 2);
-            this.panel21.TabIndex = 3;
-            // 
             // panel22
             // 
             this.panel22.BackColor = System.Drawing.Color.DarkSlateGray;
@@ -411,14 +312,52 @@ namespace Local_Money
             this.panel22.Size = new System.Drawing.Size(5, 423);
             this.panel22.TabIndex = 4;
             // 
-            // panel24
+            // panel15
             // 
-            this.panel24.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.panel24.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel24.Location = new System.Drawing.Point(0, 0);
-            this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(5, 423);
-            this.panel24.TabIndex = 5;
+            this.panel15.BackColor = System.Drawing.SystemColors.Control;
+            this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel15.Location = new System.Drawing.Point(0, 0);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(553, 28);
+            this.panel15.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.flp_mesas);
+            this.panel1.Controls.Add(this.panel14);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(553, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(191, 501);
+            this.panel1.TabIndex = 0;
+            // 
+            // flp_mesas
+            // 
+            this.flp_mesas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flp_mesas.Location = new System.Drawing.Point(2, 50);
+            this.flp_mesas.Name = "flp_mesas";
+            this.flp_mesas.Size = new System.Drawing.Size(189, 451);
+            this.flp_mesas.TabIndex = 11;
+            // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel14.Location = new System.Drawing.Point(0, 50);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(2, 451);
+            this.panel14.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(191, 50);
+            this.panel2.TabIndex = 0;
             // 
             // label6
             // 
@@ -450,17 +389,14 @@ namespace Local_Money
             this.panel10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.panel20.ResumeLayout(false);
-            this.panel20.PerformLayout();
             this.panel18.ResumeLayout(false);
             this.panel18.PerformLayout();
             this.panel17.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -478,28 +414,23 @@ namespace Local_Money
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.Panel panel1;
-        public System.Windows.Forms.FlowLayoutPanel flp_mesas;
         private System.Windows.Forms.Panel panel13;
         public System.Windows.Forms.TextBox txt_pesquisar;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flp_produto_listado;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.Panel panel20;
-        private System.Windows.Forms.Label lbl_qtd;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel21;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel24;
         private System.Windows.Forms.Panel panel22;
+        private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.FlowLayoutPanel flp_mesas;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label6;
     }
 }

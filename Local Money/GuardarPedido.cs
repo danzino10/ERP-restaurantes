@@ -50,7 +50,7 @@ namespace Local_Money
                         
                         BotaoMesa btn_mesa = new BotaoMesa(reader2.GetInt32(0));
                         if (reader2.GetString(1) == "ocupado")
-                            btn_mesa.Ocupado();
+                            btn_mesa.OcupadoNovo();
                         flp_mesas.Controls.Add(btn_mesa.Criar());
                         
                     }
