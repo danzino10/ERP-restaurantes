@@ -42,7 +42,6 @@ namespace Local_Money
             this.p_sub_pessoal = new System.Windows.Forms.Panel();
             this.btn_tarefas = new System.Windows.Forms.Button();
             this.btn_relatorios = new System.Windows.Forms.Button();
-            this.btn_perfil = new System.Windows.Forms.Button();
             this.btn_pessoal = new System.Windows.Forms.Button();
             this.p_sub_pedidos = new System.Windows.Forms.Panel();
             this.btn_alterar_pedido = new System.Windows.Forms.Button();
@@ -108,6 +107,7 @@ namespace Local_Money
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_perfil = new System.Windows.Forms.Button();
             this.p_sidemenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.p_sub_clientes.SuspendLayout();
@@ -306,24 +306,6 @@ namespace Local_Money
             this.btn_relatorios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_relatorios.UseVisualStyleBackColor = true;
             this.btn_relatorios.Click += new System.EventHandler(this.btn_chat_Click);
-            // 
-            // btn_perfil
-            // 
-            this.btn_perfil.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_perfil.FlatAppearance.BorderSize = 0;
-            this.btn_perfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_perfil.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_perfil.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_perfil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_perfil.Location = new System.Drawing.Point(0, 0);
-            this.btn_perfil.Name = "btn_perfil";
-            this.btn_perfil.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.btn_perfil.Size = new System.Drawing.Size(173, 35);
-            this.btn_perfil.TabIndex = 2;
-            this.btn_perfil.Text = "Perfil";
-            this.btn_perfil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_perfil.UseVisualStyleBackColor = true;
-            this.btn_perfil.Click += new System.EventHandler(this.btn_perfil_Click);
             // 
             // btn_pessoal
             // 
@@ -1042,6 +1024,24 @@ namespace Local_Money
             this.label1.Text = "Dinheiro ganho";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btn_perfil
+            // 
+            this.btn_perfil.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_perfil.FlatAppearance.BorderSize = 0;
+            this.btn_perfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_perfil.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_perfil.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_perfil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_perfil.Location = new System.Drawing.Point(0, 0);
+            this.btn_perfil.Name = "btn_perfil";
+            this.btn_perfil.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.btn_perfil.Size = new System.Drawing.Size(173, 35);
+            this.btn_perfil.TabIndex = 2;
+            this.btn_perfil.Text = "Funcionários";
+            this.btn_perfil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_perfil.UseVisualStyleBackColor = true;
+            this.btn_perfil.Click += new System.EventHandler(this.btn_perfil_Click);
+            // 
             // frm_dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1056,6 +1056,7 @@ namespace Local_Money
             this.Name = "frm_dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FoodGest";
+            this.Load += new System.EventHandler(this.frm_dashboard_Load);
             this.p_sidemenu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.p_sub_clientes.ResumeLayout(false);
@@ -1091,7 +1092,6 @@ namespace Local_Money
         private System.Windows.Forms.Button btn_novo_pedido;
         private System.Windows.Forms.Panel p_sub_pessoal;
         private System.Windows.Forms.Button btn_tarefas;
-        private System.Windows.Forms.Button btn_perfil;
         private System.Windows.Forms.Button btn_pessoal;
         private System.Windows.Forms.Panel p_sub_clientes;
         private System.Windows.Forms.Button btn_ver_clientes;
@@ -1161,5 +1161,6 @@ namespace Local_Money
         public System.Windows.Forms.Label lbl_dinheiro;
         public System.Windows.Forms.Label lbl_usuario;
         public System.Windows.Forms.Label lbl_pagina;
+        private System.Windows.Forms.Button btn_perfil;
     }
 }

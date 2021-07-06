@@ -11,10 +11,10 @@ namespace Local_Money.modelos
 {
     class ProdutoListado
     {
-        PedidoNovo pn = (PedidoNovo)Application.OpenForms[2];
+        PedidoNovo pn;
         private string[] ss;
         private double valor_produto, total_produto, subtotal_geral;
-        private int Id;
+        private int Id, Quantidade, QuantidadeMin;
         //public int Mesa;
         DecimalFormat df = new DecimalFormat("#.##");
 
@@ -25,22 +25,28 @@ namespace Local_Money.modelos
             Dock = DockStyle.Top,
         };
 
-        public ProdutoListado(string nome, string preco, int IdProduto)
+        public ProdutoListado(string nome, string preco, int IdProduto, int quantidade, int qtdMin, PedidoNovo janela)
         {
             NomeProduto.Text = nome;
             ValorProduto.Text = preco;
-            TotalProduto.Text = preco;
+            QuantidadeProduto.Text = quantidade.ToString();
             Id = IdProduto;
-            
+            Quantidade = quantidade;
+            QuantidadeMin = qtdMin;
 
+            PainelProduto.Tag = Id;
+
+            pn = janela;
             ss = pn.lbl_subtotal_valor.Text.Split(' ');
             string[]pp = preco.Split(' ');
             valor_produto = float.Parse(pp[1]);
             pn.lbl_subtotal_valor.Text = "Kz " + df.Format((float.Parse(ss[1]) + valor_produto));
+            TotalProduto.Text = "Kz " + (quantidade * valor_produto).ToString();
 
-            Adicionar.Click += new EventHandler(this.AdicinarQuantidade);
-            Retirar.Click += new EventHandler(this.SubtrairQuantidade);
-            Apagar.Click += new EventHandler(this.RetirarProduto);
+
+            Adicionar.Click += (sender2, e2) => AdicinarQuantidade(sender2, e2);
+            Subtrair.Click += (sender2, e2) => SubtrairQuantidade(sender2, e2);
+            Apagar.Click += (sender2, e2) => ApagarProduto(sender2, e2);
 
             PainelProduto.Controls.Add(PainelBaixo);
             PainelProduto.Controls.Add(PainelCima);
@@ -51,8 +57,8 @@ namespace Local_Money.modelos
             PainelProduto.Controls.Add(TotalProduto);
             PainelProduto.Controls.Add(ValorProduto);
             PainelProduto.Controls.Add(Adicionar);
+            PainelProduto.Controls.Add(Subtrair);
             PainelProduto.Controls.Add(Apagar);
-            PainelProduto.Controls.Add(Retirar);
 
         }
 
@@ -128,7 +134,7 @@ namespace Local_Money.modelos
             Tag = "0",
         };
 
-        private Button Retirar = new Button
+        private Button Subtrair = new Button
         {
             BackColor = Color.DarkSlateGray,
             FlatStyle = FlatStyle.Flat,
@@ -151,7 +157,7 @@ namespace Local_Money.modelos
             Cursor = Cursors.Hand,
         };
 
-        private PictureBox Apagar = new PictureBox
+        public PictureBox Apagar = new PictureBox
         {
             Image = Properties.Resources.delete__1_,
             Location = new Point(276, 6),
@@ -169,10 +175,10 @@ namespace Local_Money.modelos
         private void AdicinarQuantidade(object sender, EventArgs e)
         {
             QuantidadeProduto.Text = (int.Parse(QuantidadeProduto.Text) + 1).ToString();
-            if (int.Parse(QuantidadeProduto.Text) > 1)
-                Retirar.Enabled = true;
+            if (int.Parse(QuantidadeProduto.Text) > QuantidadeMin)
+                Subtrair.Enabled = true;
             else
-                Retirar.Enabled = false;
+                Subtrair.Enabled = false;
 
             string[] vv = ValorProduto.Text.Split(' ');
             total_produto = int.Parse(QuantidadeProduto.Text) * float.Parse(vv[1]);
@@ -188,9 +194,9 @@ namespace Local_Money.modelos
         private void SubtrairQuantidade(object sender, EventArgs e)
         {
             QuantidadeProduto.Text = (int.Parse(QuantidadeProduto.Text) - 1).ToString();
-            if(QuantidadeProduto.Text == "1")
+            if(int.Parse(QuantidadeProduto.Text) == QuantidadeMin)
             {
-                Retirar.Enabled = false;
+                Subtrair.Enabled = false;
             }
 
             string[] vv = ValorProduto.Text.Split(' ');
@@ -203,7 +209,7 @@ namespace Local_Money.modelos
 
         }
 
-        private void RetirarProduto(object sender, EventArgs e)
+        private void ApagarProduto(object sender, EventArgs e)
         {
 
             string[] vv = ValorProduto.Text.Split(' ');

@@ -16,12 +16,12 @@ namespace Local_Money
     {
         Conexao conn = new Conexao();
 
-        public int Id;
-        public string Nome;
-        public int Telefone;
-        public float Saldo;
-        public string Email;
-
+        private int Id;
+        private string Nome;
+        private int Telefone;
+        private float Saldo;
+        private string Email;
+        private int NivelAcesso;
         
         public Login()
         {
@@ -87,6 +87,7 @@ namespace Local_Money
                             Nome = reader.GetValue(1).ToString();
                             Email = reader.GetValue(2).ToString();
                             Telefone = int.Parse(reader.GetValue(3).ToString());
+                            NivelAcesso = reader.GetInt32(5);
                         }
                         reader.Close();
                         SqlCommand com2 = new SqlCommand();
@@ -94,20 +95,12 @@ namespace Local_Money
                         com2.CommandText = "UPDATE tb_user SET ultimo_login = '" + DateTime.Now.ToString() + "' WHERE id_user = '" + Id + "'";
                         com2.ExecuteNonQuery();
 
-                        /*
-                        Home h = new Home();
-                        h.Id = Id;
-                        h.Nome = Nome;
-                        h.Telefone = Telefone;
-                        h.Email = Email;
-                        this.Hide();
-                        h.ShowDialog();
-                        */
 
                         frm_dashboard d = new frm_dashboard();
                         d.Id = Id;
                         d.Nome = Nome;
                         d.Email = Email;
+                        d.NivelAcesso = NivelAcesso;
                         d.lbl_usuario.Text = Nome;
                         this.Hide();
                         d.ShowDialog();

@@ -22,6 +22,7 @@ namespace Local_Money
     {
 
         public double Subtotal, Total, Impostos, Descontos, Entregue, Troco, Falta;
+        public int mesa;
         PedidoNovo pn = (PedidoNovo)Application.OpenForms[2];
         frm_dashboard d = (frm_dashboard)Application.OpenForms[1];
         int altura;
@@ -167,7 +168,7 @@ namespace Local_Money
             //var printer = new NetworkPrinter(ipAddress: "192.168.1.50", port: 9000, reconnectOnTimeout: true);
 
             // USB, Bluetooth, or Serial
-            var printer = new SerialPrinter(portName: "COM6", baudRate: 9600);
+            var printer = new SerialPrinter(portName: "COM6", baudRate: 115200);
             // Linux output to USB / Serial file
             //var printer = new FilePrinter(filePath: "/dev/usb/lp0");
 
@@ -187,12 +188,13 @@ namespace Local_Money
               esc.PrintLine(""),
               esc.PrintLine("----------------------------------------------------------------"),
               esc.LeftAlign(),
+              esc.PrintLine("Processado por: " + d.Nome),
               esc.PrintLine("Pedido: " + pn.numero_pedido),
               esc.PrintLine("Data: " + DateTime.Now.ToString()),
               esc.PrintLine(""),
               esc.SetStyles(PrintStyle.Underline),
-              esc.PrintLine("   qtd         valor       total"),
-              esc.PrintLine("   descricao"),
+              esc.PrintLine(" Quantidade        P.Unitarop       Subtotal"),
+              esc.PrintLine("   Descricao"),
               esc.SetStyles(PrintStyle.None),
               esc.SetStyles(PrintStyle.Bold)
               );
@@ -237,7 +239,7 @@ namespace Local_Money
             foreach(var item in qtd)
             {
                 corpo = ByteSplicer.Combine(
-                            esc.PrintLine("" + qtd[i] + "          " + val[i] + "          " + tot[i]),
+                            esc.PrintLine("  " + qtd[i] + "       " + val[i] + "       " + tot[i]),
                             esc.PrintLine("     " + nomes[i]),
                             esc.PrintLine("")
                             );
@@ -248,24 +250,25 @@ namespace Local_Money
             
 
             footer = ByteSplicer.Combine(
-                esc.RightAlign(),
-                esc.PrintLine("SUBTOTAL:          " + Subtotal + " Kz"),
-                esc.PrintLine("IMPOSTO (IVA 14%): " + Impostos + " Kz"),
-                esc.PrintLine("TOTAL:             " + Total + " Kz"),
-                esc.PrintLine(""),
-                esc.PrintLine("Valor Entregue:    " + Entregue + " Kz"),
-                esc.PrintLine("Troco:             " + Troco + " Kz"),
-                esc.CenterAlign(),
-                esc.SetStyles(PrintStyle.Bold | PrintStyle.FontB),
-                esc.PrintLine("CLIENTE:                   "),
-                esc.PrintLine("________________________________    "),
-                esc.PrintLine("     Obrigado e volte sempre "),
-                esc.PrintLine(""),
-                esc.PrintLine(""),
-                esc.PrintLine(""),
-                esc.PrintLine(""),
-                esc.PrintLine("")
-                );
+                                esc.PrintLine("________________________________    "),
+                                esc.LeftAlign(),
+                                esc.PrintLine("SUBTOTAL:            " + Subtotal + " Kz"),
+                                esc.PrintLine("IMPOSTO (IVA 14%):   " + Impostos + " Kz"),
+                                esc.PrintLine("TOTAL:               " + Total + " Kz"),
+                                esc.PrintLine(""),
+                                esc.PrintLine("Valor Entregue:    " + Entregue + " Kz"),
+                                esc.PrintLine("Troco:             " + Troco + " Kz"),
+                                esc.CenterAlign(),
+                                esc.SetStyles(PrintStyle.Bold | PrintStyle.FontB),
+                                esc.PrintLine("CLIENTE:                   "),
+                                esc.PrintLine("________________________________    "),
+                                esc.PrintLine("     Obrigado e volte sempre "),
+                                esc.PrintLine(""),
+                                esc.PrintLine(""),
+                                esc.PrintLine(""),
+                                esc.PrintLine(""),
+                                esc.PrintLine("")
+                                );
 
             fatura = fatura.Concat(footer).ToArray();
             var fs = new MemoryStream(fatura);
@@ -280,12 +283,38 @@ namespace Local_Money
 
             try
             {
+                string[] agora = DateTime.Now.ToString().Split(' ');
+                
                 SqlCommand com = new SqlCommand
                 {
                     Connection = con.SaberConexao(),
-                    CommandText = "INSERT INTO tb_pedido_concluido (produtos,quantidades,total_geral) VALUES ('" + produtos + "','" + quantidades + "','" + Total + "')",
+                    CommandText = "INSERT INTO tb_pedido_concluido (produtos,quantidades,total_geral,data,hora) VALUES ('" + produtos + "','" + quantidades + "','" + Total + "','" + agora[0] + "','" + agora[1] + "')",
                 };
                 com.ExecuteNonQuery();
+
+                SqlCommand com2 = new SqlCommand
+                {
+                    Connection = con.SaberConexao(),
+                    CommandText = "DELETE FROM tb_pedido_currente WHERE id_mesa = '" + mesa + "'",
+                };
+                com2.ExecuteNonQuery();
+
+                SqlCommand com3 = new SqlCommand
+                {
+                    Connection = con.SaberConexao(),
+                    CommandText = "UPDATE tb_mesa SET estado = 'livre', id_pedido = 'NULL' WHERE id_mesa = '" + mesa + "'",
+                };
+                com3.ExecuteNonQuery();
+
+
+                string[] mes = agora[0].Split('/');
+
+                SqlCommand com4 = new SqlCommand
+                {
+                    Connection = con.SaberConexao(),
+                    CommandText = "UPDATE tb_receita_ano SET clientes = clientes + 1, receita = receita + '" + Total + "' WHERE id_mes = '" + int.Parse(mes[1]) + "'",
+                };
+                com4.ExecuteNonQuery();
             }
             catch(Exception er)
             {

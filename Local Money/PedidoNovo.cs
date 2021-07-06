@@ -19,6 +19,8 @@ namespace Local_Money
     {
         private Conexao con = new Conexao();
         private int id_cat;
+        private double ta = 800.00;
+        public int mesa;
         public int numero_pedido;
         public int numero_produtos = 0;
         public List<int> produtos = new List<int>();
@@ -41,6 +43,7 @@ namespace Local_Money
 
         private void PedidoNovo_Load(object sender, EventArgs e)
         {
+            lbl_takeaway_valor.Text = "Kz " + ta;
             con.abrir();
             try
             {
@@ -60,23 +63,42 @@ namespace Local_Money
                 }
                 reader.Close();
 
+                
                 SqlCommand com2 = new SqlCommand
                 {
                     Connection = con.SaberConexao(),
                     CommandText = "SELECT TOP 1 id_pedido FROM tb_pedido_concluido ORDER BY id_pedido DESC",
                 };
                 SqlDataReader reader2 = com2.ExecuteReader();
-                
-                if(reader2.Read() == false)
+
+                if(reader2.HasRows)
                 {
-                    numero_pedido = 1;
+                    while(reader2.Read())
+                    {
+                        numero_pedido = reader2.GetInt32(0);
+                    }
                 }
-                else
+                reader2.Close();
+
+                SqlCommand com3 = new SqlCommand
                 {
-                    numero_pedido = +reader2.GetInt32(0);
+                    Connection = con.SaberConexao(),
+                    CommandText = "SELECT TOP 1 id_pedido FROM tb_pedido_currente ORDER BY id_pedido DESC",
+                };
+                SqlDataReader reader3 = com3.ExecuteReader();
+
+                if (reader3.HasRows)
+                {
+                    while (reader3.Read())
+                    {
+                        if (reader3.GetInt32(0) > numero_pedido)
+                        {
+                            numero_pedido = reader2.GetInt32(0);
+                        }
+                    }
                 }
 
-                lbl_num_pedido.Text = numero_pedido.ToString();
+                lbl_num_pedido.Text = (numero_pedido + 1).ToString();
                 
             }
             catch(Exception er)
@@ -84,15 +106,11 @@ namespace Local_Money
                 MessageBox.Show("Erro!!!!!! " + er);
             }
             con.fechar();
-
         }
-
-        
 
         private void panel4_Click(object sender, EventArgs e)
         {
             id_cat = 1;
-
             con.abrir();
 
             try
@@ -118,13 +136,7 @@ namespace Local_Money
 
             con.fechar();
         }
-
-        private void panel7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_subtotal_valor_TextChanged(object sender, EventArgs e)
+        public void lbl_subtotal_valor_TextChanged(object sender, EventArgs e)
         {
             string[] st = lbl_subtotal_valor.Text.Split(' ');
             float subtotal = float.Parse(st[1]);
@@ -135,8 +147,6 @@ namespace Local_Money
             total = subtotal + subtotal * 14/100;
             lbl_total_valor.Text = "Kz " + total;
         }
-
-        
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -171,7 +181,6 @@ namespace Local_Money
                             cartao.selecionado();
                         }
                     }
-
                 }
             }
             catch (Exception er)
@@ -195,9 +204,40 @@ namespace Local_Money
             }
             else
             {
-                
-                GuardarPedido gp = new GuardarPedido();
-                gp.ShowDialog();
+                if(mesa == 0)
+                {
+                    GuardarPedido gp = new GuardarPedido();
+                    gp.ShowDialog();
+                }
+                else
+                {
+                    con.abrir();
+
+                    SqlCommand com3 = new SqlCommand
+                    {
+                        CommandText = "DELETE FROM tb_pedido_currente WHERE id_mesa = '" + mesa + "'",
+                        Connection = con.SaberConexao(),
+                    };
+                    com3.ExecuteNonQuery();
+
+                    AddNomes();
+                    AddQuantidade();                    
+                    
+                    int i = 0;
+                    foreach (Control pl in p_lista_produtos.Controls)
+                    {
+                        SqlCommand com2 = new SqlCommand
+                        {
+                            CommandText = "INSERT INTO tb_pedido_currente (id_mesa,id_produto,estado,quantidade,id_pedido,nome) VALUES ('" + mesa + "', '" + pl.Tag + "', 'Em preparo', '" + quantidades[i] + "', '" + numero_pedido + "','" + nomes[i] + "')",
+                            Connection = con.SaberConexao(),
+                        };
+                        com2.ExecuteNonQuery();
+                        i++;
+                    }
+                    con.fechar();
+                    MessageBox.Show("Pedido Salvo com sucesso! \n\nEm preparação");
+                    this.Close();
+                } 
             }
         }
 
@@ -208,8 +248,7 @@ namespace Local_Money
                 MessageBox.Show("Nenhum produto foi selecionado");
             }
             else
-            {
-                
+            {              
                 Pagamento p = new Pagamento();
 
                 string[] separa = lbl_subtotal_valor.Text.Split(' ');
@@ -221,10 +260,8 @@ namespace Local_Money
                 separa = lbl_promodia_valor.Text.Split(' ');
                 p.Descontos = double.Parse(separa[1]);
 
-                separa = lbl_codpromo_valor.Text.Split(' ');
-                p.Descontos = p.Descontos + double.Parse(separa[1]);
-
                 p.Impostos = p.Total - p.Subtotal;
+                p.mesa = mesa;
                 p.ShowDialog();
             }
         }
@@ -251,39 +288,12 @@ namespace Local_Money
 
         public void AddTotal()
         {
-
             totais.AddRange(from Control pl in p_lista_produtos.Controls
                                where pl is Panel
                                from Control p in pl.Controls
                                where p is Label && p.Tag is "2"
                                let s = p.Text.Split(' ')
                                select double.Parse(s[1]));
-            /*
-            int qtd = 0;
-            double preco = 0;
-            foreach (Control pl in p_lista_produtos.Controls)
-            {
-                if(pl is Panel)
-                {
-                    
-                    
-                    foreach (Control p in pl.Controls)
-                    {
-                        if (p is Label && Tag is "1")
-                        {
-                            string[] separa = p.Text.Split(' ');
-                            preco = double.Parse(separa[1]);
-                        }
-                        if (p is Label && Tag is "0")
-                        {
-                            qtd = int.Parse(p.Text);
-                            totais.Add(qtd * preco);
-                        }
-                        
-                    }
-                }
-            }
-            */
         }
 
         public void AddNomes()
@@ -293,6 +303,25 @@ namespace Local_Money
                            from Control p in pl.Controls
                            where p is Label && p.Tag is "3"
                            select p.Text);
+        }
+
+        int aux = 0;
+        private void cb_takeaway_CheckedChanged(object sender, EventArgs e)
+        {
+            aux ++;
+            if(aux%2 == 0)
+            {
+                string[] total = lbl_subtotal_valor.Text.Split(' ');
+                double tot = double.Parse(total[1]);
+                lbl_subtotal_valor.Text = "Kz " + (tot - ta);
+            }
+            else
+            {
+                string[] total = lbl_subtotal_valor.Text.Split(' ');
+                double tot = double.Parse(total[1]);
+                lbl_subtotal_valor.Text = "Kz " + (tot + ta);
+            }
+
         }
     }
 }

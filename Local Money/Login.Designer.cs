@@ -59,6 +59,14 @@
             this.panel18 = new System.Windows.Forms.Panel();
             this.panel19 = new System.Windows.Forms.Panel();
             this.panel20 = new System.Windows.Forms.Panel();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.panel25 = new System.Windows.Forms.Panel();
+            this.panel26 = new System.Windows.Forms.Panel();
+            this.panel27 = new System.Windows.Forms.Panel();
+            this.panel28 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
@@ -112,7 +120,7 @@
             // 
             // btnEntrar
             // 
-            this.btnEntrar.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnEntrar.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEntrar.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEntrar.Location = new System.Drawing.Point(682, 372);
@@ -125,7 +133,7 @@
             // 
             // btnSair
             // 
-            this.btnSair.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnSair.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.Location = new System.Drawing.Point(682, 431);
@@ -285,6 +293,14 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel4.Controls.Add(this.panel21);
+            this.panel4.Controls.Add(this.panel22);
+            this.panel4.Controls.Add(this.panel23);
+            this.panel4.Controls.Add(this.panel24);
+            this.panel4.Controls.Add(this.panel25);
+            this.panel4.Controls.Add(this.panel26);
+            this.panel4.Controls.Add(this.panel27);
+            this.panel4.Controls.Add(this.panel28);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(621, 0);
@@ -370,6 +386,74 @@
             this.panel20.Size = new System.Drawing.Size(5, 480);
             this.panel20.TabIndex = 17;
             // 
+            // panel21
+            // 
+            this.panel21.BackColor = System.Drawing.SystemColors.Control;
+            this.panel21.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel21.Location = new System.Drawing.Point(15, 85);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(299, 5);
+            this.panel21.TabIndex = 28;
+            // 
+            // panel22
+            // 
+            this.panel22.BackColor = System.Drawing.SystemColors.Control;
+            this.panel22.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel22.Location = new System.Drawing.Point(15, 10);
+            this.panel22.Name = "panel22";
+            this.panel22.Size = new System.Drawing.Size(299, 5);
+            this.panel22.TabIndex = 27;
+            // 
+            // panel23
+            // 
+            this.panel23.BackColor = System.Drawing.SystemColors.Control;
+            this.panel23.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel23.Location = new System.Drawing.Point(314, 10);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(5, 80);
+            this.panel23.TabIndex = 26;
+            // 
+            // panel24
+            // 
+            this.panel24.BackColor = System.Drawing.SystemColors.Control;
+            this.panel24.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel24.Location = new System.Drawing.Point(10, 10);
+            this.panel24.Name = "panel24";
+            this.panel24.Size = new System.Drawing.Size(5, 80);
+            this.panel24.TabIndex = 25;
+            // 
+            // panel25
+            // 
+            this.panel25.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel25.Location = new System.Drawing.Point(10, 90);
+            this.panel25.Name = "panel25";
+            this.panel25.Size = new System.Drawing.Size(309, 10);
+            this.panel25.TabIndex = 24;
+            // 
+            // panel26
+            // 
+            this.panel26.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel26.Location = new System.Drawing.Point(319, 10);
+            this.panel26.Name = "panel26";
+            this.panel26.Size = new System.Drawing.Size(10, 90);
+            this.panel26.TabIndex = 23;
+            // 
+            // panel27
+            // 
+            this.panel27.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel27.Location = new System.Drawing.Point(0, 10);
+            this.panel27.Name = "panel27";
+            this.panel27.Size = new System.Drawing.Size(10, 90);
+            this.panel27.TabIndex = 22;
+            // 
+            // panel28
+            // 
+            this.panel28.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel28.Location = new System.Drawing.Point(0, 0);
+            this.panel28.Name = "panel28";
+            this.panel28.Size = new System.Drawing.Size(329, 10);
+            this.panel28.TabIndex = 21;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,5 +525,13 @@
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.Panel panel21;
+        private System.Windows.Forms.Panel panel22;
+        private System.Windows.Forms.Panel panel23;
+        private System.Windows.Forms.Panel panel24;
+        private System.Windows.Forms.Panel panel25;
+        private System.Windows.Forms.Panel panel26;
+        private System.Windows.Forms.Panel panel27;
+        private System.Windows.Forms.Panel panel28;
     }
 }

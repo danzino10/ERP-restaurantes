@@ -153,7 +153,7 @@ namespace Local_Money
 
             try
             {
-                ProdutoListado pl = new ProdutoListado(Nome.Text, Preco.Text, IdProduto);
+                ProdutoListado pl = new ProdutoListado(Nome.Text, Preco.Text, IdProduto, 1, 1, (PedidoNovo)Application.OpenForms[2]);
                 pn.p_lista_produtos.Controls.Add(pl.Criar());
                 pn.produtos.Add(IdProduto);
                 pn.numero_produtos++;

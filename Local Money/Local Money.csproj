@@ -102,14 +102,15 @@
     <Compile Include="GuardarPedido.Designer.cs">
       <DependentUpon>GuardarPedido.cs</DependentUpon>
     </Compile>
-    <Compile Include="modelos\BotaoMenu.cs" />
-    <Compile Include="modelos\BotaoMesa.cs" />
+    <Compile Include="objectos\BotaoMenu.cs" />
+    <Compile Include="objectos\BotaoMesa.cs" />
     <Compile Include="modelos\Button_WOC.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="modelos\CartaoSubCategoriaCardapio.cs" />
-    <Compile Include="modelos\CartaoCategoriaCardapio.cs" />
-    <Compile Include="modelos\CartaoProduto.cs" />
+    <Compile Include="objectos\BotaoTarefa.cs" />
+    <Compile Include="objectos\CartaoSubCategoriaCardapio.cs" />
+    <Compile Include="objectos\CartaoCategoriaCardapio.cs" />
+    <Compile Include="objectos\CartaoProduto.cs" />
     <Compile Include="modelos\Conexao.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -119,8 +120,8 @@
     </Compile>
     <Compile Include="modelos\Pedidos.cs" />
     <Compile Include="modelos\Produto.cs" />
-    <Compile Include="modelos\ProdutoListado.cs" />
-    <Compile Include="modelos\ProdutoListadoSecond.cs" />
+    <Compile Include="objectos\ProdutoListado.cs" />
+    <Compile Include="objectos\ProdutoListadoSecond.cs" />
     <Compile Include="Pagamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +145,18 @@
     </Compile>
     <Compile Include="PedidoNovo.Designer.cs">
       <DependentUpon>PedidoNovo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PessoalRelatorios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PessoalRelatorios.Designer.cs">
+      <DependentUpon>PessoalRelatorios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PessoalTarefas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PessoalTarefas.Designer.cs">
+      <DependentUpon>PessoalTarefas.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -181,6 +194,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PedidoNovo.resx">
       <DependentUpon>PedidoNovo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PessoalRelatorios.resx">
+      <DependentUpon>PessoalRelatorios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PessoalTarefas.resx">
+      <DependentUpon>PessoalTarefas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -288,6 +307,7 @@
   <ItemGroup>
     <None Include="Resources\chef.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

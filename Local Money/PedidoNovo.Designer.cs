@@ -32,20 +32,22 @@ namespace Local_Money
             this.p_pedido = new System.Windows.Forms.Panel();
             this.p_lista_produtos = new System.Windows.Forms.Panel();
             this.p_total = new System.Windows.Forms.Panel();
+            this.lbl_takeaway_valor = new System.Windows.Forms.Label();
+            this.cb_takeaway = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbl_total_valor = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lbl_codpromo_valor = new System.Windows.Forms.Label();
             this.lbl_promodia_valor = new System.Windows.Forms.Label();
             this.lbl_subtotal_valor = new System.Windows.Forms.Label();
             this.lbl_total = new System.Windows.Forms.Label();
-            this.cb_codpromo = new System.Windows.Forms.CheckBox();
             this.cb_promodia = new System.Windows.Forms.CheckBox();
             this.lbl_iva = new System.Windows.Forms.Label();
             this.lbl_subtotal = new System.Windows.Forms.Label();
             this.p_botoes_pedido = new System.Windows.Forms.Panel();
             this.pb_pagar = new System.Windows.Forms.PictureBox();
+            this.btn_pagar = new ePOSOne.btnProduct.Button_WOC();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btn_salvar = new ePOSOne.btnProduct.Button_WOC();
             this.p_cabecalho_pedido = new System.Windows.Forms.Panel();
             this.lbl_num_pedido = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,10 +63,6 @@ namespace Local_Money
             this.btn_voltar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.flp_cardapio = new System.Windows.Forms.FlowLayoutPanel();
-            this.btn_pagar = new ePOSOne.btnProduct.Button_WOC();
-            this.btn_salvar = new ePOSOne.btnProduct.Button_WOC();
-            this.label2 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.p_pedido.SuspendLayout();
             this.p_total.SuspendLayout();
             this.p_botoes_pedido.SuspendLayout();
@@ -98,16 +96,14 @@ namespace Local_Money
             // 
             // p_total
             // 
-            this.p_total.Controls.Add(this.label2);
-            this.p_total.Controls.Add(this.checkBox1);
+            this.p_total.Controls.Add(this.lbl_takeaway_valor);
+            this.p_total.Controls.Add(this.cb_takeaway);
             this.p_total.Controls.Add(this.panel2);
             this.p_total.Controls.Add(this.lbl_total_valor);
             this.p_total.Controls.Add(this.label3);
-            this.p_total.Controls.Add(this.lbl_codpromo_valor);
             this.p_total.Controls.Add(this.lbl_promodia_valor);
             this.p_total.Controls.Add(this.lbl_subtotal_valor);
             this.p_total.Controls.Add(this.lbl_total);
-            this.p_total.Controls.Add(this.cb_codpromo);
             this.p_total.Controls.Add(this.cb_promodia);
             this.p_total.Controls.Add(this.lbl_iva);
             this.p_total.Controls.Add(this.lbl_subtotal);
@@ -117,6 +113,29 @@ namespace Local_Money
             this.p_total.Name = "p_total";
             this.p_total.Size = new System.Drawing.Size(320, 202);
             this.p_total.TabIndex = 1;
+            // 
+            // lbl_takeaway_valor
+            // 
+            this.lbl_takeaway_valor.AutoSize = true;
+            this.lbl_takeaway_valor.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_takeaway_valor.Location = new System.Drawing.Point(237, 56);
+            this.lbl_takeaway_valor.Name = "lbl_takeaway_valor";
+            this.lbl_takeaway_valor.Size = new System.Drawing.Size(54, 18);
+            this.lbl_takeaway_valor.TabIndex = 14;
+            this.lbl_takeaway_valor.Text = "kz 0,00";
+            this.lbl_takeaway_valor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cb_takeaway
+            // 
+            this.cb_takeaway.AutoSize = true;
+            this.cb_takeaway.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_takeaway.Location = new System.Drawing.Point(15, 55);
+            this.cb_takeaway.Name = "cb_takeaway";
+            this.cb_takeaway.Size = new System.Drawing.Size(93, 22);
+            this.cb_takeaway.TabIndex = 13;
+            this.cb_takeaway.Text = "Takeaway";
+            this.cb_takeaway.UseVisualStyleBackColor = true;
+            this.cb_takeaway.CheckedChanged += new System.EventHandler(this.cb_takeaway_CheckedChanged);
             // 
             // panel2
             // 
@@ -142,29 +161,18 @@ namespace Local_Money
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(238, 96);
+            this.label3.Location = new System.Drawing.Point(237, 83);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 18);
             this.label3.TabIndex = 10;
             this.label3.Text = "14%";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lbl_codpromo_valor
-            // 
-            this.lbl_codpromo_valor.AutoSize = true;
-            this.lbl_codpromo_valor.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_codpromo_valor.Location = new System.Drawing.Point(238, 51);
-            this.lbl_codpromo_valor.Name = "lbl_codpromo_valor";
-            this.lbl_codpromo_valor.Size = new System.Drawing.Size(54, 18);
-            this.lbl_codpromo_valor.TabIndex = 9;
-            this.lbl_codpromo_valor.Text = "kz 0,00";
-            this.lbl_codpromo_valor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // lbl_promodia_valor
             // 
             this.lbl_promodia_valor.AutoSize = true;
             this.lbl_promodia_valor.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_promodia_valor.Location = new System.Drawing.Point(238, 31);
+            this.lbl_promodia_valor.Location = new System.Drawing.Point(237, 31);
             this.lbl_promodia_valor.Name = "lbl_promodia_valor";
             this.lbl_promodia_valor.Size = new System.Drawing.Size(54, 18);
             this.lbl_promodia_valor.TabIndex = 8;
@@ -175,7 +183,7 @@ namespace Local_Money
             // 
             this.lbl_subtotal_valor.AutoSize = true;
             this.lbl_subtotal_valor.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_subtotal_valor.Location = new System.Drawing.Point(238, 5);
+            this.lbl_subtotal_valor.Location = new System.Drawing.Point(237, 5);
             this.lbl_subtotal_valor.Name = "lbl_subtotal_valor";
             this.lbl_subtotal_valor.Size = new System.Drawing.Size(61, 19);
             this.lbl_subtotal_valor.TabIndex = 7;
@@ -194,33 +202,22 @@ namespace Local_Money
             this.lbl_total.Text = "Total";
             this.lbl_total.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // cb_codpromo
-            // 
-            this.cb_codpromo.AutoSize = true;
-            this.cb_codpromo.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_codpromo.Location = new System.Drawing.Point(16, 50);
-            this.cb_codpromo.Name = "cb_codpromo";
-            this.cb_codpromo.Size = new System.Drawing.Size(164, 22);
-            this.cb_codpromo.TabIndex = 5;
-            this.cb_codpromo.Text = "Código promocional";
-            this.cb_codpromo.UseVisualStyleBackColor = true;
-            // 
             // cb_promodia
             // 
             this.cb_promodia.AutoSize = true;
             this.cb_promodia.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_promodia.Location = new System.Drawing.Point(16, 27);
+            this.cb_promodia.Location = new System.Drawing.Point(15, 27);
             this.cb_promodia.Name = "cb_promodia";
-            this.cb_promodia.Size = new System.Drawing.Size(142, 22);
+            this.cb_promodia.Size = new System.Drawing.Size(97, 22);
             this.cb_promodia.TabIndex = 4;
-            this.cb_promodia.Text = "Promoção do dia";
+            this.cb_promodia.Text = "Promoção";
             this.cb_promodia.UseVisualStyleBackColor = true;
             // 
             // lbl_iva
             // 
             this.lbl_iva.AutoSize = true;
             this.lbl_iva.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_iva.Location = new System.Drawing.Point(33, 96);
+            this.lbl_iva.Location = new System.Drawing.Point(32, 83);
             this.lbl_iva.Name = "lbl_iva";
             this.lbl_iva.Size = new System.Drawing.Size(105, 18);
             this.lbl_iva.TabIndex = 3;
@@ -231,7 +228,7 @@ namespace Local_Money
             // 
             this.lbl_subtotal.AutoSize = true;
             this.lbl_subtotal.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_subtotal.Location = new System.Drawing.Point(33, 5);
+            this.lbl_subtotal.Location = new System.Drawing.Point(32, 5);
             this.lbl_subtotal.Name = "lbl_subtotal";
             this.lbl_subtotal.Size = new System.Drawing.Size(69, 19);
             this.lbl_subtotal.TabIndex = 1;
@@ -261,6 +258,26 @@ namespace Local_Money
             this.pb_pagar.TabIndex = 3;
             this.pb_pagar.TabStop = false;
             // 
+            // btn_pagar
+            // 
+            this.btn_pagar.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_pagar.BorderColor = System.Drawing.Color.Black;
+            this.btn_pagar.ButtonColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_pagar.FlatAppearance.BorderSize = 0;
+            this.btn_pagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_pagar.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_pagar.Location = new System.Drawing.Point(143, 3);
+            this.btn_pagar.Name = "btn_pagar";
+            this.btn_pagar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_pagar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btn_pagar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_pagar.Size = new System.Drawing.Size(143, 53);
+            this.btn_pagar.TabIndex = 6;
+            this.btn_pagar.Text = "             Pagar agora";
+            this.btn_pagar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_pagar.UseVisualStyleBackColor = false;
+            this.btn_pagar.Click += new System.EventHandler(this.btn_pagar_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Local_Money.Properties.Resources.floppy_disk;
@@ -270,6 +287,26 @@ namespace Local_Money
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
+            // 
+            // btn_salvar
+            // 
+            this.btn_salvar.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_salvar.BorderColor = System.Drawing.Color.Black;
+            this.btn_salvar.ButtonColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_salvar.FlatAppearance.BorderSize = 0;
+            this.btn_salvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_salvar.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_salvar.Location = new System.Drawing.Point(16, 3);
+            this.btn_salvar.Name = "btn_salvar";
+            this.btn_salvar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_salvar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btn_salvar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_salvar.Size = new System.Drawing.Size(117, 53);
+            this.btn_salvar.TabIndex = 4;
+            this.btn_salvar.Text = "          Salvar";
+            this.btn_salvar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_salvar.UseVisualStyleBackColor = false;
+            this.btn_salvar.Click += new System.EventHandler(this.btn_salvar_Click);
             // 
             // p_cabecalho_pedido
             // 
@@ -434,68 +471,6 @@ namespace Local_Money
             this.flp_cardapio.Size = new System.Drawing.Size(422, 451);
             this.flp_cardapio.TabIndex = 4;
             // 
-            // btn_pagar
-            // 
-            this.btn_pagar.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_pagar.BorderColor = System.Drawing.Color.Black;
-            this.btn_pagar.ButtonColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_pagar.FlatAppearance.BorderSize = 0;
-            this.btn_pagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_pagar.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_pagar.Location = new System.Drawing.Point(143, 3);
-            this.btn_pagar.Name = "btn_pagar";
-            this.btn_pagar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_pagar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btn_pagar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_pagar.Size = new System.Drawing.Size(143, 53);
-            this.btn_pagar.TabIndex = 6;
-            this.btn_pagar.Text = "             Pagar agora";
-            this.btn_pagar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_pagar.UseVisualStyleBackColor = false;
-            this.btn_pagar.Click += new System.EventHandler(this.btn_pagar_Click);
-            // 
-            // btn_salvar
-            // 
-            this.btn_salvar.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_salvar.BorderColor = System.Drawing.Color.Black;
-            this.btn_salvar.ButtonColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_salvar.FlatAppearance.BorderSize = 0;
-            this.btn_salvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_salvar.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_salvar.Location = new System.Drawing.Point(16, 3);
-            this.btn_salvar.Name = "btn_salvar";
-            this.btn_salvar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_salvar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btn_salvar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_salvar.Size = new System.Drawing.Size(117, 53);
-            this.btn_salvar.TabIndex = 4;
-            this.btn_salvar.Text = "          Salvar";
-            this.btn_salvar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_salvar.UseVisualStyleBackColor = false;
-            this.btn_salvar.Click += new System.EventHandler(this.btn_salvar_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(238, 69);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 18);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "kz 0,00";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(16, 68);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(93, 22);
-            this.checkBox1.TabIndex = 13;
-            this.checkBox1.Text = "Takeaway";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // PedidoNovo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -535,12 +510,9 @@ namespace Local_Money
         private System.Windows.Forms.Panel p_botoes_pedido;
         
         private System.Windows.Forms.PictureBox pb_pagar;
-        private System.Windows.Forms.Label lbl_total_valor;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lbl_codpromo_valor;
         private System.Windows.Forms.Label lbl_promodia_valor;
         private System.Windows.Forms.Label lbl_total;
-        private System.Windows.Forms.CheckBox cb_codpromo;
         private System.Windows.Forms.CheckBox cb_promodia;
         private System.Windows.Forms.Label lbl_iva;
         private System.Windows.Forms.Label lbl_subtotal;
@@ -564,7 +536,8 @@ namespace Local_Money
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label lbl_num_pedido;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label lbl_takeaway_valor;
+        private System.Windows.Forms.CheckBox cb_takeaway;
+        public System.Windows.Forms.Label lbl_total_valor;
     }
 }

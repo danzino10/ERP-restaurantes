@@ -56,6 +56,9 @@ namespace Local_Money
             this.panel15 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flp_mesas = new System.Windows.Forms.FlowLayoutPanel();
+            this.p_botoes_pedido = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btn_alterar = new ePOSOne.btnProduct.Button_WOC();
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -70,6 +73,8 @@ namespace Local_Money
             this.panel17.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.p_botoes_pedido.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -218,18 +223,18 @@ namespace Local_Money
             // flp_produto_listado
             // 
             this.flp_produto_listado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flp_produto_listado.Location = new System.Drawing.Point(35, 86);
+            this.flp_produto_listado.Location = new System.Drawing.Point(15, 86);
             this.flp_produto_listado.Name = "flp_produto_listado";
-            this.flp_produto_listado.Size = new System.Drawing.Size(483, 337);
+            this.flp_produto_listado.Size = new System.Drawing.Size(524, 337);
             this.flp_produto_listado.TabIndex = 6;
             // 
             // panel19
             // 
             this.panel19.BackColor = System.Drawing.SystemColors.Control;
             this.panel19.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel19.Location = new System.Drawing.Point(35, 423);
+            this.panel19.Location = new System.Drawing.Point(15, 423);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(483, 28);
+            this.panel19.Size = new System.Drawing.Size(524, 28);
             this.panel19.TabIndex = 5;
             // 
             // panel18
@@ -239,16 +244,16 @@ namespace Local_Money
             this.panel18.Controls.Add(this.label2);
             this.panel18.Controls.Add(this.label1);
             this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel18.Location = new System.Drawing.Point(35, 28);
+            this.panel18.Location = new System.Drawing.Point(15, 28);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(483, 58);
+            this.panel18.Size = new System.Drawing.Size(524, 58);
             this.panel18.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Roboto Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(372, 22);
+            this.label3.Location = new System.Drawing.Point(376, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 19);
             this.label3.TabIndex = 3;
@@ -258,7 +263,7 @@ namespace Local_Money
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Roboto Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(201, 22);
+            this.label2.Location = new System.Drawing.Point(197, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 19);
             this.label2.TabIndex = 2;
@@ -279,9 +284,9 @@ namespace Local_Money
             this.panel17.BackColor = System.Drawing.SystemColors.Control;
             this.panel17.Controls.Add(this.panel24);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel17.Location = new System.Drawing.Point(518, 28);
+            this.panel17.Location = new System.Drawing.Point(539, 28);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(35, 423);
+            this.panel17.Size = new System.Drawing.Size(14, 423);
             this.panel17.TabIndex = 3;
             // 
             // panel24
@@ -300,14 +305,14 @@ namespace Local_Money
             this.panel16.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel16.Location = new System.Drawing.Point(0, 28);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(35, 423);
+            this.panel16.Size = new System.Drawing.Size(15, 423);
             this.panel16.TabIndex = 2;
             // 
             // panel22
             // 
             this.panel22.BackColor = System.Drawing.Color.DarkSlateGray;
             this.panel22.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel22.Location = new System.Drawing.Point(30, 0);
+            this.panel22.Location = new System.Drawing.Point(10, 0);
             this.panel22.Name = "panel22";
             this.panel22.Size = new System.Drawing.Size(5, 423);
             this.panel22.TabIndex = 4;
@@ -324,6 +329,7 @@ namespace Local_Money
             // panel1
             // 
             this.panel1.Controls.Add(this.flp_mesas);
+            this.panel1.Controls.Add(this.p_botoes_pedido);
             this.panel1.Controls.Add(this.panel14);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
@@ -337,8 +343,49 @@ namespace Local_Money
             this.flp_mesas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flp_mesas.Location = new System.Drawing.Point(2, 50);
             this.flp_mesas.Name = "flp_mesas";
-            this.flp_mesas.Size = new System.Drawing.Size(189, 451);
-            this.flp_mesas.TabIndex = 11;
+            this.flp_mesas.Size = new System.Drawing.Size(189, 392);
+            this.flp_mesas.TabIndex = 13;
+            // 
+            // p_botoes_pedido
+            // 
+            this.p_botoes_pedido.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.p_botoes_pedido.Controls.Add(this.pictureBox1);
+            this.p_botoes_pedido.Controls.Add(this.btn_alterar);
+            this.p_botoes_pedido.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.p_botoes_pedido.Location = new System.Drawing.Point(2, 442);
+            this.p_botoes_pedido.Name = "p_botoes_pedido";
+            this.p_botoes_pedido.Size = new System.Drawing.Size(189, 59);
+            this.p_botoes_pedido.TabIndex = 12;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Local_Money.Properties.Resources.floppy_disk;
+            this.pictureBox1.Location = new System.Drawing.Point(36, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btn_alterar
+            // 
+            this.btn_alterar.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_alterar.BorderColor = System.Drawing.Color.Black;
+            this.btn_alterar.ButtonColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_alterar.FlatAppearance.BorderSize = 0;
+            this.btn_alterar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_alterar.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_alterar.Location = new System.Drawing.Point(16, 3);
+            this.btn_alterar.Name = "btn_alterar";
+            this.btn_alterar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_alterar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btn_alterar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_alterar.Size = new System.Drawing.Size(161, 53);
+            this.btn_alterar.TabIndex = 4;
+            this.btn_alterar.Text = "          Alterar";
+            this.btn_alterar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_alterar.UseVisualStyleBackColor = false;
+            this.btn_alterar.Click += new System.EventHandler(this.btn_alterar_Click);
             // 
             // panel14
             // 
@@ -395,6 +442,9 @@ namespace Local_Money
             this.panel17.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.p_botoes_pedido.ResumeLayout(false);
+            this.p_botoes_pedido.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -428,9 +478,12 @@ namespace Local_Money
         private System.Windows.Forms.Panel panel24;
         private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.Panel panel1;
-        public System.Windows.Forms.FlowLayoutPanel flp_mesas;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.FlowLayoutPanel flp_mesas;
+        private System.Windows.Forms.Panel p_botoes_pedido;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private ePOSOne.btnProduct.Button_WOC btn_alterar;
     }
 }

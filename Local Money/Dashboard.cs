@@ -7,7 +7,7 @@ namespace Local_Money
         public int Id;
         public string Nome;
         public string Email;
-
+        public int NivelAcesso;
         public string data;
         private Form janelaAberta = null;
 
@@ -49,7 +49,7 @@ namespace Local_Money
                 submenu.Visible = false;
         }
 
-        private void AbrirJanela(Form janela)
+        public void AbrirJanela(Form janela)
         {
             if(janelaAberta != null)
             {
@@ -71,7 +71,20 @@ namespace Local_Money
 
         private void btn_novo_pedido_Click(object sender, EventArgs e)
         {
-            AbrirJanela(new PedidoNovo());
+            PedidoNovo pn = new PedidoNovo();
+            if (janelaAberta != null)
+            {
+                janelaAberta.Close();
+            }
+            janelaAberta = pn;
+            pn.mesa = 0;
+            pn.TopLevel = false;
+            pn.FormBorderStyle = FormBorderStyle.None;
+            pn.Dock = DockStyle.Fill;
+            p_janela.Controls.Add(pn);
+            pn.BringToFront();
+            pn.Show();
+
             lbl_pagina.Text = "Pedido Novo";
             //
             //
@@ -106,6 +119,7 @@ namespace Local_Money
 
         private void btn_perfil_Click(object sender, EventArgs e)
         {
+
             //
             //
             EsconderSubmenu();
@@ -113,6 +127,7 @@ namespace Local_Money
 
         private void btn_chat_Click(object sender, EventArgs e)
         {
+            AbrirJanela(new PessoalRelatorios());
             //
             //
             EsconderSubmenu();
@@ -133,12 +148,27 @@ namespace Local_Money
 
         private void btn_tarefas_Click(object sender, EventArgs e)
         {
+            AbrirJanela(new PessoalTarefas());
+
             //
             //
             EsconderSubmenu();
         }
 
         int h = 0, m = 0, s = 0;
+
+        private void frm_dashboard_Load(object sender, EventArgs e)
+        {
+            if (NivelAcesso == 2)
+            {
+                p_sub_pessoal.Controls.Remove(btn_perfil);
+                p_sub_clientes.Controls.Remove(btn_registar);
+                p_sub_clientes.Controls.Remove(btn_editar);
+
+
+            }
+        }
+
         private void tmr_Tick(object sender, EventArgs e)
         {
             s++;

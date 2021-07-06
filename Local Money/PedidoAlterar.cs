@@ -28,7 +28,7 @@ namespace Local_Money
 
             SqlCommand com = new SqlCommand
             {
-                CommandText = "SELECT * FROM tb_mesa",
+                CommandText = "SELECT * FROM tb_mesa WHERE estado = 'ocupado'",
                 Connection = con.SaberConexao(),
             };
 
@@ -55,61 +55,68 @@ namespace Local_Money
 
             SqlCommand com = new SqlCommand
             {
-                CommandText = "SELECT id_produto FROM tb_pedido_currente WHERE id_mesa = '" + mesa,
+                CommandText = "SELECT * FROM tb_pedido_currente WHERE id_mesa = '" + mesa + "'",
                 Connection = con.SaberConexao(),
             };
             SqlDataReader reader = com.ExecuteReader();
 
-            if(reader.HasRows)
+            if (reader.HasRows)
             {
-                List<int> id = new List<int>();
-                string[] nomes;
-                int i = 0;
-                while(reader.Read())
+                flp_produto_listado.Controls.Clear();
+                while (reader.Read())
                 {
-                    id.Add(reader.GetInt32(0));
-                    i++;
-                }
-                nomes = new string[i];
-
-                reader.Close();
-
-                i = 0;
-                foreach(int item in id)
-                {
-                    SqlCommand com2 = new SqlCommand
-                    {
-                        CommandText = "SELECT nome FROM tb_produto WHERE id_produto = '" + id.ElementAt(i),
-                        Connection = con.SaberConexao(),
-                    };
-                    SqlDataReader reader2 = com2.ExecuteReader();
-                    while(reader2.Read())
-                    {
-                        nomes[i] = reader2.GetString(0);
-                    }
-                    reader2.Close();
-                    i++;
-                }
-
-                i = 0;
-                SqlCommand com3 = new SqlCommand
-                {
-                    CommandText = "SELECT * FROM tb_pedido_currente WHERE id_mesa = '" + mesa,
-                    Connection = con.SaberConexao(),
-                };
-                SqlDataReader reader3 = com.ExecuteReader();
-                while(reader3.Read())
-                {
-                    ProdutoListadoSecond pls = new ProdutoListadoSecond(nomes[i], reader3.GetInt32(3), reader3.GetString(4));
+                    ProdutoListadoSecond pls = new ProdutoListadoSecond(reader.GetString(6), reader.GetInt32(3), reader.GetString(4), reader.GetInt32(2), mesa);
                     flp_produto_listado.Controls.Add(pls.CriarPainel());
-                    i++;
                 }
             }
-            
-
 
             con.fechar();
         }
-       
+
+        private void btn_alterar_Click(object sender, EventArgs e)
+        {
+            PedidoNovo pn = new PedidoNovo();
+            pn.mesa = Mesa;
+            frm_dashboard d = (frm_dashboard)Application.OpenForms[1];
+            double total = 0;
+            foreach (Control pls in flp_produto_listado.Controls)
+            {
+                con.abrir();
+
+                SqlCommand com = new SqlCommand
+                {
+                    CommandText = "SELECT * FROM tb_produto WHERE id_produto = '" + pls.Tag + "'",
+                    Connection = con.SaberConexao(),
+                };
+                SqlDataReader reader = com.ExecuteReader();
+                
+                if (reader.HasRows)
+                {
+                    int quantidade = 1;
+                    foreach(Control qtd in pls.Controls)
+                    {
+                        if(qtd is Label && qtd.Tag == "1")
+                        {
+                            quantidade = int.Parse(qtd.Text);
+                        }
+                    }
+                    
+                    while(reader.Read())
+                    {
+                        ProdutoListado pl = new ProdutoListado(reader.GetString(3), "Kz " + reader.GetValue(4).ToString(), reader.GetInt32(0), quantidade, quantidade, new PedidoNovo());
+                        pl.Apagar.Enabled = false;
+                        pn.p_lista_produtos.Controls.Add(pl.Criar());
+
+                        total += quantidade * float.Parse(reader.GetValue(4).ToString());
+                    }
+
+                    
+                }
+                
+                con.fechar();
+            }
+            pn.lbl_subtotal_valor.Text = "Kz " + total;
+            d.AbrirJanela(pn);
+        }
     }
 }

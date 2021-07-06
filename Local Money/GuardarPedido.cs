@@ -76,12 +76,19 @@ namespace Local_Money
                         };
                         com.ExecuteNonQuery();
 
+                        SqlCommand com3 = new SqlCommand
+                        {
+                            CommandText = "DELETE FROM tb_pedido_currente WHERE id_mesa = '" + Mesa + "'",
+                            Connection = con.SaberConexao(),
+                        };
+                        com3.ExecuteNonQuery();
+
                         int i= 0; 
                         foreach(Control pl in pn.p_lista_produtos.Controls)
                         {
                             SqlCommand com2 = new SqlCommand
                             {
-                                CommandText = "INSERT INTO tb_pedido_currente (id_mesa,id_produto,estado,quantidade,id_pedido) VALUES ('" + Mesa + "', '" + pn.produtos[i] + "', 'Em preparo', '" + pn.quantidades[i] + "', '" + Selec.ToString() + "')",
+                                CommandText = "INSERT INTO tb_pedido_currente (id_mesa,id_produto,estado,quantidade,id_pedido,nome) VALUES ('" + Mesa + "', '" + pn.produtos[i] + "', 'Em preparo', '" + pn.quantidades[i] + "', '" + Selec.ToString() + "','" + pn.nomes[i] + "')",
                                 Connection = con.SaberConexao(),
                             };
                             com2.ExecuteNonQuery();
