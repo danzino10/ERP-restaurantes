@@ -193,7 +193,7 @@ namespace Local_Money
               esc.PrintLine("Data: " + DateTime.Now.ToString()),
               esc.PrintLine(""),
               esc.SetStyles(PrintStyle.Underline),
-              esc.PrintLine(" Quantidade        P.Unitarop       Subtotal"),
+              esc.PrintLine(" Qtd     P.Unitaro    Subtotal"),
               esc.PrintLine("   Descricao"),
               esc.SetStyles(PrintStyle.None),
               esc.SetStyles(PrintStyle.Bold)

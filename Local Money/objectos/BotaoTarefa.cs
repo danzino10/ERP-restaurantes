@@ -75,11 +75,18 @@ namespace Local_Money.objectos
             SqlDataReader reader = com.ExecuteReader();
             while(reader.Read())
             {
-                pt.cb_funcionario.Text = reader.GetInt32(3) + " - " + reader.GetString(4);
+                pt.cb_funcionario.Text = reader.GetInt32(3).ToString() + " - " + reader.GetString(4);
                 pt.txt_assunto.Text = reader.GetString(5);
                 pt.txt_mensagem.Text = "Por: " + reader.GetString(2);
-                pt.txt_mensagem.Text += "\nData: " + reader.GetString(7);
-                pt.txt_mensagem.Text += "\nEstado: " + reader.GetString(9);
+                pt.txt_mensagem.Text += "\nData: " + reader.GetString(8);
+                if(reader.GetInt32(7) == 0)
+                {
+                    pt.txt_mensagem.Text += "\nEstado: A decorrer";
+                }
+                else
+                {
+                    pt.txt_mensagem.Text += "\nEstado: Conluído";
+                }
                 pt.txt_mensagem.Text += "\n" + reader.GetString(6);
             }
 
