@@ -106,8 +106,9 @@ namespace Local_Money
                         ProdutoListado pl = new ProdutoListado(reader.GetString(3), "Kz " + reader.GetValue(4).ToString(), reader.GetInt32(0), quantidade, quantidade, new PedidoNovo());
                         pl.Apagar.Enabled = false;
                         pn.p_lista_produtos.Controls.Add(pl.Criar());
-
                         total += quantidade * float.Parse(reader.GetValue(4).ToString());
+                        pn.produtos.Add(reader.GetInt32(0));
+                        pn.numero_produtos++;
                     }
 
                     

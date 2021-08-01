@@ -17,7 +17,7 @@ namespace Local_Money
 
         Conexao con = new Conexao();
         frm_dashboard d = (frm_dashboard)Application.OpenForms[1];
-
+        public int IdTarefa = 0;
         public PessoalTarefas()
         {
             InitializeComponent();
@@ -99,7 +99,18 @@ namespace Local_Money
 
         private void btn_concluir_Click(object sender, EventArgs e)
         {
+            con.abrir();
 
+            SqlCommand com = new SqlCommand
+            {
+                CommandText = "UPDATE tb_tarefa SET estado = 1, data_fim = '" + DateTime.Now.ToString() + "' WHERE id_tarefa = '" + IdTarefa + "'",
+                Connection = con.SaberConexao(),
+            };
+            com.ExecuteNonQuery();
+            con.fechar();
+
+            MessageBox.Show("Tarefa Concluída!!");
+            this.Close();
         }
 
         private void txt_mensagem_TextChanged(object sender, EventArgs e)
@@ -112,6 +123,22 @@ namespace Local_Money
         {
             string[] s = lbl_count2.Text.Split('/');
             lbl_count2.Text = txt_assunto.Text.Length + "/50";
+        }
+
+        private void btn_cancelar_Click(object sender, EventArgs e)
+        {
+            con.abrir();
+
+            SqlCommand com = new SqlCommand
+            {
+                CommandText = "UPDATE tb_tarefa SET estado = 0, data_fim = ' ' WHERE id_tarefa = '" + IdTarefa + "'",
+                Connection = con.SaberConexao(),
+            };
+            com.ExecuteNonQuery();
+            con.fechar();
+
+            MessageBox.Show("Tarefa Retomada!!");
+            this.Close();
         }
     }
 }

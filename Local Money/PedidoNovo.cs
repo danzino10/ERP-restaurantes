@@ -60,6 +60,7 @@ namespace Local_Money
                 {
                     CartaoCategoriaCardapio cartao = new CartaoCategoriaCardapio(reader.GetString(1), reader.GetInt32(0), flp_cardapio);
                     flp_cardapio.Controls.Add(cartao.Criar());
+                    
                 }
                 reader.Close();
 

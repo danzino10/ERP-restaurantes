@@ -30,11 +30,25 @@ namespace Local_Money
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel21 = new System.Windows.Forms.Panel();
             this.flp_tarefas = new System.Windows.Forms.FlowLayoutPanel();
             this.p_botoes_pedido = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pb_pagar = new System.Windows.Forms.PictureBox();
+            this.btn_nova = new ePOSOne.btnProduct.Button_WOC();
+            this.btn_publicar = new ePOSOne.btnProduct.Button_WOC();
             this.panel17 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.p_tarefa = new System.Windows.Forms.Panel();
+            this.btn_cancelar = new System.Windows.Forms.Button();
+            this.lbl_erro_mens = new System.Windows.Forms.Label();
+            this.lbl_erro_ass = new System.Windows.Forms.Label();
+            this.lbl_erro_func = new System.Windows.Forms.Label();
+            this.lbl_count2 = new System.Windows.Forms.Label();
+            this.lbl_count1 = new System.Windows.Forms.Label();
+            this.btn_concluir = new System.Windows.Forms.Button();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.panel19 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.cb_funcionario = new System.Windows.Forms.ComboBox();
@@ -56,28 +70,15 @@ namespace Local_Money
             this.panel13 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.panel21 = new System.Windows.Forms.Panel();
-            this.pb_pagar = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btn_concluir = new System.Windows.Forms.Button();
-            this.lbl_count1 = new System.Windows.Forms.Label();
-            this.lbl_count2 = new System.Windows.Forms.Label();
-            this.lbl_erro_func = new System.Windows.Forms.Label();
-            this.lbl_erro_ass = new System.Windows.Forms.Label();
-            this.lbl_erro_mens = new System.Windows.Forms.Label();
-            this.btn_nova = new ePOSOne.btnProduct.Button_WOC();
-            this.btn_publicar = new ePOSOne.btnProduct.Button_WOC();
             this.panel1.SuspendLayout();
             this.p_botoes_pedido.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_pagar)).BeginInit();
             this.panel17.SuspendLayout();
             this.p_tarefa.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_pagar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -91,6 +92,15 @@ namespace Local_Money
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(270, 501);
             this.panel1.TabIndex = 0;
+            // 
+            // panel21
+            // 
+            this.panel21.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel21.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel21.Location = new System.Drawing.Point(267, 50);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(3, 392);
+            this.panel21.TabIndex = 15;
             // 
             // flp_tarefas
             // 
@@ -112,6 +122,66 @@ namespace Local_Money
             this.p_botoes_pedido.Name = "p_botoes_pedido";
             this.p_botoes_pedido.Size = new System.Drawing.Size(270, 59);
             this.p_botoes_pedido.TabIndex = 13;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Local_Money.Properties.Resources.floppy_disk;
+            this.pictureBox1.Location = new System.Drawing.Point(16, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pb_pagar
+            // 
+            this.pb_pagar.Image = global::Local_Money.Properties.Resources.credit_card;
+            this.pb_pagar.Location = new System.Drawing.Point(150, 15);
+            this.pb_pagar.Name = "pb_pagar";
+            this.pb_pagar.Size = new System.Drawing.Size(32, 32);
+            this.pb_pagar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pb_pagar.TabIndex = 7;
+            this.pb_pagar.TabStop = false;
+            // 
+            // btn_nova
+            // 
+            this.btn_nova.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_nova.BorderColor = System.Drawing.Color.Black;
+            this.btn_nova.ButtonColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_nova.FlatAppearance.BorderSize = 0;
+            this.btn_nova.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_nova.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_nova.Location = new System.Drawing.Point(127, 3);
+            this.btn_nova.Name = "btn_nova";
+            this.btn_nova.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_nova.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btn_nova.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_nova.Size = new System.Drawing.Size(140, 53);
+            this.btn_nova.TabIndex = 9;
+            this.btn_nova.Text = "             Nova";
+            this.btn_nova.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_nova.UseVisualStyleBackColor = false;
+            this.btn_nova.Click += new System.EventHandler(this.btn_nova_Click);
+            // 
+            // btn_publicar
+            // 
+            this.btn_publicar.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_publicar.BorderColor = System.Drawing.Color.Black;
+            this.btn_publicar.ButtonColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_publicar.FlatAppearance.BorderSize = 0;
+            this.btn_publicar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_publicar.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_publicar.Location = new System.Drawing.Point(0, 3);
+            this.btn_publicar.Name = "btn_publicar";
+            this.btn_publicar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_publicar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btn_publicar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_publicar.Size = new System.Drawing.Size(117, 53);
+            this.btn_publicar.TabIndex = 8;
+            this.btn_publicar.Text = "          Publicar";
+            this.btn_publicar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_publicar.UseVisualStyleBackColor = false;
+            this.btn_publicar.Click += new System.EventHandler(this.btn_publicar_Click);
             // 
             // panel17
             // 
@@ -135,6 +205,7 @@ namespace Local_Money
             // 
             // p_tarefa
             // 
+            this.p_tarefa.Controls.Add(this.btn_cancelar);
             this.p_tarefa.Controls.Add(this.lbl_erro_mens);
             this.p_tarefa.Controls.Add(this.lbl_erro_ass);
             this.p_tarefa.Controls.Add(this.lbl_erro_func);
@@ -155,6 +226,110 @@ namespace Local_Money
             this.p_tarefa.Size = new System.Drawing.Size(474, 501);
             this.p_tarefa.TabIndex = 3;
             this.p_tarefa.TabStop = true;
+            // 
+            // btn_cancelar
+            // 
+            this.btn_cancelar.BackColor = System.Drawing.Color.Brown;
+            this.btn_cancelar.BackgroundImage = global::Local_Money.Properties.Resources.cancel_button;
+            this.btn_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cancelar.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cancelar.Location = new System.Drawing.Point(240, 449);
+            this.btn_cancelar.Name = "btn_cancelar";
+            this.btn_cancelar.Size = new System.Drawing.Size(114, 44);
+            this.btn_cancelar.TabIndex = 19;
+            this.btn_cancelar.UseVisualStyleBackColor = false;
+            this.btn_cancelar.Visible = false;
+            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
+            // 
+            // lbl_erro_mens
+            // 
+            this.lbl_erro_mens.AutoSize = true;
+            this.lbl_erro_mens.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_erro_mens.ForeColor = System.Drawing.Color.Brown;
+            this.lbl_erro_mens.Location = new System.Drawing.Point(151, 154);
+            this.lbl_erro_mens.Name = "lbl_erro_mens";
+            this.lbl_erro_mens.Size = new System.Drawing.Size(24, 29);
+            this.lbl_erro_mens.TabIndex = 18;
+            this.lbl_erro_mens.Text = "*";
+            this.lbl_erro_mens.Visible = false;
+            // 
+            // lbl_erro_ass
+            // 
+            this.lbl_erro_ass.AutoSize = true;
+            this.lbl_erro_ass.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_erro_ass.ForeColor = System.Drawing.Color.Brown;
+            this.lbl_erro_ass.Location = new System.Drawing.Point(121, 79);
+            this.lbl_erro_ass.Name = "lbl_erro_ass";
+            this.lbl_erro_ass.Size = new System.Drawing.Size(24, 29);
+            this.lbl_erro_ass.TabIndex = 17;
+            this.lbl_erro_ass.Text = "*";
+            this.lbl_erro_ass.Visible = false;
+            // 
+            // lbl_erro_func
+            // 
+            this.lbl_erro_func.AutoSize = true;
+            this.lbl_erro_func.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_erro_func.ForeColor = System.Drawing.Color.Brown;
+            this.lbl_erro_func.Location = new System.Drawing.Point(162, 3);
+            this.lbl_erro_func.Name = "lbl_erro_func";
+            this.lbl_erro_func.Size = new System.Drawing.Size(24, 29);
+            this.lbl_erro_func.TabIndex = 16;
+            this.lbl_erro_func.Text = "*";
+            this.lbl_erro_func.Visible = false;
+            // 
+            // lbl_count2
+            // 
+            this.lbl_count2.AutoSize = true;
+            this.lbl_count2.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_count2.Location = new System.Drawing.Point(419, 88);
+            this.lbl_count2.Name = "lbl_count2";
+            this.lbl_count2.Size = new System.Drawing.Size(41, 18);
+            this.lbl_count2.TabIndex = 15;
+            this.lbl_count2.Text = "0/50";
+            // 
+            // lbl_count1
+            // 
+            this.lbl_count1.AutoSize = true;
+            this.lbl_count1.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_count1.Location = new System.Drawing.Point(410, 165);
+            this.lbl_count1.Name = "lbl_count1";
+            this.lbl_count1.Size = new System.Drawing.Size(50, 18);
+            this.lbl_count1.TabIndex = 14;
+            this.lbl_count1.Text = "0/300";
+            // 
+            // btn_concluir
+            // 
+            this.btn_concluir.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_concluir.BackgroundImage = global::Local_Money.Properties.Resources.check_mark;
+            this.btn_concluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_concluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_concluir.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_concluir.Location = new System.Drawing.Point(100, 449);
+            this.btn_concluir.Name = "btn_concluir";
+            this.btn_concluir.Size = new System.Drawing.Size(114, 44);
+            this.btn_concluir.TabIndex = 13;
+            this.btn_concluir.UseVisualStyleBackColor = false;
+            this.btn_concluir.Visible = false;
+            this.btn_concluir.Click += new System.EventHandler(this.btn_concluir_Click);
+            // 
+            // panel20
+            // 
+            this.panel20.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel20.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel20.Location = new System.Drawing.Point(0, 498);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(471, 3);
+            this.panel20.TabIndex = 12;
+            // 
+            // panel19
+            // 
+            this.panel19.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel19.Location = new System.Drawing.Point(471, 0);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(3, 501);
+            this.panel19.TabIndex = 11;
             // 
             // panel2
             // 
@@ -365,164 +540,6 @@ namespace Local_Money
             this.label1.TabIndex = 3;
             this.label1.Text = "Assunto";
             // 
-            // panel19
-            // 
-            this.panel19.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.panel19.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel19.Location = new System.Drawing.Point(471, 0);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(3, 501);
-            this.panel19.TabIndex = 11;
-            // 
-            // panel20
-            // 
-            this.panel20.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.panel20.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel20.Location = new System.Drawing.Point(0, 498);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(471, 3);
-            this.panel20.TabIndex = 12;
-            // 
-            // panel21
-            // 
-            this.panel21.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.panel21.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel21.Location = new System.Drawing.Point(267, 50);
-            this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(3, 392);
-            this.panel21.TabIndex = 15;
-            // 
-            // pb_pagar
-            // 
-            this.pb_pagar.Image = global::Local_Money.Properties.Resources.credit_card;
-            this.pb_pagar.Location = new System.Drawing.Point(150, 15);
-            this.pb_pagar.Name = "pb_pagar";
-            this.pb_pagar.Size = new System.Drawing.Size(32, 32);
-            this.pb_pagar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pb_pagar.TabIndex = 7;
-            this.pb_pagar.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Local_Money.Properties.Resources.floppy_disk;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btn_concluir
-            // 
-            this.btn_concluir.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_concluir.BackgroundImage = global::Local_Money.Properties.Resources.check_mark;
-            this.btn_concluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_concluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_concluir.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_concluir.Location = new System.Drawing.Point(167, 449);
-            this.btn_concluir.Name = "btn_concluir";
-            this.btn_concluir.Size = new System.Drawing.Size(114, 44);
-            this.btn_concluir.TabIndex = 13;
-            this.btn_concluir.UseVisualStyleBackColor = false;
-            this.btn_concluir.Visible = false;
-            this.btn_concluir.Click += new System.EventHandler(this.btn_concluir_Click);
-            // 
-            // lbl_count1
-            // 
-            this.lbl_count1.AutoSize = true;
-            this.lbl_count1.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_count1.Location = new System.Drawing.Point(410, 165);
-            this.lbl_count1.Name = "lbl_count1";
-            this.lbl_count1.Size = new System.Drawing.Size(50, 18);
-            this.lbl_count1.TabIndex = 14;
-            this.lbl_count1.Text = "0/300";
-            // 
-            // lbl_count2
-            // 
-            this.lbl_count2.AutoSize = true;
-            this.lbl_count2.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_count2.Location = new System.Drawing.Point(419, 88);
-            this.lbl_count2.Name = "lbl_count2";
-            this.lbl_count2.Size = new System.Drawing.Size(41, 18);
-            this.lbl_count2.TabIndex = 15;
-            this.lbl_count2.Text = "0/50";
-            // 
-            // lbl_erro_func
-            // 
-            this.lbl_erro_func.AutoSize = true;
-            this.lbl_erro_func.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_erro_func.ForeColor = System.Drawing.Color.Brown;
-            this.lbl_erro_func.Location = new System.Drawing.Point(162, 3);
-            this.lbl_erro_func.Name = "lbl_erro_func";
-            this.lbl_erro_func.Size = new System.Drawing.Size(24, 29);
-            this.lbl_erro_func.TabIndex = 16;
-            this.lbl_erro_func.Text = "*";
-            this.lbl_erro_func.Visible = false;
-            // 
-            // lbl_erro_ass
-            // 
-            this.lbl_erro_ass.AutoSize = true;
-            this.lbl_erro_ass.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_erro_ass.ForeColor = System.Drawing.Color.Brown;
-            this.lbl_erro_ass.Location = new System.Drawing.Point(121, 79);
-            this.lbl_erro_ass.Name = "lbl_erro_ass";
-            this.lbl_erro_ass.Size = new System.Drawing.Size(24, 29);
-            this.lbl_erro_ass.TabIndex = 17;
-            this.lbl_erro_ass.Text = "*";
-            this.lbl_erro_ass.Visible = false;
-            // 
-            // lbl_erro_mens
-            // 
-            this.lbl_erro_mens.AutoSize = true;
-            this.lbl_erro_mens.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_erro_mens.ForeColor = System.Drawing.Color.Brown;
-            this.lbl_erro_mens.Location = new System.Drawing.Point(151, 154);
-            this.lbl_erro_mens.Name = "lbl_erro_mens";
-            this.lbl_erro_mens.Size = new System.Drawing.Size(24, 29);
-            this.lbl_erro_mens.TabIndex = 18;
-            this.lbl_erro_mens.Text = "*";
-            this.lbl_erro_mens.Visible = false;
-            // 
-            // btn_nova
-            // 
-            this.btn_nova.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_nova.BorderColor = System.Drawing.Color.Black;
-            this.btn_nova.ButtonColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_nova.FlatAppearance.BorderSize = 0;
-            this.btn_nova.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_nova.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_nova.Location = new System.Drawing.Point(127, 3);
-            this.btn_nova.Name = "btn_nova";
-            this.btn_nova.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_nova.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btn_nova.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_nova.Size = new System.Drawing.Size(140, 53);
-            this.btn_nova.TabIndex = 9;
-            this.btn_nova.Text = "             Nova";
-            this.btn_nova.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_nova.UseVisualStyleBackColor = false;
-            this.btn_nova.Click += new System.EventHandler(this.btn_nova_Click);
-            // 
-            // btn_publicar
-            // 
-            this.btn_publicar.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_publicar.BorderColor = System.Drawing.Color.Black;
-            this.btn_publicar.ButtonColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_publicar.FlatAppearance.BorderSize = 0;
-            this.btn_publicar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_publicar.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_publicar.Location = new System.Drawing.Point(0, 3);
-            this.btn_publicar.Name = "btn_publicar";
-            this.btn_publicar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_publicar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btn_publicar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_publicar.Size = new System.Drawing.Size(117, 53);
-            this.btn_publicar.TabIndex = 8;
-            this.btn_publicar.Text = "          Publicar";
-            this.btn_publicar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_publicar.UseVisualStyleBackColor = false;
-            this.btn_publicar.Click += new System.EventHandler(this.btn_publicar_Click);
-            // 
             // PessoalTarefas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -538,6 +555,8 @@ namespace Local_Money
             this.panel1.ResumeLayout(false);
             this.p_botoes_pedido.ResumeLayout(false);
             this.p_botoes_pedido.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_pagar)).EndInit();
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
             this.p_tarefa.ResumeLayout(false);
@@ -547,8 +566,6 @@ namespace Local_Money
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_pagar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -595,5 +612,6 @@ namespace Local_Money
         private System.Windows.Forms.Label lbl_erro_mens;
         private System.Windows.Forms.Label lbl_erro_ass;
         private System.Windows.Forms.Label lbl_erro_func;
+        public System.Windows.Forms.Button btn_cancelar;
     }
 }

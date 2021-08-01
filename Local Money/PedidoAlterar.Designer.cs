@@ -58,10 +58,12 @@ namespace Local_Money
             this.flp_mesas = new System.Windows.Forms.FlowLayoutPanel();
             this.p_botoes_pedido = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btn_alterar = new ePOSOne.btnProduct.Button_WOC();
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.btn_alterar = new ePOSOne.btnProduct.Button_WOC();
             this.panel3.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel11.SuspendLayout();
@@ -222,6 +224,7 @@ namespace Local_Money
             // 
             // flp_produto_listado
             // 
+            this.flp_produto_listado.AutoScroll = true;
             this.flp_produto_listado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flp_produto_listado.Location = new System.Drawing.Point(15, 86);
             this.flp_produto_listado.Name = "flp_produto_listado";
@@ -240,6 +243,8 @@ namespace Local_Money
             // panel18
             // 
             this.panel18.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel18.Controls.Add(this.panel21);
+            this.panel18.Controls.Add(this.panel20);
             this.panel18.Controls.Add(this.label3);
             this.panel18.Controls.Add(this.label2);
             this.panel18.Controls.Add(this.label1);
@@ -367,26 +372,6 @@ namespace Local_Money
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
-            // btn_alterar
-            // 
-            this.btn_alterar.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_alterar.BorderColor = System.Drawing.Color.Black;
-            this.btn_alterar.ButtonColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_alterar.FlatAppearance.BorderSize = 0;
-            this.btn_alterar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_alterar.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_alterar.Location = new System.Drawing.Point(16, 3);
-            this.btn_alterar.Name = "btn_alterar";
-            this.btn_alterar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_alterar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btn_alterar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_alterar.Size = new System.Drawing.Size(161, 53);
-            this.btn_alterar.TabIndex = 4;
-            this.btn_alterar.Text = "          Alterar";
-            this.btn_alterar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_alterar.UseVisualStyleBackColor = false;
-            this.btn_alterar.Click += new System.EventHandler(this.btn_alterar_Click);
-            // 
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.DarkSlateGray;
@@ -415,6 +400,42 @@ namespace Local_Money
             this.label6.Size = new System.Drawing.Size(84, 29);
             this.label6.TabIndex = 4;
             this.label6.Text = "Mesas";
+            // 
+            // panel20
+            // 
+            this.panel20.BackColor = System.Drawing.SystemColors.ControlText;
+            this.panel20.Location = new System.Drawing.Point(310, 6);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(2, 58);
+            this.panel20.TabIndex = 4;
+            // 
+            // panel21
+            // 
+            this.panel21.BackColor = System.Drawing.SystemColors.ControlText;
+            this.panel21.Location = new System.Drawing.Point(111, 3);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(2, 58);
+            this.panel21.TabIndex = 5;
+            // 
+            // btn_alterar
+            // 
+            this.btn_alterar.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_alterar.BorderColor = System.Drawing.Color.Black;
+            this.btn_alterar.ButtonColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_alterar.FlatAppearance.BorderSize = 0;
+            this.btn_alterar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_alterar.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_alterar.Location = new System.Drawing.Point(16, 3);
+            this.btn_alterar.Name = "btn_alterar";
+            this.btn_alterar.OnHoverBorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_alterar.OnHoverButtonColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btn_alterar.OnHoverTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_alterar.Size = new System.Drawing.Size(161, 53);
+            this.btn_alterar.TabIndex = 4;
+            this.btn_alterar.Text = "          Alterar";
+            this.btn_alterar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_alterar.UseVisualStyleBackColor = false;
+            this.btn_alterar.Click += new System.EventHandler(this.btn_alterar_Click);
             // 
             // PedidoAlterar
             // 
@@ -485,5 +506,7 @@ namespace Local_Money
         private System.Windows.Forms.Panel p_botoes_pedido;
         private System.Windows.Forms.PictureBox pictureBox1;
         private ePOSOne.btnProduct.Button_WOC btn_alterar;
+        private System.Windows.Forms.Panel panel21;
+        private System.Windows.Forms.Panel panel20;
     }
 }

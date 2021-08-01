@@ -22,7 +22,8 @@ namespace Local_Money
         private float Saldo;
         private string Email;
         private int NivelAcesso;
-        
+
+        private int flag = 0;
         public Login()
         {
             InitializeComponent();
@@ -76,10 +77,10 @@ namespace Local_Money
                     SqlCommand com = new SqlCommand();
                     com.Connection = conn.SaberConexao();
                     com.CommandText = "SELECT * FROM tb_user WHERE id_user = '" + int.Parse(txtUser.Text.ToString()) + "' AND password = '" + txtPass.Text.ToString() + "'";
-
                     SqlDataReader reader = com.ExecuteReader();
                     if (reader.HasRows)
                     {
+                        frm_dashboard d = new frm_dashboard();
                         while (reader.Read())
                         {
 
@@ -95,13 +96,58 @@ namespace Local_Money
                         com2.CommandText = "UPDATE tb_user SET ultimo_login = '" + DateTime.Now.ToString() + "' WHERE id_user = '" + Id + "'";
                         com2.ExecuteNonQuery();
 
+                        string[] s = DateTime.Today.ToString().Split('/');
+                        int dia = int.Parse(s[0]);
+                        SqlCommand com3 = new SqlCommand();
+                        com3.Connection = conn.SaberConexao();
+                        com3.CommandText = "SELECT * FROM tb_dia";
+                        SqlDataReader reader3 = com3.ExecuteReader();
+                        while(reader3.Read())
+                        {
+                            if(reader3.GetInt32(0) == dia)
+                            {
+                                d.clientes = reader3.GetInt32(2);
+                                d.dinheiro = double.Parse(reader3.GetValue(1).ToString());
+                            }
+                            else
+                            {
+                                flag = 1;
+                            }
+                        }
+                        reader3.Close();
 
-                        frm_dashboard d = new frm_dashboard();
+                        SqlCommand com5 = new SqlCommand();
+                        com5.Connection = conn.SaberConexao();
+                        com5.CommandText = "SELECT * FROM tb_mes WHERE dia = '" + dia + "'";
+                        SqlDataReader reader5 = com5.ExecuteReader();
+                        while(reader5.Read())
+                        {
+                            d.metaClientes = reader5.GetInt32(4);
+                            d.metaDinheiro = double.Parse(reader5.GetValue(3).ToString());
+                        }
+                        reader5.Close();
+
+                        if(flag == 1)
+                        {
+                            SqlCommand com4 = new SqlCommand();
+                            com4.Connection = conn.SaberConexao();
+                            com4.CommandText = "UPDATE tb_dia SET dia = '" + dia + "', receita = 0, clientes = 0";
+                            com4.ExecuteNonQuery();
+                            d.clientes = 0;
+                            d.dinheiro = 0;
+                        }
+                        else
+                        {
+
+                        }
+
                         d.Id = Id;
                         d.Nome = Nome;
                         d.Email = Email;
                         d.NivelAcesso = NivelAcesso;
                         d.lbl_usuario.Text = Nome;
+
+                        conn.fechar();
                         this.Hide();
                         d.ShowDialog();
                     }

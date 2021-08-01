@@ -15,7 +15,7 @@ namespace Local_Money.modelos
         int id_cat;
          
         Conexao con = new Conexao();
-
+        PedidoNovo pn = (PedidoNovo)Application.OpenForms[2];
         Panel PainelCartao = new Panel
         {
             Width = 205,
@@ -142,6 +142,13 @@ namespace Local_Money.modelos
 
                     CartaoProduto cartao = new CartaoProduto(reader.GetString(3), disp, float.Parse(reader.GetValue(4).ToString()), reader.GetInt32(0), Image.FromStream(mem));
                     flp_cardapio.Controls.Add(cartao.Criar());
+                    if (pn.numero_produtos > 0)
+                    {
+                        if (pn.produtos.Contains(reader.GetInt32(0)))
+                        {
+                            cartao.selecionado();
+                        }
+                    }
                 }
             }
             catch (Exception er)

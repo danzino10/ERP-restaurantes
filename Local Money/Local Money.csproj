@@ -96,12 +96,31 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormularioIngrediente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioIngrediente.Designer.cs">
+      <DependentUpon>FormularioIngrediente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioMenu.Designer.cs">
+      <DependentUpon>FormularioMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioUsuario.Designer.cs">
+      <DependentUpon>FormularioUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="GuardarPedido.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GuardarPedido.Designer.cs">
       <DependentUpon>GuardarPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="modelos\ConverterImagem.cs" />
     <Compile Include="objectos\BotaoMenu.cs" />
     <Compile Include="objectos\BotaoMesa.cs" />
     <Compile Include="modelos\Button_WOC.cs">
@@ -120,8 +139,11 @@
     </Compile>
     <Compile Include="modelos\Pedidos.cs" />
     <Compile Include="modelos\Produto.cs" />
+    <Compile Include="objectos\FuncionarioListado.cs" />
+    <Compile Include="objectos\IngredienteListado.cs" />
     <Compile Include="objectos\ProdutoListado.cs" />
     <Compile Include="objectos\ProdutoListadoSecond.cs" />
+    <Compile Include="objectos\ProdutoListadoThird.cs" />
     <Compile Include="Pagamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +167,12 @@
     </Compile>
     <Compile Include="PedidoNovo.Designer.cs">
       <DependentUpon>PedidoNovo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PessoalFuncionarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PessoalFuncionarios.Designer.cs">
+      <DependentUpon>PessoalFuncionarios.cs</DependentUpon>
     </Compile>
     <Compile Include="PessoalRelatorios.cs">
       <SubType>Form</SubType>
@@ -171,11 +199,38 @@
     <Compile Include="Registo.Designer.cs">
       <DependentUpon>Registo.cs</DependentUpon>
     </Compile>
+    <Compile Include="RestauranteInformacoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RestauranteInformacoes.Designer.cs">
+      <DependentUpon>RestauranteInformacoes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestauranteIngredientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RestauranteIngredientes.Designer.cs">
+      <DependentUpon>RestauranteIngredientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestauranteMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RestauranteMenu.Designer.cs">
+      <DependentUpon>RestauranteMenu.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdicionarProduto.resx">
       <DependentUpon>AdicionarProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioIngrediente.resx">
+      <DependentUpon>FormularioIngrediente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioMenu.resx">
+      <DependentUpon>FormularioMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioUsuario.resx">
+      <DependentUpon>FormularioUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GuardarPedido.resx">
       <DependentUpon>GuardarPedido.cs</DependentUpon>
@@ -195,6 +250,9 @@
     <EmbeddedResource Include="PedidoNovo.resx">
       <DependentUpon>PedidoNovo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PessoalFuncionarios.resx">
+      <DependentUpon>PessoalFuncionarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PessoalRelatorios.resx">
       <DependentUpon>PessoalRelatorios.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +266,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Registo.resx">
       <DependentUpon>Registo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestauranteInformacoes.resx">
+      <DependentUpon>RestauranteInformacoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestauranteIngredientes.resx">
+      <DependentUpon>RestauranteIngredientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestauranteMenu.resx">
+      <DependentUpon>RestauranteMenu.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -307,7 +374,27 @@
   <ItemGroup>
     <None Include="Resources\chef.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\editar-arquivo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\professional.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\professional %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up-arrow1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\upload.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

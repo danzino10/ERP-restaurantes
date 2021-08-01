@@ -152,7 +152,36 @@ namespace Local_Money
         byte[] header, footer, fatura, corpo;
         private void btn_confirmar_Click(object sender, EventArgs e)
         {
-            
+            int tel1 = 0, tel2 = 0, tel3 = 0, tel4 = 0, iva = 0;
+            string nome = "", email = "", ende1 = "", ende2 = "", nif = "";
+            con.abrir();
+            SqlCommand comm = new SqlCommand
+            {
+                CommandText = "SELECT * FROM tb_restaurante",
+                Connection = con.SaberConexao(),
+            };
+            SqlDataReader readerr = comm.ExecuteReader();
+            while (readerr.Read())
+            {
+                nif = readerr.GetString(0);
+                nome = readerr.GetString(1);
+                email = readerr.GetString(2);
+                ende1 = readerr.GetString(3);
+                if (readerr.GetString(3) != "")
+                    ende2 = readerr.GetString(4);
+                if(readerr.GetInt32(5) != 0)
+                    tel1 = readerr.GetInt32(5);
+                if (readerr.GetInt32(6) != 0)
+                    tel2 = readerr.GetInt32(6);
+                if (readerr.GetInt32(7) != 0)
+                    tel3 = readerr.GetInt32(7);
+                if (readerr.GetInt32(8) != 0)
+                    tel4 = readerr.GetInt32(8);
+                iva = readerr.GetInt32(9);
+
+            }
+            readerr.Close();
+            con.fechar();
             pn.AddNomes();
             pn.AddQuantidade();
             pn.AddSubtotal();
@@ -178,12 +207,18 @@ namespace Local_Money
             header = ByteSplicer.Combine(
               
               esc.CenterAlign(),
-              esc.PrintLine("FOODGEST, REESTAURANTE & BAR"),
-              esc.PrintLine("RUA SAMUEL BERNARDO N18,  1-C"),
-              esc.PrintLine("(+244) 936530760"),
+              esc.PrintLine(nome),
+              esc.PrintLine(ende1),
+              esc.PrintLine(tel1.ToString()),
+              esc.PrintLine(tel2.ToString()),
+              esc.PrintLine(ende2),
+              esc.PrintLine(tel3.ToString()),
+              esc.PrintLine(tel4.ToString()),
               esc.PrintLine(""),
-              esc.PrintLine("BAIRRO DAS INGOMBOTAS, LUANDA"),
-              esc.PrintLine("NIF: 002869194OE033"),
+              esc.PrintLine("NIF: " + nif),
+              esc.SetStyles(PrintStyle.Underline),
+              esc.PrintLine("E-mail: " + email),
+              esc.SetStyles(PrintStyle.None),
               esc.PrintLine(""),
               esc.PrintLine(""),
               esc.PrintLine("----------------------------------------------------------------"),
@@ -195,7 +230,6 @@ namespace Local_Money
               esc.SetStyles(PrintStyle.Underline),
               esc.PrintLine(" Qtd     P.Unitaro    Subtotal"),
               esc.PrintLine("   Descricao"),
-              esc.SetStyles(PrintStyle.None),
               esc.SetStyles(PrintStyle.Bold)
               );
             fatura = header;
@@ -315,6 +349,13 @@ namespace Local_Money
                     CommandText = "UPDATE tb_receita_ano SET clientes = clientes + 1, receita = receita + '" + Total + "' WHERE id_mes = '" + int.Parse(mes[1]) + "'",
                 };
                 com4.ExecuteNonQuery();
+
+                SqlCommand com5 = new SqlCommand
+                {
+                    Connection = con.SaberConexao(),
+                    CommandText = "UPDATE tb_dia SET clientes = clientes + 1, receita = receita + '" + Total + "'",
+                };
+                com5.ExecuteNonQuery();
             }
             catch(Exception er)
             {

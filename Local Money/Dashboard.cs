@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 namespace Local_Money
 {
@@ -10,10 +11,12 @@ namespace Local_Money
         public int NivelAcesso;
         public string data;
         private Form janelaAberta = null;
-
+        public int metaClientes;
+        public double metaDinheiro;
         public double dinheiro;
         public int clientes;
 
+        Conexao con = new Conexao();
         public frm_dashboard()
         {
             InitializeComponent();
@@ -24,7 +27,7 @@ namespace Local_Money
         {
             p_sub_pedidos.Visible = false;
             p_sub_pessoal.Visible = false;
-            p_sub_clientes.Visible = false;
+            p_sub_restaurante.Visible = false;
         }
 
          private void EsconderSubmenu()
@@ -32,8 +35,8 @@ namespace Local_Money
             if (p_sub_pedidos.Visible == true)
                 p_sub_pedidos.Visible = false;
             
-            if (p_sub_clientes.Visible == true)
-                p_sub_clientes.Visible = false;
+            if (p_sub_restaurante.Visible == true)
+                p_sub_restaurante.Visible = false;
             if (p_sub_pessoal.Visible == true)
                 p_sub_pessoal.Visible = false;
         }
@@ -117,13 +120,7 @@ namespace Local_Money
             MostrarSubmenu(p_sub_pessoal);
         }
 
-        private void btn_perfil_Click(object sender, EventArgs e)
-        {
-
-            //
-            //
-            EsconderSubmenu();
-        }
+        
 
         private void btn_chat_Click(object sender, EventArgs e)
         {
@@ -131,15 +128,24 @@ namespace Local_Money
             //
             //
             EsconderSubmenu();
+            lbl_pagina.Text = "Relatórios";
         }
 
         private void btn_clientes_Click(object sender, EventArgs e)
         {
-            MostrarSubmenu(p_sub_clientes);
         }
 
         private void btn_sair_Click(object sender, EventArgs e)
         {
+            con.abrir();
+            SqlCommand com = new SqlCommand
+            {
+                CommandText = "UPDATE tb_user SET ultimo_logout = '" + DateTime.Now.ToString() + "' WHERE id_user = '" + Id + "'",
+                Connection = con.SaberConexao()
+            };
+            com.ExecuteNonQuery();
+            con.fechar();
+
             Application.Exit();
         }
 
@@ -153,20 +159,62 @@ namespace Local_Money
             //
             //
             EsconderSubmenu();
+            lbl_pagina.Text = "Tarefas";
+        }
+
+        
+
+        private void btn_Restaurante_Click(object sender, EventArgs e)
+        {
+            MostrarSubmenu(p_sub_restaurante);
+
+        }
+
+        private void btn_funcionarios_Click(object sender, EventArgs e)
+        {
+            AbrirJanela(new PessoalFuncionarios());
+            EsconderSubmenu();
+            lbl_pagina.Text = "Funcionários";
+        }
+
+        private void btn_menu_Click(object sender, EventArgs e)
+        {
+            AbrirJanela(new RestauranteMenu());
+            EsconderSubmenu();
+            lbl_pagina.Text = "Menu";
+        }
+
+        private void frm_dashboard_Load(object sender, EventArgs e)
+        {
+            lbl_clientes_meta.Text = metaClientes.ToString();
+            lbl_dinheiro_meta.Text = metaDinheiro.ToString();
+            lbl_clientes.Text = clientes.ToString();
+            lbl_dinheiro.Text = dinheiro.ToString();
+
+            if (NivelAcesso != 1)
+            {
+                p_sub_pessoal.Controls.Remove(btn_funcionarios);
+                p_sidemenu.Controls.Remove(btn_Restaurante);
+                p_sidemenu.Controls.Remove(p_sub_restaurante);
+            }
         }
 
         int h = 0, m = 0, s = 0;
 
-        private void frm_dashboard_Load(object sender, EventArgs e)
+        private void btn_info_Click(object sender, EventArgs e)
         {
-            if (NivelAcesso == 2)
-            {
-                p_sub_pessoal.Controls.Remove(btn_perfil);
-                p_sub_clientes.Controls.Remove(btn_registar);
-                p_sub_clientes.Controls.Remove(btn_editar);
+            AbrirJanela(new RestauranteInformacoes());
 
+            lbl_pagina.Text = "Informações";
+            EsconderSubmenu();
 
-            }
+        }
+
+        private void btn_ingredientes_Click(object sender, EventArgs e)
+        {
+            AbrirJanela(new RestauranteIngredientes());
+            EsconderSubmenu();
+            lbl_pagina.Text = "Ingredientes";
         }
 
         private void tmr_Tick(object sender, EventArgs e)
